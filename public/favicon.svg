@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D3B36" />
+      <stop offset="100%" stop-color="#082622" />
+    </linearGradient>
+    <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C59A45" />
+      <stop offset="100%" stop-color="#A67C52" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgGrad)" stroke="#A67C52" stroke-width="1.5" />
+  
+  <!-- Subtle border inner accent -->
+  <rect x="5" y="5" width="54" height="54" rx="11" fill="none" stroke="#A67C52" stroke-width="0.75" stroke-opacity="0.35" />
+
+  <!-- Justice Scales (Neutral Legal Symbol) -->
+  <!-- Central Finial / Apex -->
+  <circle cx="32" cy="14" r="2.5" fill="url(#bronzeGrad)" />
+  
+  <!-- Central Vertical Mast -->
+  <path d="M31 16h2v25h-2z" fill="url(#bronzeGrad)" />
+
+  <!-- Main Horizontal Crossbeam -->
+  <path d="M16 20.5h32v2.5H16z" fill="url(#bronzeGrad)" rx="1" />
+  <circle cx="32" cy="21.75" r="2" fill="#0D3B36" stroke="#A67C52" stroke-width="1" />
+
+  <!-- Left Scale Pan & Strings -->
+  <path d="M18 23 L13.5 32.5 M18 23 L22.5 32.5" stroke="#A67C52" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M12.5 32.5c0 3.8 11 3.8 11 0z" fill="url(#bronzeGrad)" />
+  <line x1="11.5" y1="32.5" x2="24.5" y2="32.5" stroke="#C59A45" stroke-width="1" stroke-linecap="round" />
+
+  <!-- Right Scale Pan & Strings -->
+  <path d="M46 23 L41.5 32.5 M46 23 L50.5 32.5" stroke="#A67C52" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M40.5 32.5c0 3.8 11 3.8 11 0z" fill="url(#bronzeGrad)" />
+  <line x1="39.5" y1="32.5" x2="52.5" y2="32.5" stroke="#C59A45" stroke-width="1" stroke-linecap="round" />
+
+  <!-- Base Pedestal -->
+  <path d="M26 41h12v2.5H26z M22 43.5h20v3.5H22z" fill="url(#bronzeGrad)" rx="0.5" />
+</svg>
+

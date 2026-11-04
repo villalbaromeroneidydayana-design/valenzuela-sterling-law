@@ -1,0 +1,294 @@
+import React, { useState } from 'react';
+import { PRACTICE_AREAS, FIRM_CONFIG } from '../data/demoData';
+import { 
+  Scale, Users, HeartHandshake, Briefcase, 
+  Sparkles, FileText, CheckCircle2, ArrowRight, 
+  X, Phone, MessageCircle, HelpCircle, AlertCircle, Lock
+} from 'lucide-react';
+import { analytics } from '../services/analytics';
+
+export default function PracticeAreas({ lang, onSelectPractice, onOpenCallRequest }) {
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [activeModalPractice, setActiveModalPractice] = useState(null);
+
+  const filters = [
+    { id: 'all', labelEs: 'Todas las Especialidades (12)', labelEn: 'All Specialties (12)' },
+    { id: 'familia', labelEs: 'Familia & Ciudadanía', labelEn: 'Family & Citizenship' },
+    { id: 'defensa', labelEs: 'Defensa contra Deportación & Asilo', labelEn: 'Deportation Defense & Asylum' },
+    { id: 'corporativo', labelEs: 'Visas de Inversión & Empleo', labelEn: 'Business & Investor Visas' },
+    { id: 'humanitario', labelEs: 'Alivio Humanitario & VAWA', labelEn: 'Humanitarian & VAWA' },
+  ];
+
+  const filteredAreas = selectedFilter === 'all' 
+    ? PRACTICE_AREAS 
+    : PRACTICE_AREAS.filter(area => area.category === selectedFilter);
+
+  const getIcon = (id) => {
+    switch (id) {
+      case 'residencia-green-card':
+      case 'peticiones-familiares':
+      case 'ciudadania-naturalizacion':
+        return <Users className="w-5 h-5 text-bronze" />;
+      case 'asilo-politico':
+      case 'defensa-deportacion':
+      case 'perdones-migratorios':
+        return <Scale className="w-5 h-5 text-bronze" />;
+      case 'visas-inversion-eb5-e2':
+      case 'visas-trabajo-empleo':
+      case 'visas-talento-o1-eb1':
+        return <Briefcase className="w-5 h-5 text-bronze" />;
+      case 'programa-vawa':
+      case 'visa-u-visa-t':
+      case 'tps-daca':
+        return <HeartHandshake className="w-5 h-5 text-bronze" />;
+      default:
+        return <FileText className="w-5 h-5 text-bronze" />;
+    }
+  };
+
+  const handleOpenPracticeDetail = (area) => {
+    setActiveModalPractice(area);
+    analytics.trackServiceView(area.id, area.category);
+  };
+
+  const handleStartEvaluation = (practiceId) => {
+    setActiveModalPractice(null);
+    onSelectPractice(practiceId);
+  };
+
+  const handleWhatsAppPractice = (area) => {
+    const text = encodeURIComponent(area.whatsappPrefill || `Hola Valenzuela & Sterling, deseo una consulta sobre ${area.titleEs}`);
+    analytics.trackWhatsAppClick('practice_modal', area.id);
+    window.open(`https://wa.me/13055088800?text=${text}`, '_blank');
+  };
+
+  return (
+    <section id="servicios" className="py-20 bg-ivory text-charcoal relative scroll-mt-28 border-b border-linen-dark/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+        
+        {/* Encabezado del Directorio */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-linen border border-linen-dark text-teal text-xs font-semibold uppercase tracking-wider">
+            <Scale className="w-3.5 h-3.5 text-bronze" />
+            <span>{lang === 'es' ? 'Directorio Especializado en Inmigración' : 'Specialized Immigration Directory'}</span>
+          </div>
+
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight">
+            {lang === 'es' ? (
+              <>
+                Nuestras Principales <span className="text-teal italic">Áreas de Práctica</span>
+              </>
+            ) : (
+              <>
+                Our Core <span className="text-teal italic">Immigration Practice Areas</span>
+              </>
+            )}
+          </h2>
+
+          <p className="text-charcoal-soft text-sm sm:text-base leading-relaxed font-light">
+            {lang === 'es' 
+              ? 'Explore cada especialidad para conocer los criterios legales, las situaciones cotidianas que atendemos y comience su evaluación de caso de inmediato.'
+              : 'Explore each legal practice area to review requirements, typical scenarios handled, and initiate your immediate case assessment.'
+            }
+          </p>
+
+          {/* Filtros de Categorías */}
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
+            {filters.map((f) => (
+              <button
+                key={f.id}
+                onClick={() => setSelectedFilter(f.id)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  selectedFilter === f.id
+                    ? 'bg-teal text-white shadow-sm font-semibold'
+                    : 'bg-white text-charcoal-soft hover:text-charcoal border border-linen-dark hover:bg-ivory-warm'
+                }`}
+              >
+                {lang === 'es' ? f.labelEs : f.labelEn}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Grid Visual de 12 Especialidades - Tarjetas Compactas y Limpias */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filteredAreas.map((area) => (
+            <div
+              key={area.id}
+              className="bg-white border border-linen-dark hover:border-bronze/50 rounded-xl p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 motion-reduce:transition-none hover:shadow-premium flex flex-col justify-between group shadow-subtle text-left"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-lg bg-linen flex items-center justify-center group-hover:bg-ivory-warm transition-colors duration-200">
+                    {getIcon(area.id)}
+                  </div>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-bronze px-2.5 py-0.5 rounded bg-ivory-warm border border-linen-dark">
+                    {area.category.toUpperCase()}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="font-serif text-base sm:text-lg font-bold text-charcoal group-hover:text-teal transition-colors duration-200 leading-snug">
+                    {lang === 'es' ? area.titleEs : area.titleEn}
+                  </h3>
+                  <p className="text-xs text-bronze font-medium mt-1">
+                    {lang === 'es' ? area.taglineEs : area.taglineEn}
+                  </p>
+                </div>
+
+                <p className="text-xs text-charcoal-soft leading-relaxed line-clamp-2 font-light">
+                  {lang === 'es' ? area.descriptionEs : area.descriptionEn}
+                </p>
+              </div>
+
+              {/* Acciones de la Tarjeta Compacta */}
+              <div className="pt-4 mt-3 border-t border-linen flex items-center justify-between gap-2">
+                <button
+                  onClick={() => handleOpenPracticeDetail(area)}
+                  className="text-xs font-semibold text-teal hover:text-bronze flex items-center space-x-1.5 transition-colors duration-200 cursor-pointer"
+                >
+                  <span>{lang === 'es' ? 'Explorar Especialidad' : 'Explore Area'}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <button
+                  onClick={() => handleStartEvaluation(area.id)}
+                  className="px-3 py-1.5 bg-ivory-warm hover:bg-teal hover:text-white text-charcoal border border-linen-dark text-[11px] font-semibold rounded-md shadow-xs transition-all duration-200 cursor-pointer"
+                >
+                  <span>{lang === 'es' ? 'Consultar' : 'Inquire'}</span>
+                </button>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      {/* MODAL DETALLADO DE EXPERIENCIA INTERACTIVA */}
+      {activeModalPractice && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/75 backdrop-blur-sm transition-opacity duration-200 motion-reduce:transition-none overflow-y-auto">
+          <div className="bg-white border border-linen-dark rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-elevated space-y-6 max-h-[92vh] overflow-y-auto text-left my-8 transform transition-all duration-200 ease-out animate-in fade-in zoom-in-95 motion-reduce:animate-none">
+            
+            <button
+              onClick={() => setActiveModalPractice(null)}
+              className="absolute top-5 right-5 text-charcoal-light hover:text-charcoal p-1.5 rounded-lg transition-colors cursor-pointer"
+              aria-label="Cerrar modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Encabezado */}
+            <div className="flex items-start space-x-3.5">
+              <div className="w-12 h-12 rounded-xl bg-linen flex items-center justify-center flex-shrink-0 mt-1">
+                {getIcon(activeModalPractice.id)}
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] text-bronze uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-ivory-warm border border-linen-dark">
+                  {lang === 'es' ? 'Especialidad Jurídica' : 'Legal Specialty'} • {activeModalPractice.category.toUpperCase()}
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-charcoal">
+                  {lang === 'es' ? activeModalPractice.titleEs : activeModalPractice.titleEn}
+                </h3>
+                <p className="text-xs text-teal font-medium">
+                  {lang === 'es' ? activeModalPractice.taglineEs : activeModalPractice.taglineEn}
+                </p>
+              </div>
+            </div>
+
+            {/* Explicación del Servicio */}
+            <p className="text-xs sm:text-sm text-charcoal-soft leading-relaxed font-light">
+              {lang === 'es' ? activeModalPractice.descriptionEs : activeModalPractice.descriptionEn}
+            </p>
+
+            {/* Bloque 1: Situaciones que Puede Atender */}
+            {activeModalPractice.situations && activeModalPractice.situations.length > 0 && (
+              <div className="bg-ivory-warm border border-linen-dark rounded-xl p-4 space-y-2.5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-teal flex items-center space-x-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-teal" />
+                  <span>{lang === 'es' ? 'Situaciones Concretas que Atendemos:' : 'Typical Scenarios Handled:'}</span>
+                </h4>
+                <ul className="space-y-2">
+                  {activeModalPractice.situations.map((sit, idx) => (
+                    <li key={idx} className="flex items-start space-x-2 text-xs text-charcoal">
+                      <span className="w-1.5 h-1.5 rounded-full bg-bronze flex-shrink-0 mt-1.5" />
+                      <span>{lang === 'es' ? sit.es : sit.en}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Bloque 2: Preguntas Orientativas ("¿Se identifica?") */}
+            {activeModalPractice.guidingQuestions && activeModalPractice.guidingQuestions.length > 0 && (
+              <div className="bg-linen/60 border border-linen-dark rounded-xl p-4 space-y-2.5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal flex items-center space-x-1.5">
+                  <HelpCircle className="w-4 h-4 text-bronze" />
+                  <span>{lang === 'es' ? 'Preguntas Orientativas para Identificar su Caso:' : 'Guiding Self-Assessment Questions:'}</span>
+                </h4>
+                <div className="space-y-1.5">
+                  {activeModalPractice.guidingQuestions.map((gq, idx) => (
+                    <div key={idx} className="p-2 bg-white rounded-lg border border-linen text-xs text-charcoal-soft flex items-center space-x-2">
+                      <span className="text-bronze font-bold text-[11px]">{idx + 1}.</span>
+                      <span className="italic">{lang === 'es' ? gq.es : gq.en}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Aspectos Clave */}
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal">
+                {lang === 'es' ? 'Garantías y Alcance de Representación:' : 'Scope of Legal Representation:'}
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-charcoal-soft">
+                {activeModalPractice.highlights.map((item, idx) => (
+                  <div key={idx} className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-teal flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Aviso de Confidencialidad y Orientación */}
+            <div className="flex items-center space-x-2 text-[11px] text-charcoal-light bg-ivory p-2.5 rounded-lg border border-linen">
+              <Lock className="w-3.5 h-3.5 text-bronze flex-shrink-0" />
+              <span>
+                {lang === 'es' 
+                  ? 'La información enviada será tratada bajo estricta reserva profesional para coordinar una consulta jurídica individualizada con un abogado autorizado.'
+                  : 'All information provided will be treated with professional discretion to coordinate an individualized legal consultation with a licensed attorney.'}
+              </span>
+            </div>
+
+            {/* Acciones de Conversión Múltiples */}
+            <div className="pt-4 border-t border-linen flex flex-col sm:flex-row items-center justify-between gap-3">
+              
+              {/* WhatsApp Contextualizado */}
+              <button
+                onClick={() => handleWhatsAppPractice(activeModalPractice)}
+                className="w-full sm:w-auto px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>{lang === 'es' ? 'Consultar por WhatsApp' : 'Inquire on WhatsApp'}</span>
+              </button>
+
+              {/* Botón Principal: Iniciar Cuestionario Orientativo */}
+              <button
+                onClick={() => handleStartEvaluation(activeModalPractice.id)}
+                className="w-full sm:w-auto px-5 py-2.5 bg-teal hover:bg-teal-light text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer"
+              >
+                <span>{lang === 'es' ? 'Iniciar Cuestionario Orientativo' : 'Start Guidance Questionnaire'}</span>
+                <ArrowRight className="w-4 h-4 text-bronze-light" />
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+}

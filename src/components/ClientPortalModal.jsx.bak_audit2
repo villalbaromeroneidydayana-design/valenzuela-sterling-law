@@ -1,0 +1,387 @@
+import React, { useState } from 'react';
+import { 
+  FileCheck, Shield, Lock, X, CheckCircle2, Clock, 
+  Calendar, FileText, Download, Phone, AlertCircle, ArrowRight, User 
+} from 'lucide-react';
+import { FIRM_CONFIG } from '../data/demoData';
+
+export default function ClientPortalModal({ isOpen, onClose, lang = 'es' }) {
+  const [caseNumber, setCaseNumber] = useState('');
+  const [accessCode, setAccessCode] = useState('');
+  const [error, setError] = useState('');
+  const [authenticatedCase, setAuthenticatedCase] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [downloadNotice, setDownloadNotice] = useState('');
+
+  // Expediente de demostración completamente documentado
+  const demoCase = {
+    caseNumber: 'VS-CAS-2026-0842',
+    clientName: 'Familia Morales & Hijos',
+    accessCode: '7941',
+    service: lang === 'es' ? 'Petición Familiar I-130 & Ajuste de Estatus' : 'I-130 Family Petition & Adjustment of Status',
+    filingDate: '15 Octubre 2026',
+    attorneyAssigned: 'Jefe (~Lawyer) / Lic. John Alfonso',
+    status: lang === 'es' ? 'En Proceso Activo ante USCIS' : 'In Active USCIS Processing',
+    statusColor: 'emerald',
+    nextDeadline: lang === 'es' ? 'Cita Biométrica estimada: Diciembre 2026' : 'Estimated Biometrics: December 2026',
+    activities: [
+      {
+        id: 1,
+        date: '04 Nov 2026 - 10:30 AM',
+        title: lang === 'es' ? 'Actualización de Novedad por la Oficina' : 'Office Case Update Recorded',
+        description: lang === 'es' 
+          ? 'Revisión técnica de documentos complementarios y comprobación de recibos oficiales en el sistema de la firma.' 
+          : 'Technical review of supplemental documents and official receipt confirmation in firm docket.',
+        status: 'completada'
+      },
+      {
+        id: 2,
+        date: '28 Oct 2026 - 02:15 PM',
+        title: lang === 'es' ? 'Recibo Oficial I-797C Recibido' : 'Official Notice I-797C Received',
+        description: lang === 'es'
+          ? 'USCIS asignó formalmente el número de recibo federal. Se confirmó fecha de prioridad para el beneficiario.'
+          : 'USCIS assigned formal receipt number. Priority date confirmed for principal beneficiary.',
+        status: 'completada'
+      },
+      {
+        id: 3,
+        date: '15 Oct 2026 - 11:00 AM',
+        title: lang === 'es' ? 'Radicación de Paquete Legal' : 'Filing of Complete Legal Package',
+        description: lang === 'es'
+          ? 'Envío certificado del expediente legal con evidencia probatoria, traducciones certificadas y pago de tarifas.'
+          : 'Certified submission of immigration packet with corroborating evidence, translations, and fee receipts.',
+        status: 'completada'
+      },
+      {
+        id: 4,
+        date: '02 Oct 2026 - 04:45 PM',
+        title: lang === 'es' ? 'Apertura de Expediente & Auditoría Inicial' : 'Case Opening & Initial Intake Audit',
+        description: lang === 'es'
+          ? 'Consulta de admisión aprobada. Apertura de bóveda digital y asignación de equipo legal titular.'
+          : 'Retainer confirmed. Digital vault established and legal defense team assigned.',
+        status: 'completada'
+      }
+    ],
+    documents: [
+      {
+        name: 'Recibo_Oficial_USCIS_I797C.pdf',
+        size: '1.4 MB',
+        date: '28 Oct 2026',
+        authorizedBy: 'Abogado Principal'
+      },
+      {
+        name: 'Copia_Expediente_Radicado_I130.pdf',
+        size: '4.8 MB',
+        date: '15 Oct 2026',
+        authorizedBy: 'Oficina Jurídica'
+      }
+    ]
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    setTimeout(() => {
+      const cleanCase = caseNumber.trim().toUpperCase();
+      const cleanCode = accessCode.trim();
+
+      // Permitir acceso con el caso demo o variaciones comunes
+      if (
+        (cleanCase === 'VS-CAS-2026-0842' || cleanCase === '842' || cleanCase === 'VS-842') &&
+        (cleanCode === '7941' || cleanCode === 'VS-SEC-7941')
+      ) {
+        setAuthenticatedCase(demoCase);
+      } else if (cleanCase.startsWith('VS-') && cleanCode.length >= 4) {
+        // Caso genérico válido
+        setAuthenticatedCase({
+          ...demoCase,
+          caseNumber: cleanCase,
+          clientName: 'Cliente Registrado en Bóveda'
+        });
+      } else {
+        setError(
+          lang === 'es'
+            ? 'Credenciales no encontradas. Verifique su número de caso (Ej: VS-CAS-2026-0842) y código secreto (7941).'
+            : 'Credentials not found. Please verify your case number (e.g., VS-CAS-2026-0842) and code (7941).'
+        );
+      }
+      setLoading(false);
+    }, 450);
+  };
+
+  const loadDemo = () => {
+    setCaseNumber('VS-CAS-2026-0842');
+    setAccessCode('7941');
+    setError('');
+  };
+
+  const handleLogout = () => {
+    setAuthenticatedCase(null);
+    setCaseNumber('');
+    setAccessCode('');
+    setError('');
+    setDownloadNotice('');
+  };
+
+  const handleDownloadDocument = (doc) => {
+    try {
+      const content = `VALENZUELA & STERLING IMMIGRATION LAW GROUP, P.A.\nEXPEDIENTE OFICIAL: ${authenticatedCase.caseNumber}\nCLIENTE: ${authenticatedCase.clientName}\nDOCUMENTO: ${doc.name}\nTAMAÑO: ${doc.size}\nFECHA DE AUTORIZACIÓN: ${doc.date}\nAUTORIZADO POR: ${doc.authorizedBy}\n\nDocumento emitido conforme al estándar de custodia digital de la firma.`;
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = doc.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      setDownloadNotice(lang === 'es' ? `Descarga iniciada: ${doc.name}` : `Download initiated: ${doc.name}`);
+      setTimeout(() => setDownloadNotice(''), 4000);
+    } catch (err) {
+      setDownloadNotice(lang === 'es' ? 'Error al descargar documento' : 'Error downloading document');
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+      <div className="relative w-full max-w-3xl bg-[#092925] border border-[#B88656]/30 rounded-2xl shadow-2xl text-white my-6 max-h-[92vh] overflow-y-auto">
+        
+        {/* Cabecera del Modal */}
+        <div className="flex items-center justify-between p-5 sm:p-6 border-b border-white/10 bg-[#071F1C]/95">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#A67C52] to-[#B88656] text-white flex items-center justify-center font-bold shadow-md shadow-[#B88656]/20">
+              <FileCheck className="w-5 h-5 stroke-[2.2]" />
+            </div>
+            <div>
+              <div className="text-[10px] font-bold text-amber-300 uppercase tracking-widest flex items-center space-x-1.5">
+                <Lock className="w-3 h-3 text-emerald-400" />
+                <span>{lang === 'es' ? 'Portal Seguro de Clientes' : 'Secure Client Portal'}</span>
+              </div>
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
+                {lang === 'es' ? 'Mi Expediente — Consulta y Seguimiento' : 'My Case File — Track & Follow-Up'}
+              </h3>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="p-2 text-slate-400 hover:text-white hover:bg-[#133E38]/50 rounded-lg transition-colors cursor-pointer"
+            aria-label="Cerrar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* 1. VISTA DE INICIO DE SESIÓN */}
+        {!authenticatedCase ? (
+          <div className="p-6 sm:p-8 space-y-6 text-left">
+            <div className="space-y-1.5">
+              <h4 className="font-serif text-xl font-bold text-white">
+                {lang === 'es' ? 'Acceso Individual a su Expediente' : 'Sign In to Your Case Record'}
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
+                {lang === 'es'
+                  ? 'Ingrese el número de expediente y código de acceso individual que nuestra oficina le proporcionó al abrir su caso.'
+                  : 'Enter the individual case number and access code provided by our office upon case opening.'}
+              </p>
+            </div>
+
+            {error && (
+              <div className="p-3 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-xl flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-400" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-200 mb-1">
+                  {lang === 'es' ? 'Número de Expediente *' : 'Case Number *'}
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ej. VS-CAS-2026-0842"
+                  value={caseNumber}
+                  onChange={(e) => setCaseNumber(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-[#071F1C] border border-white/20 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-200 mb-1">
+                  {lang === 'es' ? 'Código Secreto de Acceso *' : 'Secret Access Code *'}
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={accessCode}
+                  onChange={(e) => setAccessCode(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-[#071F1C] border border-white/20 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"
+                />
+              </div>
+
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-3 bg-gradient-to-r from-[#A67C52] to-[#B88656] hover:from-[#B88656] hover:to-[#A67C52] text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-[#B88656]/20 transition-all flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50 border border-[#B88656]/50 active:scale-95"
+                >
+                  <span>{loading ? (lang === 'es' ? 'Verificando Bóveda...' : 'Checking Vault...') : (lang === 'es' ? 'Consultar Mi Expediente' : 'Access My File')}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </form>
+
+            {/* Acceso Rápido de Prueba para Demostración */}
+            <div className="p-3.5 bg-[#133E38]/60 border border-[#B88656]/30 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div className="text-slate-200 text-center sm:text-left">
+                <strong className="text-amber-300">¿Desea probar el portal de inmediato?</strong>
+                <div className="text-[11px] text-slate-300">Use el expediente de demostración cargado en el sistema.</div>
+              </div>
+              <button
+                type="button"
+                onClick={loadDemo}
+                className="px-3.5 py-1.5 bg-[#092925] hover:bg-[#164E46] text-white font-semibold rounded-lg border border-[#B88656]/40 transition-colors cursor-pointer text-xs flex-shrink-0"
+              >
+                Cargar Datos Demo
+              </button>
+            </div>
+          </div>
+        ) : (
+
+          /* 2. VISTA DEL EXPEDIENTE AUTENTICADO */
+          <div className="p-6 sm:p-8 space-y-6 text-left animate-in fade-in duration-300">
+            
+            {/* Tarjeta de Resumen del Caso */}
+            <div className="bg-[#0D3B36] border border-white/15 rounded-xl p-5 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
+                <div>
+                  <div className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">
+                    {lang === 'es' ? 'Expediente Oficial' : 'Official Record'}
+                  </div>
+                  <div className="font-mono text-xl font-bold text-white tracking-wide">
+                    {authenticatedCase.caseNumber}
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>{authenticatedCase.status}</span>
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+                <div>
+                  <span className="text-slate-300 block">{lang === 'es' ? 'Cliente Titular:' : 'Client Name:'}</span>
+                  <strong className="text-white font-semibold">{authenticatedCase.clientName}</strong>
+                </div>
+                <div>
+                  <span className="text-slate-300 block">{lang === 'es' ? 'Materia Jurídica:' : 'Matter:'}</span>
+                  <strong className="text-white font-semibold">{authenticatedCase.service}</strong>
+                </div>
+                <div>
+                  <span className="text-slate-300 block">{lang === 'es' ? 'Cuerpo Jurídico:' : 'Legal Team:'}</span>
+                  <strong className="text-white font-semibold">{authenticatedCase.attorneyAssigned}</strong>
+                </div>
+              </div>
+
+              <div className="p-3 bg-[#071F1C] rounded-lg border border-white/10 flex items-center justify-between text-xs">
+                <span className="text-amber-300 font-bold">{lang === 'es' ? 'Siguiente Hito Programado:' : 'Next Milestone:'}</span>
+                <span className="text-slate-200">{authenticatedCase.nextDeadline}</span>
+              </div>
+            </div>
+
+            {/* Aviso de descarga si aplica */}
+            {downloadNotice && (
+              <div className="p-2.5 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs rounded-lg flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400" />
+                <span>{downloadNotice}</span>
+              </div>
+            )}
+
+            {/* Historial Cronológico de Actividades con Fechas */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h4 className="font-serif text-lg font-bold text-white flex items-center space-x-2">
+                  <Clock className="w-4 h-4 text-amber-300" />
+                  <span>{lang === 'es' ? 'Historial de Actividades & Gestiones' : 'Activity & Milestone History'}</span>
+                </h4>
+                <span className="text-xs text-slate-300">{authenticatedCase.activities.length} eventos registrados</span>
+              </div>
+
+              <div className="space-y-3">
+                {authenticatedCase.activities.map((act) => (
+                  <div key={act.id} className="p-4 bg-[#071F1C] border border-white/10 rounded-xl space-y-1.5 text-xs">
+                    <div className="flex items-center justify-between text-slate-300 text-[11px]">
+                      <span className="text-amber-300 font-semibold">{act.date}</span>
+                      <span className="inline-flex items-center space-x-1 text-emerald-400 font-semibold">
+                        <CheckCircle2 className="w-3 h-3" />
+                        <span>Completada</span>
+                      </span>
+                    </div>
+                    <div className="text-white font-bold text-sm">{act.title}</div>
+                    <p className="text-slate-300 leading-relaxed font-light">{act.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Documentos Autorizados para Compartir */}
+            <div className="space-y-3">
+              <h4 className="font-serif text-lg font-bold text-white flex items-center space-x-2">
+                <FileText className="w-4 h-4 text-emerald-400" />
+                <span>{lang === 'es' ? 'Documentos Oficiales Disponibles' : 'Authorized Official Documents'}</span>
+              </h4>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                {authenticatedCase.documents.map((doc, idx) => (
+                  <div key={idx} className="p-3.5 bg-[#071F1C] border border-white/10 rounded-xl flex items-center justify-between">
+                    <div className="space-y-0.5 truncate pr-2">
+                      <div className="font-bold text-white truncate">{doc.name}</div>
+                      <div className="text-[11px] text-slate-300">{doc.size} • Autorizado el {doc.date}</div>
+                    </div>
+                    <button
+                      onClick={() => handleDownloadDocument(doc)}
+                      className="p-2 bg-[#133E38] hover:bg-[#B88656] hover:text-white text-amber-300 rounded-lg transition-colors cursor-pointer flex-shrink-0 border border-white/10"
+                      title="Descargar documento oficial"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Botones de Acción y Salida */}
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <a
+                href="tel:+15513499462"
+                className="w-full sm:w-auto px-4 py-2.5 bg-[#133E38] hover:bg-[#164E46] border border-[#B88656]/40 text-white rounded-lg text-xs font-semibold flex items-center justify-center space-x-2"
+              >
+                <Phone className="w-3.5 h-3.5 text-amber-300" />
+                <span>Llamar a la Oficina: (551) 349-9462</span>
+              </a>
+
+              <button
+                onClick={handleLogout}
+                className="w-full sm:w-auto px-4 py-2 bg-red-950/60 hover:bg-red-900 text-red-200 rounded-lg text-xs font-semibold border border-red-500/40 transition-colors cursor-pointer"
+              >
+                {lang === 'es' ? 'Cerrar Sesión del Expediente' : 'Sign Out of Case'}
+              </button>
+            </div>
+
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,200 @@
+import React, { useState, useEffect } from 'react';
+import { Activity, BarChart3, Users, Phone, MessageSquare, CheckCircle2, X, RefreshCw, ArrowUpRight, ShieldCheck } from 'lucide-react';
+
+export default function ConversionTelemetryModal({ isOpen, onClose, lang = 'es' }) {
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [lastRefreshed, setLastRefreshed] = useState(null);
+
+  const fetchStats = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/conversion-stats');
+      const data = await res.json();
+      if (data && data.metrics) {
+        setStats(data);
+        setLastRefreshed(new Date().toLocaleTimeString());
+      }
+    } catch (e) {
+      console.error('Error fetching conversion stats:', e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchStats();
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+      <div className="relative w-full max-w-3xl bg-white border border-linen-dark rounded-2xl p-6 sm:p-8 shadow-elevated text-charcoal my-8 max-h-[90vh] overflow-y-auto">
+        
+        {/* Encabezado */}
+        <div className="flex items-start justify-between pb-4 border-b border-linen">
+          <div className="space-y-1">
+            <div className="inline-flex items-center space-x-1.5 text-[10px] uppercase font-bold tracking-widest text-teal">
+              <Activity className="w-3.5 h-3.5 text-teal animate-pulse" />
+              <span>{lang === 'es' ? 'Motor de Conversión en Tiempo Real' : 'Real-Time Conversion Engine'}</span>
+            </div>
+            <h3 className="font-serif text-2xl font-bold text-charcoal">
+              {lang === 'es' ? 'Métricas de Conversión y Captación' : 'Conversion & Acquisition Telemetry'}
+            </h3>
+            <p className="text-xs text-charcoal-soft font-light">
+              {lang === 'es'
+                ? 'Monitoreo de prospectos calificados, evaluaciones migratorias y llamadas registradas en el backend seguro.'
+                : 'Live tracking of qualified leads, case evaluations, and callbacks captured in secure backend vaults.'}
+            </p>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={fetchStats}
+              disabled={loading}
+              className="p-2 text-charcoal-soft hover:text-teal hover:bg-linen rounded-lg transition-colors cursor-pointer"
+              title={lang === 'es' ? 'Actualizar métricas' : 'Refresh stats'}
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            </button>
+            <button
+              onClick={onClose}
+              className="p-2 text-charcoal-soft hover:text-charcoal hover:bg-linen rounded-lg transition-colors cursor-pointer"
+              aria-label="Cerrar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* KPIs Principales */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6">
+          <div className="bg-ivory-warm border border-linen-dark rounded-xl p-4">
+            <div className="text-[10px] uppercase font-bold text-bronze tracking-wider">
+              {lang === 'es' ? 'Evaluaciones' : 'Evaluations'}
+            </div>
+            <div className="font-serif text-3xl font-bold text-teal mt-1">
+              {stats?.metrics?.evaluationsCompleted ?? stats?.recentEvaluationsCount ?? 0}
+            </div>
+            <div className="text-[11px] text-charcoal-light mt-0.5">
+              {lang === 'es' ? 'En bóveda segura' : 'In secure vault'}
+            </div>
+          </div>
+
+          <div className="bg-ivory-warm border border-linen-dark rounded-xl p-4">
+            <div className="text-[10px] uppercase font-bold text-bronze tracking-wider">
+              {lang === 'es' ? 'Prospectos / Leads' : 'Leads'}
+            </div>
+            <div className="font-serif text-3xl font-bold text-teal mt-1">
+              {stats?.metrics?.leadsCaptured ?? stats?.recentLeadsCount ?? 0}
+            </div>
+            <div className="text-[11px] text-charcoal-light mt-0.5">
+              {lang === 'es' ? 'Formularios recibidos' : 'Intakes received'}
+            </div>
+          </div>
+
+          <div className="bg-ivory-warm border border-linen-dark rounded-xl p-4">
+            <div className="text-[10px] uppercase font-bold text-bronze tracking-wider">
+              {lang === 'es' ? 'Llamadas Inmediatas' : 'Call Requests'}
+            </div>
+            <div className="font-serif text-3xl font-bold text-teal mt-1">
+              {stats?.metrics?.callRequestsCaptured ?? stats?.recentCallRequestsCount ?? 0}
+            </div>
+            <div className="text-[11px] text-charcoal-light mt-0.5">
+              {lang === 'es' ? 'SLA < 15 min' : 'SLA < 15 min'}
+            </div>
+          </div>
+
+          <div className="bg-ivory-warm border border-linen-dark rounded-xl p-4">
+            <div className="text-[10px] uppercase font-bold text-bronze tracking-wider">
+              {lang === 'es' ? 'Iniciados / Embudo' : 'Funnel Starts'}
+            </div>
+            <div className="font-serif text-3xl font-bold text-teal mt-1">
+              {stats?.metrics?.evaluationsStarted || 0}
+            </div>
+            <div className="text-[11px] text-charcoal-light mt-0.5">
+              {lang === 'es' ? 'Evaluaciones iniciadas' : 'Evaluations started'}
+            </div>
+          </div>
+        </div>
+
+        {/* Embudo de Conversión del Evaluador */}
+        <div className="bg-linen/50 border border-linen-dark rounded-xl p-5 space-y-4">
+          <div className="flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal">
+              {lang === 'es' ? 'Embudo de Conversión: Evaluador de Elegibilidad' : 'Conversion Funnel: Case Evaluator'}
+            </h4>
+            <span className="text-[11px] text-bronze font-semibold">
+              {stats?.conversionFunnel?.completionRate || '100%'}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 text-center">
+            <div className="bg-white border border-linen-dark rounded-lg p-3">
+              <div className="text-[10px] text-charcoal-light uppercase font-semibold">Paso 1: Inicio</div>
+              <div className="text-lg font-bold text-charcoal mt-0.5">{stats?.conversionFunnel?.evaluationsStarted || 0}</div>
+              <div className="text-[10px] text-teal font-medium">100%</div>
+            </div>
+            <div className="bg-white border border-linen-dark rounded-lg p-3">
+              <div className="text-[10px] text-charcoal-light uppercase font-semibold">Paso 2: Filtro</div>
+              <div className="text-lg font-bold text-charcoal mt-0.5">{stats?.conversionFunnel?.evaluationsStarted || 0}</div>
+              <div className="text-[10px] text-teal font-medium">100%</div>
+            </div>
+            <div className="bg-white border border-linen-dark rounded-lg p-3 border-teal/40">
+              <div className="text-[10px] text-teal uppercase font-bold">Paso 3: Completado</div>
+              <div className="text-lg font-bold text-teal mt-0.5">{stats?.conversionFunnel?.evaluationsCompleted || 0}</div>
+              <div className="text-[10px] text-teal font-bold">{stats?.conversionFunnel?.completionRate || '—'}</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Desglose de Canales Comerciales */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          <div className="border border-linen rounded-xl p-4 space-y-2">
+            <h5 className="text-xs font-bold text-charcoal flex items-center space-x-2">
+              <MessageSquare className="w-4 h-4 text-teal" />
+              <span>{lang === 'es' ? 'Clics a WhatsApp Contextual' : 'Contextual WhatsApp Inquiries'}</span>
+            </h5>
+            <p className="text-xs text-charcoal-soft font-light">
+              {lang === 'es'
+                ? `Total de activaciones directas desde áreas de práctica y botón flotante: ${stats?.conversionFunnel?.whatsappConversions ?? stats?.metrics?.whatsappClicks ?? 0}`
+                : `Total direct clicks initiated from practice drawers and floating button: ${stats?.conversionFunnel?.whatsappConversions ?? stats?.metrics?.whatsappClicks ?? 0}`}
+            </p>
+          </div>
+
+          <div className="border border-linen rounded-xl p-4 space-y-2">
+            <h5 className="text-xs font-bold text-charcoal flex items-center space-x-2">
+              <Phone className="w-4 h-4 text-bronze" />
+              <span>{lang === 'es' ? 'Llamadas Directas Registradas' : 'Direct Phone Calls Initiated'}</span>
+            </h5>
+            <p className="text-xs text-charcoal-soft font-light">
+              {lang === 'es'
+                ? `Clics hacia el número telefónico principal (551) 349-9462: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`
+                : `Direct click-to-call taps on law firm hotline (551) 349-9462: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`}
+            </p>
+          </div>
+        </div>
+
+        {/* Pie de modal */}
+        <div className="pt-6 mt-6 border-t border-linen flex flex-col sm:flex-row items-center justify-between text-xs text-charcoal-light gap-3">
+          <div className="flex items-center space-x-2">
+            <ShieldCheck className="w-4 h-4 text-teal" />
+            <span>
+              {lang === 'es' 
+                ? 'Datos almacenados en server_data/*.jsonl bajo cumplimiento estricto de privacidad.' 
+                : 'Data persisted to server_data/*.jsonl with full compliance.'}
+            </span>
+          </div>
+          {lastRefreshed && (
+            <span>{lang === 'es' ? `Última sincronización: ${lastRefreshed}` : `Last sync: ${lastRefreshed}`}</span>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+

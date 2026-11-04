@@ -1,0 +1,208 @@
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import TrustBadges from './components/TrustBadges';
+import AboutFirm from './components/AboutFirm';
+import VideoShowcase from './components/VideoShowcase';
+import PracticeAreas from './components/PracticeAreas';
+import ProcessWorkflow from './components/ProcessWorkflow';
+import EligibilityEvaluator from './components/EligibilityEvaluator';
+import AttorneyTeam from './components/AttorneyTeam';
+import SuccessStories from './components/SuccessStories';
+import Testimonials from './components/Testimonials';
+import OfficeLocations from './components/OfficeLocations';
+import FaqSection from './components/FaqSection';
+import BlogPreview from './components/BlogPreview';
+import Footer from './components/Footer';
+import VirtualAssistant from './components/VirtualAssistant';
+import QuickContactFloating from './components/QuickContactFloating';
+import VideoReelModal from './components/VideoReelModal';
+import CallRequestModal from './components/CallRequestModal';
+import ConversionTelemetryModal from './components/ConversionTelemetryModal';
+import BlogArticleModal from './components/BlogArticleModal';
+
+export default function App() {
+  const [lang, setLang] = useState('es');
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isEvaluatorModalOpen, setIsEvaluatorModalOpen] = useState(false);
+  const [evaluatorPracticeId, setEvaluatorPracticeId] = useState('residencia-green-card');
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
+  const [callCaseType, setCallCaseType] = useState('general');
+  const [isTelemetryModalOpen, setIsTelemetryModalOpen] = useState(false);
+  const [selectedBlogArticle, setSelectedBlogArticle] = useState(null);
+
+  const handleOpenEvaluator = (practiceId = 'residencia-green-card') => {
+    if (typeof practiceId === 'string') {
+      setEvaluatorPracticeId(practiceId);
+    }
+    setIsEvaluatorModalOpen(true);
+  };
+
+  const handleCloseEvaluator = () => {
+    setIsEvaluatorModalOpen(false);
+  };
+
+  const handleSelectPractice = (practiceId) => {
+    setEvaluatorPracticeId(practiceId);
+    setIsEvaluatorModalOpen(true);
+  };
+
+  const handleOpenCallRequest = (caseType = 'general') => {
+    setCallCaseType(caseType);
+    setIsCallModalOpen(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-ivory text-charcoal flex flex-col font-sans selection:bg-linen selection:text-teal relative">
+      
+      {/* 1. Encabezado Institucional & Navegación Bilingüe */}
+      <Header 
+        lang={lang} 
+        setLang={setLang} 
+        onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        onOpenCallRequest={() => handleOpenCallRequest('general')}
+        onSelectPractice={handleSelectPractice}
+      />
+
+      {/* 2. Portada de Alto Impacto con Formulario Above-The-Fold */}
+      <main className="flex-1">
+        <Hero 
+          lang={lang} 
+          onOpenVideo={() => setIsVideoModalOpen(true)}
+          onOpenEvaluator={() => handleOpenEvaluator('asilo-politico')}
+        />
+
+        {/* 3. Sellos de Acreditación y Autoridad (AILA, Florida Bar, BBB A+, Avvo 10.0, Google 4.9) */}
+        <TrustBadges lang={lang} />
+
+        {/* 4. Presentación Institucional: La Firma, Misión, Visión y Ética */}
+        <AboutFirm 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        />
+
+        {/* 5. Video Institucional de Oficinas y Presentación Corporativa */}
+        <VideoShowcase 
+          lang={lang} 
+          onOpenVideoModal={() => setIsVideoModalOpen(true)}
+        />
+
+        {/* 6. Directorio Interactivo de 12 Especialidades con Diagnóstico Contextual */}
+        <PracticeAreas 
+          lang={lang} 
+          onSelectPractice={handleSelectPractice}
+          onOpenCallRequest={handleOpenCallRequest}
+        />
+
+        {/* 7. Metodología: Cómo Funciona Nuestro Proceso de Representación (4 Etapas) */}
+        <ProcessWorkflow 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        />
+
+        {/* 8. Evaluador Inteligente de Elegibilidad por Etapas (Vista integrada) */}
+        <EligibilityEvaluator 
+          lang={lang} 
+          isOpen={false}
+          initialPracticeId={evaluatorPracticeId}
+        />
+
+        {/* 9. Presentación del Equipo de Abogados Titulares */}
+        <AttorneyTeam 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        />
+
+        {/* 10. Casos y Resultados Favorables Recientes */}
+        <SuccessStories 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        />
+
+        {/* 11. Testimonios Verificados de Clientes */}
+        <Testimonials lang={lang} />
+
+        {/* 12. Sedes Físicas Corporativas (Miami, Orlando, Houston, New York) */}
+        <OfficeLocations 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        />
+
+        {/* 13. Acordeones de Preguntas Frecuentes (FAQs) */}
+        <FaqSection lang={lang} />
+
+        {/* 14. Blog de Actualidad Jurídica Migratoria */}
+        <BlogPreview 
+          lang={lang} 
+          onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+          onOpenArticle={(post) => setSelectedBlogArticle(post)}
+        />
+      </main>
+
+      {/* 15. Pie de Página Corporativo con Avisos Éticos y Enlace a Métricas */}
+      <Footer 
+        lang={lang} 
+        onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+        onOpenCallRequest={() => handleOpenCallRequest('general')}
+        onOpenTelemetry={() => setIsTelemetryModalOpen(true)}
+      />
+
+      {/* 16. Asistente Virtual Inteligente ("Sofía") */}
+      <VirtualAssistant 
+        lang={lang} 
+        onOpenEvaluator={handleOpenEvaluator}
+        onOpenCallRequest={() => handleOpenCallRequest('general')}
+      />
+
+      {/* 17. Barra de Contacto Permanente para Móviles */}
+      <QuickContactFloating 
+        lang={lang} 
+        onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+      />
+
+      {/* 18. Modal de Video Institucional en Pantalla Completa */}
+      <VideoReelModal 
+        isOpen={isVideoModalOpen} 
+        onClose={() => setIsVideoModalOpen(false)}
+        lang={lang}
+        onOpenEvaluator={() => handleOpenEvaluator('residencia-green-card')}
+      />
+
+      {/* 19. Modal Emergente del Evaluador (cuando se invoca desde botones CTA o Especialidades) */}
+      {isEvaluatorModalOpen && (
+        <EligibilityEvaluator 
+          lang={lang} 
+          isOpen={true} 
+          onClose={handleCloseEvaluator}
+          initialPracticeId={evaluatorPracticeId}
+        />
+      )}
+
+      {/* 20. Modal de Solicitud de Llamada Inmediata */}
+      <CallRequestModal
+        isOpen={isCallModalOpen}
+        onClose={() => setIsCallModalOpen(false)}
+        lang={lang}
+        initialCaseType={callCaseType}
+      />
+
+      {/* 21. Modal de Telemetría y Métricas en Tiempo Real */}
+      <ConversionTelemetryModal
+        isOpen={isTelemetryModalOpen}
+        onClose={() => setIsTelemetryModalOpen(false)}
+        lang={lang}
+      />
+
+      {/* 22. Modal de Lectura Completa de Artículos del Blog (Etapa 4.3-B) */}
+      {selectedBlogArticle && (
+        <BlogArticleModal
+          article={selectedBlogArticle}
+          lang={lang}
+          onClose={() => setSelectedBlogArticle(null)}
+          onOpenEvaluator={handleOpenEvaluator}
+        />
+      )}
+
+    </div>
+  );
+}

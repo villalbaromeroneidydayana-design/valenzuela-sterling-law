@@ -1,0 +1,82 @@
+{
+  "viewports": [
+    {
+      "viewport": "Mobile_iPhone_390",
+      "width": 390,
+      "h1Dimensions": {
+        "x": 16,
+        "y": 137.25,
+        "width": 358,
+        "height": 97.5625
+      },
+      "hasHorizontalOverflow": false
+    },
+    {
+      "viewport": "Mobile_Android_412",
+      "width": 412,
+      "h1Dimensions": {
+        "x": 16,
+        "y": 137.25,
+        "width": 380,
+        "height": 66.375
+      },
+      "hasHorizontalOverflow": false
+    },
+    {
+      "viewport": "Tablet_Portrait_768",
+      "width": 768,
+      "h1Dimensions": {
+        "x": 32,
+        "y": 193.75,
+        "width": 704,
+        "height": 98
+      },
+      "hasHorizontalOverflow": false
+    },
+    {
+      "viewport": "Laptop_1024",
+      "width": 1024,
+      "h1Dimensions": {
+        "x": 32,
+        "y": 230.25,
+        "width": 543.328125,
+        "height": 253.9375
+      },
+      "hasHorizontalOverflow": false
+    },
+    {
+      "viewport": "Desktop_1440",
+      "width": 1440,
+      "h1Dimensions": {
+        "x": 112,
+        "y": 209.75,
+        "width": 692.65625,
+        "height": 192.453125
+      },
+      "hasHorizontalOverflow": false
+    }
+  ],
+  "practiceAreas": [],
+  "laborAreas": [
+    "Despidos injustificados",
+    "Salarios no pagados",
+    "Horas extras",
+    "Discriminación laboral",
+    "Acoso y represalias laborales",
+    "Compensaciones laborales"
+  ],
+  "bondsAudit": {
+    "Orientación de Fianzas": "Activa y conmutando",
+    "Recuperación de Fondos": "Activa y conmutando",
+    "Requisitos & Documentos": "Activa y conmutando",
+    "Pasos a Seguir": "Activa y conmutando"
+  },
+  "formsAudit": {},
+  "attorneysAudit": {
+    "count": 6
+  },
+  "officesAudit": {
+    "count": 4
+  },
+  "consoleErrors": []
+}

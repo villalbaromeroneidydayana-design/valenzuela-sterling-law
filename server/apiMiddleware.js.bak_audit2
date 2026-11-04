@@ -1,0 +1,249 @@
+import fs from 'fs';
+import path from 'path';
+
+// Almacén en memoria del servidor para telemetría y leads (Persistencia en backend, NUNCA en localStorage)
+const serverState = {
+  leads: [],
+  evaluations: [],
+  callRequests: [],
+  events: [],
+  metrics: {
+    pageViews: 0,
+    evaluationsStarted: 0,
+    evaluationsCompleted: 0,
+    leadsCaptured: 0,
+    callRequestsCaptured: 0,
+    whatsappClicks: 0,
+    phoneClicks: 0
+  }
+};
+
+const LOGS_DIR = path.resolve(process.cwd(), 'server_data');
+
+function ensureLogsDir() {
+  if (!fs.existsSync(LOGS_DIR)) {
+    fs.mkdirSync(LOGS_DIR, { recursive: true });
+  }
+}
+
+function appendToAuditLog(filename, data) {
+  try {
+    ensureLogsDir();
+    const filePath = path.join(LOGS_DIR, filename);
+    const entry = JSON.stringify({ ...data, recordedAt: new Date().toISOString() }) + '\n';
+    fs.appendFileSync(filePath, entry, 'utf8');
+  } catch (err) {
+    console.error('Error escribiendo log de auditoría en backend:', err);
+  }
+}
+
+export function createApiMiddleware() {
+  return (req, res, next) => {
+    const url = req.url || '';
+
+    // Manejar solo rutas /api/*
+    if (!url.startsWith('/api/')) {
+      return next();
+    }
+
+    // Parsear body JSON
+    if (req.method === 'POST') {
+      let bodyData = '';
+      req.on('data', chunk => {
+        bodyData += chunk;
+      });
+
+      req.on('end', () => {
+        let payload = {};
+        try {
+          if (bodyData) payload = JSON.parse(bodyData);
+        } catch (e) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          return res.end(JSON.stringify({ error: 'Payload JSON inválido' }));
+        }
+
+        // 1. ENDPOINT: /api/leads (Formularios de contacto y Hero)
+        if (url === '/api/leads') {
+          const { name, phone, email, caseType, language, notes } = payload;
+          if (!name || !phone) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            return res.end(JSON.stringify({ error: 'Nombre y teléfono son obligatorios para el registro legal.' }));
+          }
+
+          const leadId = `VS-LEAD-${Date.now().toString().slice(-6)}`;
+          const leadRecord = {
+            id: leadId,
+            name: name.trim(),
+            phone: phone.trim(),
+            email: email ? email.trim() : null,
+            caseType: caseType || 'general',
+            language: language || 'es',
+            notes: notes || '',
+            status: 'PENDIENTE_REVISION_ABOGADO',
+            createdAt: new Date().toISOString()
+          };
+
+          serverState.leads.unshift(leadRecord);
+          serverState.metrics.leadsCaptured++;
+          appendToAuditLog('leads_vault.jsonl', leadRecord);
+
+          console.log(`[BACKEND CRM] Nuevo prospecto registrado: ${leadId} (${leadRecord.name}, Tel: ${leadRecord.phone}, Área: ${leadRecord.caseType})`);
+
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          return res.end(JSON.stringify({
+            success: true,
+            leadId,
+            message: 'Prospecto registrado exitosamente en el sistema de admisión jurídica.',
+            estimatedContactHours: 2,
+            timestamp: leadRecord.createdAt
+          }));
+        }
+
+        // 2. ENDPOINT: /api/evaluations (Evaluador Migratorio Inteligente Adaptativo)
+        if (url === '/api/evaluations') {
+          const { name, phone, email, serviceId, category, answers, language, notes, smsConsent } = payload;
+          if (!name || !phone) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            return res.end(JSON.stringify({ error: 'Nombre y teléfono requeridos para procesar la evaluación.' }));
+          }
+
+          const evalId = `VS-EVAL-${Date.now().toString().slice(-6)}`;
+          const evalRecord = {
+            id: evalId,
+            serviceId: serviceId || 'general',
+            category: category || 'inmigracion',
+            answers: answers || {},
+            name: name.trim(),
+            phone: phone.trim(),
+            email: email ? email.trim() : null,
+            language: language || 'es',
+            notes: notes || '',
+            smsConsent: Boolean(smsConsent),
+            status: 'EVALUACION_PENDIENTE_ANALISIS_JURIDICO',
+            createdAt: new Date().toISOString()
+          };
+
+          serverState.evaluations.unshift(evalRecord);
+          serverState.metrics.evaluationsCompleted++;
+          appendToAuditLog('evaluations_vault.jsonl', evalRecord);
+
+          console.log(`[BACKEND CRM] Evaluación migratoria recibida: ${evalId} (Servicio: ${evalRecord.serviceId}, Cliente: ${evalRecord.name})`);
+
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          return res.end(JSON.stringify({
+            success: true,
+            evalId,
+            serviceId: evalRecord.serviceId,
+            message: 'Evaluación recibida formalmente. Un abogado especialista examinará los factores de viabilidad.',
+            disclaimer: 'La recepción de este formulario no constituye otorgamiento de asesoría legal definitiva ni garantiza resultados.',
+            timestamp: evalRecord.createdAt
+          }));
+        }
+
+        // 3. ENDPOINT: /api/call-requests (Solicitud de Llamada Inmediata)
+        if (url === '/api/call-requests') {
+          const { name, phone, bestTime, caseType } = payload;
+          if (!name || !phone) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            return res.end(JSON.stringify({ error: 'Nombre y teléfono requeridos para solicitar llamada.' }));
+          }
+
+          const callReqId = `VS-CALL-${Date.now().toString().slice(-5)}`;
+          const callRecord = {
+            id: callReqId,
+            name: name.trim(),
+            phone: phone.trim(),
+            bestTime: bestTime || 'Inmediato / Lo antes posible',
+            caseType: caseType || 'general',
+            status: 'LLAMADA_PROGRAMADA',
+            createdAt: new Date().toISOString()
+          };
+
+          serverState.callRequests.unshift(callRecord);
+          serverState.metrics.callRequestsCaptured++;
+          appendToAuditLog('call_requests_vault.jsonl', callRecord);
+
+          console.log(`[BACKEND CRM] Solicitud de llamada programada: ${callReqId} (Para: ${callRecord.name}, Tel: ${callRecord.phone}, Horario: ${callRecord.bestTime})`);
+
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          return res.end(JSON.stringify({
+            success: true,
+            callReqId,
+            message: 'Solicitud de llamada agendada en la central de admisión.',
+            timestamp: callRecord.createdAt
+          }));
+        }
+
+        // 4. ENDPOINT: /api/telemetry (Eventos de Conversión: Clics WhatsApp, Abandonos, Vistas)
+        if (url === '/api/telemetry') {
+          const { eventName, eventData } = payload;
+          if (eventName) {
+            serverState.events.unshift({
+              event: eventName,
+              data: eventData || {},
+              timestamp: new Date().toISOString()
+            });
+
+            // Actualizar contadores
+            if (eventName === 'whatsapp_click') serverState.metrics.whatsappClicks++;
+            if (eventName === 'phone_click') serverState.metrics.phoneClicks++;
+            if (eventName === 'evaluator_started') serverState.metrics.evaluationsStarted++;
+            if (eventName === 'page_view') serverState.metrics.pageViews++;
+          }
+
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          return res.end(JSON.stringify({ ok: true }));
+        }
+
+        // Ruta no encontrada en POST
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'application/json');
+        return res.end(JSON.stringify({ error: 'Endpoint POST no encontrado' }));
+      });
+      return;
+    }
+
+    // Manejar GET para Telemetría y Estadísticas
+    if (req.method === 'GET') {
+      if (url === '/api/conversion-stats') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        return res.end(JSON.stringify({
+          metrics: serverState.metrics,
+          recentLeadsCount: serverState.leads.length,
+          recentEvaluationsCount: serverState.evaluations.length,
+          recentCallRequestsCount: serverState.callRequests.length,
+          conversionFunnel: {
+            pageViews: serverState.metrics.pageViews,
+            evaluationsStarted: serverState.metrics.evaluationsStarted,
+            evaluationsCompleted: serverState.metrics.evaluationsCompleted,
+            completionRate: serverState.metrics.evaluationsStarted > 0 
+              ? `${Math.round((serverState.metrics.evaluationsCompleted / serverState.metrics.evaluationsStarted) * 100)}%` 
+              : '100%',
+            directLeads: serverState.metrics.leadsCaptured,
+            callRequests: serverState.metrics.callRequestsCaptured,
+            whatsappConversions: serverState.metrics.whatsappClicks,
+            phoneConversions: serverState.metrics.phoneClicks
+          },
+          serverStatus: 'ONLINE_SECURE',
+          auditPersistence: 'ACTIVE (server_data/)'
+        }));
+      }
+
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'application/json');
+      return res.end(JSON.stringify({ error: 'Endpoint GET no encontrado' }));
+    }
+
+    next();
+  };
+}
+

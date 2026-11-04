@@ -1,0 +1,167 @@
+import React, { useState } from 'react';
+import { 
+  Play, Building2, BookOpen, Users, Landmark, 
+  Sparkles, CheckCircle2, Volume2, ShieldCheck 
+} from 'lucide-react';
+import { FIRM_CONFIG } from '../data/demoData';
+
+export default function VideoShowcase({ lang, onOpenVideoModal }) {
+  const [activeTab, setActiveTab] = useState('offices');
+
+  const scenes = {
+    offices: {
+      titleEs: "Salas de Juntas & Oficinas en Brickell (Miami)",
+      titleEn: "Executive Boardrooms & Brickell Headquarters (Miami)",
+      descEs: "Espacios corporativos de alto nivel diseñados para garantizar máxima confidencialidad, tecnología de videoconferencia con cortes federales y comodidad para las familias.",
+      descEn: "High-tier corporate spaces designed for absolute client confidentiality, federal court video conferencing, and comfort for visiting families.",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+      tagEs: "Infraestructura Corporativa",
+      tagEn: "Corporate Infrastructure"
+    },
+    meetings: {
+      titleEs: "Estrategia Legal & Litigio en Equipo",
+      titleEn: "Legal Strategy & Team Case Review",
+      descEs: "Nuestros abogados de litigio analizan cada expediente de forma colegiada, simulando audiencias ante cortes de inmigración y preparando testimonios periciales.",
+      descEn: "Our litigation team conducts collaborative case reviews, simulating EOIR court hearings and orchestrating expert testimony for trial.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      tagEs: "Simulacros de Audiencia",
+      tagEn: "Courtroom Simulation"
+    },
+    library: {
+      titleEs: "Biblioteca Jurídica & Precedentes Federales",
+      titleEn: "Legal Library & Federal Case Law Research",
+      descEs: "Acceso a las bases de datos de jurisprudencia migratoria más exhaustivas de EE. UU., precedentes de la BIA y decisiones de los 13 Circuitos de Apelación.",
+      descEn: "Exhaustive immigration legal library, tracking precedent decisions from the Board of Immigration Appeals (BIA) and all 13 Federal Circuit Courts.",
+      image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80",
+      tagEs: "Rigor Jurisprudencial",
+      tagEn: "Federal Precedents"
+    },
+    skyline: {
+      titleEs: "Presencia Federal en las Principales Ciudades",
+      titleEn: "Federal Footprint in Key U.S. Metros",
+      descEs: "Sedes físicas estratégicas en los centros neurálgicos de inmigración: Miami, Orlando, Houston y Nueva York, con capacidad de litigar en todo el territorio nacional.",
+      descEn: "Strategic physical offices in key hubs: Miami, Orlando, Houston, and New York, with full federal authority to represent clients across all 50 states.",
+      image: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1200&q=80",
+      tagEs: "Alcance Nacional",
+      tagEn: "Nationwide Reach"
+    }
+  };
+
+  const tabs = [
+    { id: 'offices', icon: Building2, labelEs: "Sedes & Salas de Juntas", labelEn: "Offices & Boardrooms" },
+    { id: 'meetings', icon: Users, labelEs: "Equipo en Reunión", labelEn: "Attorney Strategy" },
+    { id: 'library', icon: BookOpen, labelEs: "Biblioteca Jurídica", labelEn: "Legal Research" },
+    { id: 'skyline', icon: Landmark, labelEs: "Distritos Financieros", labelEn: "Federal Footprint" }
+  ];
+
+  const currentScene = scenes[activeTab];
+
+  return (
+    <section id="video-showcase" className="py-20 bg-ivory-warm relative overflow-hidden border-b border-linen-dark/60 scroll-mt-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+        
+        {/* Cabecera de Sección */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-linen border border-linen-dark text-teal text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-bronze" />
+            <span>{lang === 'es' ? 'Presentación Audiovisual' : 'Institutional Video'}</span>
+          </div>
+
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight">
+            {lang === 'es' ? (
+              <>
+                Instalaciones Corporativas de <span className="text-teal italic">Primer Nivel</span>
+              </>
+            ) : (
+              <>
+                Premier Corporate <span className="text-teal italic">Facilities & Practice</span>
+              </>
+            )}
+          </h2>
+
+          <p className="text-charcoal-soft text-sm sm:text-base leading-relaxed font-light">
+            {lang === 'es' 
+              ? 'Conozca nuestras oficinas en los distritos financieros de Miami, Houston y Nueva York. Salas de juntas equipadas para litigio federal y un equipo volcado en la victoria de su caso.'
+              : 'Tour our corporate suites in Miami, Houston, and New York. Purpose-built facilities for federal hearings and a dedicated legal staff committed to your case.'
+            }
+          </p>
+
+          {/* Navegación por Pestañas de Escenas */}
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
+            {tabs.map((t) => {
+              const Icon = t.icon;
+              const isActive = activeTab === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveTab(t.id)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-teal text-white shadow-sm font-semibold'
+                      : 'bg-white text-charcoal-soft hover:text-charcoal border border-linen-dark hover:bg-ivory'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-bronze-light' : 'text-bronze'}`} />
+                  <span>{lang === 'es' ? t.labelEs : t.labelEn}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* REPRODUCTOR VISUAL PRINCIPAL */}
+        <div className="relative rounded-2xl overflow-hidden border border-linen-dark shadow-elevated group bg-charcoal">
+          <div className="relative h-[380px] sm:h-[480px] lg:h-[520px] w-full overflow-hidden">
+            <img
+              src={currentScene.image}
+              alt={currentScene.titleEs}
+              className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000"
+            />
+            {/* Gradientes cinematográficos suaves */}
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent pointer-events-none" />
+
+            {/* Botón Central de Play con Estilo Bronce y Teal */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button
+                onClick={onOpenVideoModal}
+                className="relative flex items-center justify-center w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-teal/95 hover:bg-teal text-white shadow-premium group cursor-pointer transition-all duration-300 hover:scale-105 border border-bronze/40"
+                aria-label="Reproducir video institucional"
+              >
+                <div className="absolute inset-0 rounded-full bg-bronze animate-ping opacity-20" />
+                <Play className="w-8 h-8 fill-bronze-light ml-1 text-bronze-light" />
+              </button>
+            </div>
+
+            {/* Badge de Escena */}
+            <div className="absolute top-5 left-5">
+              <span className="px-3.5 py-1.5 rounded-md bg-white/90 backdrop-blur-md text-charcoal text-xs font-semibold tracking-wider uppercase border border-linen-dark shadow-sm">
+                {lang === 'es' ? currentScene.tagEs : currentScene.tagEn}
+              </span>
+            </div>
+
+            {/* Badge de Calidad */}
+            <div className="absolute top-5 right-5 flex items-center space-x-2">
+              <span className="px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-white font-mono text-[10px] font-bold">
+                4K UHD
+              </span>
+            </div>
+
+            {/* Barra Inferior con Título */}
+            <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
+              <div className="max-w-3xl space-y-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                  {lang === 'es' ? currentScene.titleEs : currentScene.titleEn}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
+                  {lang === 'es' ? currentScene.descEs : currentScene.descEn}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}

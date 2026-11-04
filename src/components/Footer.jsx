@@ -1,0 +1,181 @@
+import React from 'react';
+import { FIRM_CONFIG, OFFICES } from '../data/demoData';
+import { Shield, Phone, Mail, MapPin, Scale, Activity } from 'lucide-react';
+import { analytics } from '../services/analytics';
+
+export default function Footer({ lang, onOpenEvaluator, onOpenCallRequest, onOpenTelemetry, onOpenPortal }) {
+  return (
+    <footer id="contacto" className="bg-[#030A14] text-white border-t border-blue-900/60 pt-16 pb-12 relative scroll-mt-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+        
+        {/* Fila Principal de 4 Columnas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-blue-900/50">
+          
+          {/* Columna 1: Identidad Corporativa */}
+          <div className="lg:col-span-4 space-y-4 text-left">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-lg bg-[#0B1E3D] flex items-center justify-center shadow-md border border-amber-400/40 text-amber-400">
+                <Shield className="w-5 h-5 stroke-[2.2]" />
+              </div>
+              <div>
+                <span className="font-serif text-xl font-bold tracking-tight text-white block">
+                  VALENZUELA & STERLING
+                </span>
+                <span className="text-[10px] tracking-widest uppercase font-semibold text-emerald-400 block">
+                  IMMIGRATION LAW GROUP, P.A.
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-300 leading-relaxed font-light">
+              {lang === 'es' ? FIRM_CONFIG.slogan.es : FIRM_CONFIG.slogan.en}
+            </p>
+
+            <div className="pt-2 space-y-2 text-xs">
+              <a 
+                href={`tel:${FIRM_CONFIG.primaryPhoneRaw}`} 
+                onClick={() => analytics.trackPhoneClick('footer')}
+                className="flex items-center space-x-2 text-white hover:text-amber-400 transition-colors font-medium"
+              >
+                <Phone className="w-3.5 h-3.5 text-amber-400" />
+                <span>{FIRM_CONFIG.primaryPhone} ({lang === 'es' ? 'Atención 24/7' : '24/7 Helpline'})</span>
+              </a>
+
+              <a 
+                href={`mailto:${FIRM_CONFIG.contactEmail}`} 
+                className="flex items-center space-x-2 text-slate-300 hover:text-white transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-amber-400" />
+                <span>{FIRM_CONFIG.contactEmail}</span>
+              </a>
+            </div>
+
+            <div className="pt-2 flex flex-wrap gap-2">
+              <button
+                onClick={onOpenEvaluator}
+                className="px-4 py-2 bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg shadow-md cursor-pointer transition-all border border-amber-300/60"
+              >
+                {lang === 'es' ? 'Evaluación de Caso' : 'Case Evaluation'}
+              </button>
+
+              <button
+                onClick={onOpenCallRequest}
+                className="px-4 py-2 bg-[#0B1E3D] hover:bg-[#16386E] border border-blue-700/60 text-white text-xs font-semibold rounded-lg shadow-sm cursor-pointer transition-colors"
+              >
+                {lang === 'es' ? 'Solicitar Llamada' : 'Request Callback'}
+              </button>
+            </div>
+          </div>
+
+          {/* Columna 2: Áreas Migratorias Principales */}
+          <div className="lg:col-span-3 space-y-3 text-left">
+            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider text-amber-400">
+              {lang === 'es' ? 'Áreas Migratorias' : 'Practice Areas'}
+            </h4>
+            <ul className="space-y-1.5 text-xs text-slate-300 font-light">
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Residencia Permanente (Green Card)' : 'Permanent Residency'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Peticiones Familiares (I-130)' : 'Family Petitions'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Defensa contra Deportación (EOIR)' : 'Deportation Defense'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Asilo Político y Refugio' : 'Political Asylum'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Visas de Inversión (E-2 y EB-5)' : 'Investor Visas'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Visas de Talento (O-1 / EB-2 NIW)' : 'Extraordinary Ability'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Protección VAWA y Visa U' : 'VAWA & U-Visa Relief'}</a></li>
+              <li><a href="#servicios" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Perdones Migratorios (I-601 / I-601A)' : 'Immigration Waivers'}</a></li>
+            </ul>
+          </div>
+
+          {/* Columna 3: Sedes Corporativas */}
+          <div className="lg:col-span-3 space-y-3 text-left">
+            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider text-amber-400">
+              {lang === 'es' ? 'Sedes Físicas' : 'Office Locations'}
+            </h4>
+            <div className="space-y-3 text-xs text-slate-300 font-light">
+              {OFFICES.map((off, idx) => (
+                <div key={idx} className="space-y-0.5">
+                  <div className="font-semibold text-white flex items-center space-x-1">
+                    <MapPin className="w-3 h-3 text-amber-400" />
+                    <span>{lang === 'es' ? off.city : off.cityEn}</span>
+                  </div>
+                  <div className="text-[11px] text-slate-300 pl-4">{off.address}</div>
+                  <div className="text-[11px] text-slate-300 pl-4">Tel: {off.phone}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Columna 4: Navegación */}
+          <div className="lg:col-span-2 space-y-3 text-left">
+            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider text-amber-400">
+              {lang === 'es' ? 'Navegación' : 'Navigation'}
+            </h4>
+            <ul className="space-y-1.5 text-xs text-slate-300 font-light">
+              <li><a href="#hero" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
+              <li><a href="#la-firma" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Quiénes Somos' : 'About Us'}</a></li>
+              <li><a href="#proceso" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Cómo Trabajamos' : 'Our Process'}</a></li>
+              <li><a href="#video-showcase" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Video & Sedes' : 'Video & Offices'}</a></li>
+              <li><a href="#abogados" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Equipo Legal' : 'Attorneys'}</a></li>
+              <li><a href="#casos-exito" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Resultados' : 'Case Results'}</a></li>
+              <li><a href="#faqs" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Preguntas Frecuentes' : 'FAQs'}</a></li>
+              <li><a href="#blog" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Blog Migratorio' : 'Articles'}</a></li>
+              <li><a href="#fianzas" className="hover:text-amber-400 text-emerald-400 font-medium transition-colors">{lang === 'es' ? 'Fianzas Migratorias' : 'Immigration Bonds'}</a></li>
+              <li>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenPortal) onOpenPortal();
+                  }}
+                  className="hover:text-amber-400 transition-colors flex items-center space-x-1 text-slate-300 cursor-pointer"
+                >
+                  <span>{lang === 'es' ? 'Portal del Cliente (Mi Expediente)' : 'Client Portal (My Case)'}</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onOpenTelemetry}
+                  className="hover:text-emerald-300 transition-colors flex items-center space-x-1 text-emerald-400 font-semibold cursor-pointer"
+                >
+                  <Activity className="w-3 h-3 text-emerald-400" />
+                  <span>{lang === 'es' ? 'Métricas de Conversión (Live)' : 'Conversion Telemetry (Live)'}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Fila Secundaria: Descargo de Responsabilidad Legal Obligatorio en EE. UU. */}
+        <div className="pt-2 text-[11px] text-slate-300 space-y-2 leading-relaxed border-b border-blue-900/50 pb-8 font-light text-left">
+          <p>
+            {lang === 'es' 
+              ? 'AVISO LEGAL Y ÉTICO OBLIGATORIO: La información proporcionada en este sitio web tiene carácter estrictamente informativo y divulgativo, y no constituye asesoría legal formal para ningún caso específico. El envío de formularios, correos o mensajes a través de este portal no establece una relación formal abogado-cliente hasta que se celebre un contrato de representación legal por escrito firmado por ambas partes. La ley de inmigración es una rama del derecho federal; nuestros abogados representan a clientes en los 50 estados de la Unión Americana y en consulados estadounidenses en el extranjero.'
+              : 'MANDATORY LEGAL DISCLAIMER: The material contained on this website is for informational purposes only and does not constitute formal legal advice. Transmitting inquiries via forms, emails, or chat does not create an attorney-client relationship until a formal retainer agreement is executed. Immigration law is federal; our attorneys are licensed to represent clients across all 50 states and at U.S. consulates worldwide.'
+            }
+          </p>
+
+          <p>
+            {lang === 'es'
+              ? 'TÉRMINOS DE COMUNICACIÓN SMS (TCPA): Al proporcionar su número telefónico, consiente expresamente en recibir notificaciones sobre su cita o expediente legal vía SMS o llamada. Puede cancelar en cualquier momento respondiendo STOP.'
+              : 'TCPA SMS COMPLIANCE: By providing your phone number, you consent to receive case and consultation notifications via SMS/call. Reply STOP to opt out at any time.'
+            }
+          </p>
+        </div>
+
+        {/* Barra Final de Copyright */}
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 gap-3">
+          <div>
+            © {new Date().getFullYear()} Valenzuela & Sterling Immigration Law Group, P.A. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
+          </div>
+
+          <div className="flex items-center space-x-4 text-[11px]">
+            <a href="#privacidad" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}</a>
+            <span>•</span>
+            <a href="#terminos" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Términos de Servicio' : 'Terms of Service'}</a>
+            <span>•</span>
+            <a href="#accesibilidad" className="hover:text-amber-400 transition-colors">{lang === 'es' ? 'Declaración ADA' : 'ADA Accessibility'}</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
+}

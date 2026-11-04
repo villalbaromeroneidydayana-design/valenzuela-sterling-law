@@ -1,0 +1,1340 @@
+/**
+ * VALENZUELA & STERLING | IMMIGRATION LAW GROUP
+ * Archivo de Datos de Demostración (Demo Data)
+ * 
+ * NOTA DE IDENTIDAD PROVISIONAL:
+ * Todos los datos aquí consignados corresponden a una identidad corporativa de demostración
+ * diseñada para ilustrar la experiencia completa de un bufete de inmigración de primer nivel en EE. UU.
+ * Pueden sustituirse fácilmente antes de la publicación final del sitio.
+ */
+
+export const FIRM_CONFIG = {
+  name: "Valenzuela & Sterling",
+  legalFullName: "Valenzuela & Sterling Immigration Law Group, P.A.",
+  tagline: {
+    es: "Firma Jurídica Especializada en Inmigración y Ciudadanía de los Estados Unidos",
+    en: "Premier United States Immigration & Nationality Law Firm"
+  },
+  slogan: {
+    es: "Protegiendo su futuro y el de su familia en los Estados Unidos con rigor, prestigio y empatía.",
+    en: "Protecting your future and your family in the United States with excellence, prestige, and empathy."
+  },
+  // Teléfono principal único de la firma (registro "Jefe"). No usar teléfonos personales de abogados.
+  primaryPhone: "(551) 349-9462",
+  primaryPhoneRaw: "+15513499462",
+  whatsappNumber: "+15513499462",
+  whatsappLink: "https://wa.me/15513499462?text=Hola,%20deseo%20una%20consulta%20con%20Valenzuela%20%26%20Sterling",
+  contactEmail: "contacto@valenzuelasterlinglaw.com",
+  portalUrl: "#portal-cliente",
+  
+  // Acreditaciones y estadísticas [DEMO — NO PUBLICAR]
+  // Cifras numéricas sin respaldo documental reemplazadas por compromisos cualitativos verificables.
+  stats: [
+    { value: "50", labelEs: "Estados con Práctica Federal", labelEn: "States Under Federal Practice", originalDemoValue: "+18,500", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { value: "Federal", labelEs: "Litigio ante Cortes EOIR y BIA", labelEn: "EOIR & BIA Court Litigation", originalDemoValue: "98.4%", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { value: "Bilingüe", labelEs: "Atención Integral en Español e Inglés", labelEn: "Comprehensive Bilingual Advocacy", originalDemoValue: "25+", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { value: "USCIS", labelEs: "Trámites y Ajustes de Estatus", labelEn: "Petitions & Status Adjustments", originalDemoValue: "50", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+  ],
+
+  badges: [
+    { title: "AILA Member", subtitle: "American Immigration Lawyers Assoc.", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { title: "Florida Bar Certified", subtitle: "Licensed Attorneys", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { title: "BBB A+ Rating", subtitle: "Accredited Business (Demo)", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { title: "Avvo 10.0 Superb", subtitle: "Attorney Rating (Demo)", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" },
+    { title: "Google Reviews", subtitle: "Opiniones de Clientes (Demo)", isDemo: true, demoTag: "[DEMO — NO PUBLICAR]" }
+  ]
+};
+
+export const OFFICES = [
+  {
+    city: "Miami (Sede Principal)",
+    cityEn: "Miami (Headquarters)",
+    state: "Florida",
+    address: "1200 Brickell Avenue, Suite 1800, Miami, FL 33131",
+    phone: "(551) 349-9462",
+    hours: "Lun - Vie: 8:30 AM - 6:30 PM | Sáb: Previa Cita",
+    hoursEn: "Mon - Fri: 8:30 AM - 6:30 PM | Sat: By Appointment",
+    image: "/images/offices/miami.webp",
+    isHQ: true,
+    isDemo: true,
+    pendingConfirmation: true,
+    verificationNoteEs: "Dirección en proceso de confirmación de arrendamiento definitivo. Atención sujeta a cita previa.",
+    verificationNoteEn: "Address subject to final lease confirmation. Service by confirmed appointment only."
+  },
+  {
+    city: "Orlando",
+    cityEn: "Orlando",
+    state: "Florida",
+    address: "390 N Orange Ave, Suite 1400, Orlando, FL 32801",
+    phone: "(551) 349-9462",
+    hours: "Lun - Vie: 9:00 AM - 5:30 PM (Previa Cita)",
+    hoursEn: "Mon - Fri: 9:00 AM - 5:30 PM (By Appointment)",
+    image: "/images/offices/orlando.webp",
+    isHQ: false,
+    isDemo: true,
+    pendingConfirmation: true,
+    verificationNoteEs: "Sala de conferencias corporativa sujeta a confirmación de sede. Atención con cita previa.",
+    verificationNoteEn: "Corporate conference suite subject to venue confirmation. In-person by appointment."
+  },
+  {
+    city: "Houston",
+    cityEn: "Houston",
+    state: "Texas",
+    address: "1000 Louisiana Street, Suite 4200, Houston, TX 77002",
+    phone: "(551) 349-9462",
+    hours: "Lun - Vie: 8:30 AM - 6:00 PM (Previa Cita)",
+    hoursEn: "Mon - Fri: 8:30 AM - 6:00 PM (By Appointment)",
+    image: "/images/offices/tampa.webp",
+    isHQ: false,
+    isDemo: true,
+    pendingConfirmation: true,
+    verificationNoteEs: "Sala de conferencias corporativa sujeta a confirmación de sede. Atención con cita previa.",
+    verificationNoteEn: "Corporate conference suite subject to venue confirmation. In-person by appointment."
+  },
+  {
+    city: "New York",
+    cityEn: "New York",
+    state: "New York",
+    address: "Rockefeller Plaza, 20th Floor, New York, NY 10111",
+    phone: "(551) 349-9462",
+    hours: "Lun - Vie: 9:00 AM - 6:00 PM (Previa Cita)",
+    hoursEn: "Mon - Fri: 9:00 AM - 6:00 PM (By Appointment)",
+    image: "/images/offices/houston.webp",
+    isHQ: false,
+    isDemo: true,
+    pendingConfirmation: true,
+    verificationNoteEs: "Sala de conferencias corporativa sujeta a confirmación de sede. Atención con cita previa.",
+    verificationNoteEn: "Corporate conference suite subject to venue confirmation. In-person by appointment."
+  }
+];
+
+export const ATTORNEYS = [
+  {
+    id: "jefe-lawyer",
+    name: "Abogado Titular de Inmigración",
+    namePending: true,
+    initials: "VS",
+    roleEs: "Socio Director de Práctica Migratoria",
+    roleEn: "Managing Partner — Immigration Practice",
+    admissions: "Representación Federal ante Agencias y Cortes de Inmigración (EOIR)",
+    experience: "Dirección legal y litigio migratorio en EE. UU.",
+    experienceEn: "Legal direction and immigration litigation in the U.S.",
+    languages: "Español, English",
+    bioEs: "Dirección estratégica de expedientes migratorios, asilo, peticiones familiares y defensa contra la deportación con amplia trayectoria ante USCIS y EOIR.",
+    bioEn: "Strategic direction of immigration petitions, asylum, family reunifications, and removal defense with deep background before USCIS and EOIR.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Nombre oficial y número de colegiatura estatal en proceso de confirmación formal",
+    pendingNoteEn: "Official attorney name and state bar license pending formal confirmation"
+  },
+  {
+    id: "john-alfonso",
+    name: "Lic. John Alfonso",
+    namePending: false,
+    initials: "JA",
+    roleEs: "Abogado de Inmigración & Litigio",
+    roleEn: "Immigration & Litigation Attorney",
+    admissions: "Práctica Jurídica en Derecho Migratorio Federal",
+    experience: "Práctica Jurídica en Derecho Migratorio y Federal",
+    experienceEn: "Legal Practice in Immigration and Federal Law",
+    languages: "Español, English",
+    bioEs: "Asesoría y representación jurídica dedicada a la protección y regularización de familias e individuos, con riguroso apego ético y normativo.",
+    bioEn: "Dedicated legal counsel and representation for families and individuals seeking legal status, with strict ethical and regulatory adherence.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Fotografía oficial de estudio y acreditación colegiada en proceso de confirmación",
+    pendingNoteEn: "Official studio portrait and bar accreditation pending confirmation"
+  },
+  {
+    id: "amanda-victoria",
+    name: "Amanda Victoria",
+    namePending: false,
+    initials: "AV",
+    roleEs: "Abogada de Inmigración & Asesoría Legal",
+    roleEn: "Immigration Counsel & Legal Advocate",
+    admissions: "Práctica en Derecho de Inmigración",
+    experience: "Defensa jurídica y gestión de beneficios migratorios",
+    experienceEn: "Legal advocacy and immigration benefits processing",
+    languages: "Español, English",
+    bioEs: "Enfoque en peticiones de residencia, perdones migratorios y amparos humanitarios, brindando acompañamiento cercano y estratégico a la comunidad hispana.",
+    bioEn: "Focused on residency petitions, immigration waivers, and humanitarian relief, offering strategic counsel to the Hispanic community.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Fotografía oficial de estudio y credenciales colegiadas en proceso de confirmación",
+    pendingNoteEn: "Official studio portrait and credentials pending confirmation"
+  },
+  {
+    id: "omar-shazad",
+    name: "Omar Shazad",
+    namePending: false,
+    initials: "OS",
+    roleEs: "Abogado de Derecho de Inmigración",
+    roleEn: "Immigration Law Attorney",
+    admissions: "Práctica en Derecho Federal de Inmigración",
+    experience: "Práctica especializada en Ley de Inmigración",
+    experienceEn: "Specialized practice in U.S. Immigration Law",
+    languages: "English, Español",
+    bioEs: "Atención a procesos consulares, visas, ajustes de estatus y representación legal en derecho federal de inmigración de los Estados Unidos.",
+    bioEn: "Counseling clients in consular processing, visas, adjustment of status, and federal immigration law representation.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Fotografía oficial de estudio y número de colegiatura en proceso de confirmación",
+    pendingNoteEn: "Official studio portrait and state bar license pending confirmation"
+  },
+  {
+    id: "jessica-mccartney",
+    name: "Jessica McCartney",
+    namePending: false,
+    initials: "JM",
+    roleEs: "Especialista en Procedimientos Migratorios",
+    roleEn: "Immigration Procedures Specialist",
+    admissions: "Gestión Normativa y Procedimental",
+    experience: "Coordinación técnica de expedientes y solicitudes",
+    experienceEn: "Technical coordination of case filings and petitions",
+    languages: "English, Español",
+    bioEs: "Revisión meticulosa de expedientes, verificación de admisibilidad y seguimiento procesal para maximizar la solidez de cada solicitud.",
+    bioEn: "Meticulous case review, admissibility verification, and procedural follow-up to maximize the solidity of each filing.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Fotografía oficial de estudio y acreditación técnica en proceso de confirmación",
+    pendingNoteEn: "Official studio portrait and procedural credential pending confirmation"
+  },
+  {
+    id: "oficina-apoyo",
+    name: "Equipo de Coordinación Jurídica",
+    namePending: false,
+    initials: "CJ",
+    roleEs: "Coordinación de Casos & Soporte al Cliente",
+    roleEn: "Legal Support & Case Coordination",
+    admissions: "Equipo Multidisciplinario de Asistencia Legal",
+    experience: "Atención continua y preparación documental",
+    experienceEn: "Continuous client service and document preparation",
+    languages: "Español, English",
+    bioEs: "Acompañamiento directo a clientes en la integración probatoria de sus casos, preparación de audiencias y enlace continuo con el equipo legal.",
+    bioEn: "Direct client support in assembling case evidence, hearing preparation, and ongoing coordination with the legal team.",
+    image: null,
+    isProvisional: true,
+    pendingNoteEs: "Fotografía institucional de equipo en proceso de producción",
+    pendingNoteEn: "Institutional legal team photograph in production"
+  }
+];
+
+export const PRACTICE_AREAS = [
+  {
+    id: "residencia-green-card",
+    category: "familia",
+    titleEs: "Residencia Permanente (Green Card)",
+    titleEn: "Permanent Residency (Green Card)",
+    taglineEs: "Ajuste de estatus y procesamiento consular seguro",
+    taglineEn: "Adjustment of status and reliable consular processing",
+    descriptionEs: "Guiamos cada etapa del proceso de ajuste de estatus bajo la sección 245(i), procesamiento consular y residencias basadas en empleo o parentesco directo sin riesgos innecesarios.",
+    descriptionEn: "We guide every stage of adjustment of status under section 245(i), consular processing, and residency applications based on family or employment safely and thoroughly.",
+    highlights: ["Ajuste de Estatus dentro de EE. UU.", "Procesamiento Consular en embajadas", "Eliminación de condiciones I-751", "Permisos de trabajo y viaje anticipado (Advance Parole)"],
+    situations: [
+      { es: "Matrimonio con ciudadano(a) estadounidense o residente permanente para ajustar estatus sin salir de EE. UU.", en: "Marriage to a U.S. citizen or permanent resident to adjust status without leaving the country." },
+      { es: "Petición familiar I-130 aprobada con fecha de prioridad vigente en el Boletín de Visas.", en: "Approved I-130 family petition with current priority date in the Visa Bulletin." },
+      { es: "Ingreso con visa o parole humanitario buscando regularización formal permanente.", en: "Entry with inspection, tourist visa or parole seeking lawful permanent status." },
+      { es: "Eliminación de condiciones en residencia condicional de 2 años (Formulario I-751).", en: "Removal of conditions on 2-year conditional residency (Form I-751)." }
+    ],
+    guidingQuestions: [
+      { es: "¿Ingresó legalmente con visa, parole o tiene el amparo de la ley 245(i)?", en: "Did you enter lawfully with inspection/parole or qualify under 245(i)?" },
+      { es: "¿Su cónyuge o familiar peticionario es ciudadano de EE. UU. o residente legal?", en: "Is your sponsoring relative a U.S. citizen or legal permanent resident?" },
+      { es: "¿Desea obtener permiso de trabajo y seguro social mientras se aprueba su residencia?", en: "Do you wish to obtain work authorization while your residency is pending?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "entry_method",
+        labelEs: "¿Cómo fue su última entrada a los Estados Unidos?",
+        labelEn: "How was your most recent entry into the United States?",
+        options: [
+          { value: "con_visa_parole", labelEs: "Con visa válida, parole humanitario o inspección migratoria", labelEn: "Lawful entry with visa, parole, or CBP inspection" },
+          { value: "sin_inspeccion", labelEs: "Sin inspección fronteriza / por frontera sur", labelEn: "Entry without inspection at border" },
+          { value: "fuera_eeuu", labelEs: "Actualmente resido fuera de los Estados Unidos", labelEn: "Currently residing outside the United States" }
+        ]
+      },
+      {
+        id: "sponsor_relation",
+        labelEs: "¿Quién patrocina su trámite de residencia?",
+        labelEn: "Who is sponsoring your permanent residency?",
+        options: [
+          { value: "conyuge_ciudadano", labelEs: "Cónyuge ciudadano estadounidense", labelEn: "U.S. Citizen Spouse" },
+          { value: "conyuge_residente", labelEs: "Cónyuge residente permanente legal", labelEn: "Lawful Permanent Resident Spouse" },
+          { value: "padres_hijos", labelEs: "Padre/Madre ciudadano o hijo mayor de 21 años", labelEn: "U.S. Citizen parent or adult child (21+)" },
+          { value: "empleador", labelEs: "Petición basada en empleo o inversión", labelEn: "Employment or investment sponsor" }
+        ]
+      },
+      {
+        id: "prior_issues",
+        labelEs: "¿Tiene antecedentes penales o salidas previas no autorizadas?",
+        labelEn: "Do you have any criminal history or prior unlawful departures?",
+        options: [
+          { value: "limpio", labelEs: "Ninguno, récord penal y migratorio limpio", labelEn: "None, clean criminal & immigration record" },
+          { value: "infraccion_menor", labelEs: "Infracción menor de tránsito o falta no penal", labelEn: "Minor traffic citation only" },
+          { value: "previo_complicado", labelEs: "Presencia irregular previa o contacto con ICE", labelEn: "Prior unlawful presence or immigration contact" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo evaluar mi caso para Residencia Permanente (Green Card) y Ajuste de Estatus."
+  },
+  {
+    id: "peticiones-familiares",
+    category: "familia",
+    titleEs: "Peticiones Familiares (I-130)",
+    titleEn: "Family Petitions (Form I-130)",
+    taglineEs: "Reunificando a su familia en los Estados Unidos",
+    taglineEn: "Reuniting families lawfully across the United States",
+    descriptionEs: "Peticiones para cónyuges, hijos, padres y hermanos de ciudadanos estadounidenses y residentes permanentes. Planificamos la estrategia para evitar demoras innecesarias.",
+    descriptionEn: "Petitions for spouses, children, parents, and siblings of U.S. citizens and legal permanent residents with strategic timeline planning.",
+    highlights: ["Petición para cónyuge de ciudadano o residente", "Petición de padres e hijos inmediatos", "Visas de prometido K-1 (Fiancé Visa)", "Seguimiento en el Centro Nacional de Visas (NVC)"],
+    situations: [
+      { es: "Ciudadano estadounidense que desea pedir a su cónyuge, hijos, padres o hermanos.", en: "U.S. citizen sponsoring a spouse, children, parents, or siblings." },
+      { es: "Residente permanente que solicita a su cónyuge o hijos solteros menores/mayores.", en: "Green card holder petitioning for spouse or unmarried children." },
+      { es: "Pareja comprometida que busca la Visa K-1 de prometido(a) para casarse en EE. UU.", en: "Engaged couple applying for K-1 Fiancé Visa to marry in the U.S." },
+      { es: "Trámite retrasado en USCIS o Centro Nacional de Visas (NVC) que requiere impulso legal.", en: "Case stalled at USCIS or NVC requiring aggressive legal follow-up." }
+    ],
+    guidingQuestions: [
+      { es: "¿Cuál es el estatus migratorio del familiar que servirá de peticionario?", en: "What is the immigration status of the petitioning sponsor?" },
+      { es: "¿Qué parentesco directo tiene con el beneficiario a quien desea patrocinar?", en: "What is your direct relationship to the beneficiary?" },
+      { es: "¿El familiar vive en el extranjero o ya reside dentro de EE. UU.?", en: "Is your relative abroad or already residing inside the U.S.?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "petitioner_status",
+        labelEs: "¿Cuál es el estatus legal de la persona que patrocinará?",
+        labelEn: "What is the legal status of the petitioner?",
+        options: [
+          { value: "ciudadano", labelEs: "Ciudadano estadounidense (por nacimiento o naturalización)", labelEn: "U.S. Citizen (by birth or naturalization)" },
+          { value: "residente", labelEs: "Residente permanente legal (Green Card holder)", labelEn: "Lawful Permanent Resident" }
+        ]
+      },
+      {
+        id: "beneficiary_relation",
+        labelEs: "¿A qué familiar desea solicitar?",
+        labelEn: "Which family member do you wish to petition for?",
+        options: [
+          { value: "conyuge", labelEs: "Cónyuge (Esposo o Esposa)", labelEn: "Spouse" },
+          { value: "hijo_menor", labelEs: "Hijo o hija menor de 21 años", labelEn: "Child under 21 years old" },
+          { value: "padre_madre", labelEs: "Padre o Madre (solo ciudadanos mayores de 21)", labelEn: "Parent (citizens 21+ only)" },
+          { value: "hijo_adulto_hermano", labelEs: "Hijo adulto o Hermano/a (con tiempo de espera preferencial)", labelEn: "Adult son/daughter or Sibling" }
+        ]
+      },
+      {
+        id: "beneficiary_location",
+        labelEs: "¿Dónde se encuentra el familiar actualmente?",
+        labelEn: "Where does the beneficiary reside currently?",
+        options: [
+          { value: "en_origen", labelEs: "En su país de origen (Proceso Consular)", labelEn: "In home country (Consular Processing)" },
+          { value: "en_usa", labelEs: "Dentro de los Estados Unidos", labelEn: "Inside the United States" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo asesoría para una Petición Familiar I-130."
+  },
+  {
+    id: "ciudadania-naturalizacion",
+    category: "familia",
+    titleEs: "Ciudadanía y Naturalización (N-400)",
+    titleEn: "Citizenship & Naturalization (Form N-400)",
+    taglineEs: "El paso definitivo hacia sus derechos plenos como estadounidense",
+    taglineEn: "The final milestone to full United States citizenship",
+    descriptionEs: "Preparación rigurosa para el examen de naturalización, revisión exhaustiva de viajes y antecedentes penales para garantizar una entrevista impecable ante USCIS.",
+    descriptionEn: "Rigorous preparation for civics and English examinations, travel log reviews, and moral character vetting to ensure approval.",
+    highlights: ["Revisión de tiempo de presencia física y viajes", "Exenciones médicas por idioma (N-648)", "Ciudadanía derivada para hijos menores", "Preparación simulada de entrevista oficial"],
+    situations: [
+      { es: "Residente permanente por 5 años (o 3 años casado con ciudadano) listo para el examen N-400.", en: "Green card holder for 5 years (or 3 years married to USC) ready for N-400." },
+      { es: "Residentes con viajes al exterior mayores a 6 meses que temen haber roto la continuidad de residencia.", en: "Residents with extended international travel (over 6 months) seeking continuous residence review." },
+      { es: "Personas mayores o con condiciones de salud que califican para examen en español (reglas 50/20, 55/15 o N-648).", en: "Qualifying seniors or medical exemption applicants eligible for Spanish exam." },
+      { es: "Padres naturalizados que desean obtener el Certificado de Ciudadanía N-600 para hijos menores.", en: "Naturalized parents securing Form N-600 Certificates of Citizenship for minors." }
+    ],
+    guidingQuestions: [
+      { es: "¿Lleva al menos 5 años como residente (o 3 años si está casado con ciudadano)?", en: "Have you held your green card for at least 5 years (or 3 if married to USC)?" },
+      { es: "¿Ha permanecido fuera de EE. UU. por más de 6 meses continuos en los últimos 5 años?", en: "Have you spent more than 6 consecutive months outside the U.S.?" },
+      { es: "¿Desea prepararse para la prueba cívica y de idioma con simulacros dirigidos?", en: "Do you want attorney guidance and mock interviews for your civics test?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "lpr_years",
+        labelEs: "¿Cuántos años lleva con residencia permanente válida?",
+        labelEn: "How many years have you been a lawful permanent resident?",
+        options: [
+          { value: "mas_5", labelEs: "5 años o más", labelEn: "5 years or more" },
+          { value: "3_a_5_casado", labelEs: "Entre 3 y 5 años (casado/a con ciudadano)", labelEn: "3 to 5 years (married to U.S. citizen)" },
+          { value: "menos_3", labelEs: "Menos de 3 años de residencia", labelEn: "Less than 3 years" }
+        ]
+      },
+      {
+        id: "travel_duration",
+        labelEs: "¿Ha tenido viajes fuera de EE. UU. superiores a 6 meses?",
+        labelEn: "Any trips outside the U.S. lasting longer than 6 months?",
+        options: [
+          { value: "no", labelEs: "No, solo viajes cortos de vacaciones o negocios", labelEn: "No, short trips only" },
+          { value: "si_6_12", labelEs: "Sí, un viaje entre 6 y 11 meses", labelEn: "Yes, a trip between 6 and 11 months" },
+          { value: "si_mas_12", labelEs: "Sí, estuve fuera de EE. UU. más de 1 año continuo", labelEn: "Yes, over 1 consecutive year abroad" }
+        ]
+      },
+      {
+        id: "language_exemption",
+        labelEs: "¿Requiere presentar el examen en español o exención médica?",
+        labelEn: "Do you qualify for a language exemption or medical waiver?",
+        options: [
+          { value: "en_ingles", labelEs: "Presentaré el examen en inglés", labelEn: "I will take the civics & English test" },
+          { value: "espanol_edad", labelEs: "Califico por edad (50/20 o 55/15) para examen en español", labelEn: "Age exemption (50/20 or 55/15 rules in native language)" },
+          { value: "medica_n648", labelEs: "Tengo certificado de discapacidad médica Form N-648", labelEn: "Medical disability waiver Form N-648" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo una evaluación para mi Ciudadanía y Naturalización N-400."
+  },
+  {
+    id: "asilo-politico",
+    category: "defensa",
+    titleEs: "Asilo Político y Refugio",
+    titleEn: "Political Asylum & Refugee Protection",
+    taglineEs: "Protección legal para quienes huyen de persecución real",
+    taglineEn: "Zealous legal defense for individuals fleeing persecution",
+    descriptionEs: "Defensa jurídica sólida para solicitudes de asilo afirmativo ante USCIS y defensivo ante las Cortes de Inmigración (EOIR). Construcción probatoria minuciosa de informes de país y testimonios periciales.",
+    descriptionEn: "Tenacious defense for affirmative asylum with USCIS and defensive asylum before EOIR immigration courts, backed by exhaustive country condition reports.",
+    highlights: ["Asilo Afirmativo y Asilo Defensivo", "Convenio contra la Tortura (CAT)", "Suspensión de Remoción (Withholding of Removal)", "Permiso de trabajo bajo la regla de 180 días"],
+    situations: [
+      { es: "Persecución política comprobada, amenazas de muerte o violencia por parte de regímenes o grupos armados.", en: "Political persecution, death threats, or violence by regimes or armed cartels." },
+      { es: "Llegada reciente a EE. UU. que requiere radicar el Formulario I-589 antes del límite legal de 1 año.", en: "Recent entry into the U.S. requiring Form I-589 filing before the 1-year statutory bar." },
+      { es: "Proceso derivado de entrevista de Miedo Creíble en frontera remitido ante un Juez de Inmigración.", en: "Credible fear interview referral to an EOIR Immigration Judge." },
+      { es: "Solicitantes con caso de asilo pendiente que necesitan tramitar o renovar su Permiso de Trabajo.", en: "Applicants with pending asylum seeking initial or renewed work authorization (EAD)." }
+    ],
+    guidingQuestions: [
+      { es: "¿Llegó a EE. UU. hace menos de 1 año o tiene motivos que justifiquen una excepción?", en: "Did you arrive under 1 year ago or qualify for an extraordinary circumstances exception?" },
+      { es: "¿Teme por su vida o libertad si es forzado a regresar a su país de origen?", en: "Do you fear for your life, physical integrity, or freedom if forced to return?" },
+      { es: "¿Cuenta con denuncias policiales, informes médicos, fotos o testigos de las amenazas?", en: "Do you possess corroborating evidence such as police reports, medical notes, or threats?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "time_in_us",
+        labelEs: "¿Hace cuánto tiempo ingresó a los Estados Unidos?",
+        labelEn: "When did you enter the United States?",
+        options: [
+          { value: "menos_1_ano", labelEs: "Hace menos de 1 año (dentro del plazo estatutario)", labelEn: "Less than 1 year ago (within statutory window)" },
+          { value: "mas_1_ano_justificado", labelEs: "Hace más de 1 año (con circunstancia extraordinaria o cambio de país)", labelEn: "Over 1 year ago with exceptional circumstances" },
+          { value: "no_ingresado", labelEs: "Aún no he ingresado / Estoy planeando refugio", labelEn: "Have not entered the U.S. yet" }
+        ]
+      },
+      {
+        id: "persecution_ground",
+        labelEs: "¿Cuál es la causa principal de la persecución o peligro que enfrenta?",
+        labelEn: "What is the primary protected ground for your fear of return?",
+        options: [
+          { value: "politica", labelEs: "Opinión o activismo político en contra del gobierno", labelEn: "Political opinion or anti-regime activism" },
+          { value: "grupo_social", labelEs: "Violencia de pandillas, violencia de género o grupo social", labelEn: "Gang extortion, gender-based violence, or particular social group" },
+          { value: "religion_etnia", labelEs: "Religión, raza, nacionalidad o etnia", labelEn: "Religion, race, ethnicity, or nationality" }
+        ]
+      },
+      {
+        id: "case_forum",
+        labelEs: "¿Tiene fecha de audiencia asignada ante la Corte de Inmigración?",
+        labelEn: "Do you have an Immigration Court (EOIR) hearing date?",
+        options: [
+          { value: "si_corte", labelEs: "Sí, tengo audiencia programada ante la Corte EOIR", labelEn: "Yes, pending EOIR court hearing" },
+          { value: "no_uscis", labelEs: "No, mi caso es afirmativo ante la oficina de asilo de USCIS", labelEn: "No, affirmative application with USCIS" },
+          { value: "no_presentado", labelEs: "Aún no he radicado mi solicitud formal I-589", labelEn: "Have not filed Form I-589 yet" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, necesito asesoría urgente para un caso de Asilo Político en EE. UU."
+  },
+  {
+    id: "defensa-deportacion",
+    category: "defensa",
+    titleEs: "Defensa contra la Deportación",
+    titleEn: "Deportation & Removal Defense",
+    taglineEs: "Litigio feroz ante jueces de inmigración de la EOIR",
+    taglineEn: "Aggressive courtroom advocacy before EOIR immigration judges",
+    descriptionEs: "Representación inmediata ante detenciones de ICE, audiencias de fianza migratoria, cancelación de remoción para no residentes y mociones de reapertura ante la corte o BIA.",
+    descriptionEn: "Immediate representation for ICE detentions, bond hearings, non-LPR cancellation of removal, and emergency motions to reopen before EOIR and the BIA.",
+    highlights: ["Audiencias de fianza y liberación inmediata", "Cancelación de Expulsión (Ley de 10 Años)", "Mociones de Reapertura y Apelaciones BIA", "Cierre administrativo y discreción procesal"],
+    situations: [
+      { es: "Familiar bajo custodia de ICE que requiere fianza migratoria urgente para quedar en libertad.", en: "Loved one detained by ICE requiring immediate bond motion for release." },
+      { es: "Recepción de Notificación de Comparecencia (NTA) con audiencia preliminar (Master Calendar).", en: "Notice to Appear (NTA) issued with Master Calendar Hearing scheduled." },
+      { es: "Inmigrantes con más de 10 años continuos en EE. UU. e hijos ciudadanos (Ley de 10 Años).", en: "Non-citizens with 10+ years physical presence and U.S. citizen relatives (Cancellation of Removal)." },
+      { es: "Orden previa de remoción emitida en rebeldía que necesita Moción de Reapertura urgente.", en: "In absentia removal order requiring emergency Motion to Reopen and stay of removal." }
+    ],
+    guidingQuestions: [
+      { es: "¿Tiene usted o su familiar una fecha de corte o notificación NTA en mano?", en: "Do you or a relative have a court date or Form I-862 Notice to Appear?" },
+      { es: "¿Lleva más de 10 años viviendo de forma continua en territorio estadounidense?", en: "Have you resided continuously inside the United States for over 10 years?" },
+      { es: "¿Cuenta con familiares ciudadanos o residentes que sufrirían perjuicio grave?", en: "Do you have citizen or resident family who would suffer extreme hardship?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "court_status",
+        labelEs: "¿Cuál es la urgencia de su situación judicial?",
+        labelEn: "What is the status of your immigration court case?",
+        options: [
+          { value: "detenido_ice", labelEs: "Urgente: Familiar actualmente detenido por ICE", labelEn: "Urgent: Relative currently detained by ICE" },
+          { value: "audiencia_proxima", labelEs: "Tengo cita de Corte (Master Calendar o Individual) fijada", labelEn: "I have an upcoming court hearing date" },
+          { value: "orden_previa", labelEs: "Tengo orden previa de deportación que necesito reabrir", labelEn: "Prior deportation order requiring reopening" },
+          { value: "nta_sin_fecha", labelEs: "Recibí papel de corte pero no tiene fecha todavía", labelEn: "Received NTA without a designated date" }
+        ]
+      },
+      {
+        id: "years_in_us",
+        labelEs: "¿Cuánto tiempo continuo lleva en los Estados Unidos?",
+        labelEn: "How many continuous years have you lived in the U.S.?",
+        options: [
+          { value: "mas_10_anos", labelEs: "Más de 10 años continuos (Elegible para Ley de 10 Años)", labelEn: "Over 10 continuous years (potential Non-LPR Cancellation)" },
+          { value: "5_a_10_anos", labelEs: "Entre 5 y 10 años", labelEn: "Between 5 and 10 years" },
+          { value: "menos_5_anos", labelEs: "Menos de 5 años", labelEn: "Less than 5 years" }
+        ]
+      },
+      {
+        id: "us_relatives",
+        labelEs: "¿Tiene hijos, cónyuge o padres con ciudadanía o residencia en EE. UU.?",
+        labelEn: "Do you have children, spouse, or parents with U.S. citizenship or green cards?",
+        options: [
+          { value: "hijos_ciudadanos", labelEs: "Sí, tengo hijos ciudadanos estadounidenses", labelEn: "Yes, U.S. citizen children" },
+          { value: "conyuge_padres", labelEs: "Sí, cónyuge o padres ciudadanos o residentes", labelEn: "Yes, citizen/resident spouse or parents" },
+          { value: "ninguno", labelEs: "No tengo familiares con estatus legal", labelEn: "No direct relatives with legal status" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, necesito defensa urgente ante la Corte de Inmigración / ICE."
+  },
+  {
+    id: "visas-inversion-eb5-e2",
+    category: "corporativo",
+    titleEs: "Visas de Inversión (E-2 y EB-5)",
+    titleEn: "Investment Visas (E-2 & EB-5)",
+    taglineEs: "Crecimiento empresarial y residencia por inversión",
+    taglineEn: "Business expansion and permanent residency through investment",
+    descriptionEs: "Estructuración jurídica integral para inversionistas de tratados comerciales (E-2) y programas de residencia por inversión EB-5 (Centro Regional o inversión directa).",
+    descriptionEn: "Comprehensive legal structuring for treaty investor visas (E-2) and the EB-5 immigrant investor program (Regional Centers or direct investment).",
+    highlights: ["Trámite de Visa E-2 para inversionistas y empleados esenciales", "Peticiones EB-5 con creación de empleo verificable", "Revisión de origen lícito de fondos (Source of Funds)", "Planes de negocios migratorios certificados"],
+    situations: [
+      { es: "Empresarios de países con tratado (México, Colombia, España, Argentina, etc.) invirtiendo en negocios en EE. UU.", en: "Entrepreneurs from treaty nations investing in active U.S. businesses or franchises." },
+      { es: "Inversionistas que buscan la Green Card directa para su familia mediante el programa EB-5 ($800,000+).", en: "High-net-worth investors pursuing direct Green Cards via EB-5 Regional Centers ($800k+)." },
+      { es: "Compra o adquisición mayoritaria de franquicias operativas o negocios en marcha en Florida o Texas.", en: "Acquisition or launch of operating franchises or startups across Florida, Texas, or nationwide." },
+      { es: "Estructuración y blindaje del origen lícito de los fondos (Source of Funds audit).", en: "Comprehensive lawful source and path of funds audit and business plan design." }
+    ],
+    guidingQuestions: [
+      { es: "¿Tiene pasaporte de un país que mantiene tratado comercial E-2 con Estados Unidos?", en: "Do you hold citizenship in a treaty country maintaining an E-2 treaty with the U.S.?" },
+      { es: "¿Cuenta con capital propio de origen lícito y demostrable disponible para invertir?", en: "Do you have verifiable lawful capital ready for commercial investment?" },
+      { es: "¿Busca una visa de negocios renovable indefinidamente (E-2) o la residencia definitiva (EB-5)?", en: "Are you seeking a renewable business visa (E-2) or direct permanent residency (EB-5)?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "investment_goal",
+        labelEs: "¿Qué objetivo migratorio de inversión persigue?",
+        labelEn: "What is your primary investment immigration objective?",
+        options: [
+          { value: "visa_e2", labelEs: "Visa de Negocios E-2 (Inversión activa desde $100k-$150k)", labelEn: "E-2 Treaty Investor Visa (Active enterprise from $100k+)" },
+          { value: "residencia_eb5", labelEs: "Residencia Permanente EB-5 para familia ($800k en Centro Regional)", labelEn: "EB-5 Permanent Residency ($800k in Regional Center TEA)" },
+          { value: "asesoria_inicial", labelEs: "Deseo comparar opciones y analizar viabilidad de capital", labelEn: "Seek feasibility review to compare routes" }
+        ]
+      },
+      {
+        id: "nationality_treaty",
+        labelEs: "¿Cuál es su nacionalidad / pasaporte principal?",
+        labelEn: "What is your primary country of nationality/citizenship?",
+        options: [
+          { value: "pais_con_tratado", labelEs: "País con Tratado E-2 (México, Colombia, España, Argentina, Chile, Costa Rica, etc.)", labelEn: "Treaty nation (Mexico, Colombia, Spain, Argentina, Chile, etc.)" },
+          { value: "pais_sin_tratado", labelEs: "País sin tratado (Venezuela, Brasil, Perú, etc. - requiere EB-5 o doble ciudadanía)", labelEn: "Non-treaty nation (requires EB-5 or second treaty nationality)" },
+          { value: "doble_nacionalidad", labelEs: "Tengo doble nacionalidad con un país europeo o de tratado", labelEn: "Dual citizen with European or treaty nation passport" }
+        ]
+      },
+      {
+        id: "investment_status",
+        labelEs: "¿En qué etapa se encuentra su inversión?",
+        labelEn: "What is the current status of your proposed investment?",
+        options: [
+          { value: "capital_listo", labelEs: "Fondos disponibles, buscando empresa o franquicia", labelEn: "Funds ready, currently scouting businesses or franchises" },
+          { value: "empresa_operando", labelEs: "Negocio ya constituido o comprado en EE. UU.", labelEn: "Business already formed or purchased in the U.S." },
+          { value: "fase_planificacion", labelEs: "Planificando a mediano plazo (6 a 12 meses)", labelEn: "Planning for the next 6 to 12 months" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo una consulta sobre Visas de Inversión E-2 o EB-5."
+  },
+  {
+    id: "visas-trabajo-empleo",
+    category: "corporativo",
+    titleEs: "Visas de Trabajo y Empleo (H-1B, L-1, EB-2/EB-3)",
+    titleEn: "Work & Employment Visas (H-1B, L-1, EB-2/3)",
+    taglineEs: "Atracción de talento global y transferencias corporativas",
+    taglineEn: "Global corporate talent mobility and labor certifications",
+    descriptionEs: "Asesoramiento para empresas y profesionales internacionales: visas H-1B de especialidad, transferencias intraempresariales L-1 y residencias permanentes mediante Certificación Laboral PERM.",
+    descriptionEn: "Counseling for corporations and international professionals: H-1B specialty occupations, L-1 intra-company transferees, and PERM Labor Certifications.",
+    highlights: ["Visas H-1B y registro anual de lotería", "Visas L-1A/L-1B para ejecutivos y gerentes", "Certificación Laboral PERM ante el DOL", "Peticiones EB-2 y EB-3 de residencia"],
+    situations: [
+      { es: "Empresas estadounidenses contratando profesionales titulados mediante la lotería y visa H-1B.", en: "U.S. employers sponsoring specialty occupation professionals via H-1B lottery." },
+      { es: "Corporaciones multinacionales transfiriendo ejecutivos o gerentes a sus filiales en EE. UU. (L-1A).", en: "Multinational corporations transferring executives/managers via L-1A intra-company visas." },
+      { es: "Trabajadores calificados o profesionales en proceso de Certificación Laboral PERM (EB-2 / EB-3).", en: "Skilled workers and degree holders undergoing Department of Labor PERM certification." },
+      { es: "Graduados universitarios con visa F-1 en periodo de OPT buscando transición hacia estatus laboral.", en: "F-1 OPT university graduates transitioning to sponsored employment status." }
+    ],
+    guidingQuestions: [
+      { es: "¿Cuenta con una empresa patrocinadora en EE. UU. dispuesta a presentar la petición?", en: "Do you have an active U.S. employer willing to file a petition?" },
+      { es: "¿Tiene título universitario de licenciatura (Bachelor's Degree) o maestría?", en: "Do you hold a university degree (Bachelor's or Master's) or equivalent credentials?" },
+      { es: "¿Trabaja para una empresa internacional con operaciones o planes de expansión en EE. UU.?", en: "Do you work for an international enterprise with U.S. corporate ties?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "employer_status",
+        labelEs: "¿Cuenta con un empleador o empresa patrocinadora en EE. UU.?",
+        labelEn: "Do you have an employer sponsor in the United States?",
+        options: [
+          { value: "si_empresa_usa", labelEs: "Sí, una empresa estadounidense está lista para patrocinarme", labelEn: "Yes, a U.S. company is ready to file on my behalf" },
+          { value: "multinacional", labelEs: "Trabajo en filial en el extranjero y seré transferido a EE. UU. (L-1)", labelEn: "Employed abroad by affiliate, seeking transfer (L-1)" },
+          { value: "buscando_opciones", labelEs: "Soy profesional buscando evaluar alternativas viables", labelEn: "Individual professional exploring qualifying routes" }
+        ]
+      },
+      {
+        id: "education_level",
+        labelEs: "¿Cuál es su nivel académico más alto completado?",
+        labelEn: "What is your highest completed level of education?",
+        options: [
+          { value: "maestria_phd", labelEs: "Maestría o Doctorado (EE. UU. o equivalente extranjero)", labelEn: "Master's or Ph.D. (U.S. or foreign equivalent)" },
+          { value: "licenciatura", labelEs: "Licenciatura / Grado Universitario (Bachelor's)", labelEn: "Bachelor's Degree" },
+          { value: "tecnico_experiencia", labelEs: "Técnico o amplia experiencia laboral especializada", labelEn: "Technical degree or extensive specialized work experience" }
+        ]
+      },
+      {
+        id: "visa_preference",
+        labelEs: "¿Qué tipo de trámite de empleo necesita gestionar?",
+        labelEn: "Which employment immigration track are you pursuing?",
+        options: [
+          { value: "h1b_loteria", labelEs: "Visa H-1B de ocupación especializada", labelEn: "H-1B Specialty Occupation Visa" },
+          { value: "l1_ejecutivo", labelEs: "Visa L-1A / L-1B de transferencia ejecutiva", labelEn: "L-1A/L-1B Intra-company Transfer Visa" },
+          { value: "perm_residencia", labelEs: "Residencia laboral PERM (EB-2 / EB-3 Green Card)", labelEn: "PERM Labor Certification / Employment Green Card" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo una consulta corporativa sobre Visas de Trabajo y Empleo."
+  },
+  {
+    id: "visas-talento-o1-eb1",
+    category: "corporativo",
+    titleEs: "Visas de Habilidad Extraordinaria (EB-1 y O-1)",
+    titleEn: "Extraordinary Ability Visas (EB-1 & O-1)",
+    taglineEs: "Para líderes en ciencias, artes, negocios o deportes",
+    taglineEn: "For proven leaders in sciences, arts, business, or athletics",
+    descriptionEs: "Estrategias de alto perfil para profesionales destacados sin necesidad de oferta de trabajo mediante la Exención por Interés Nacional (EB-2 NIW) o visas O-1 y EB-1A de habilidades extraordinarias.",
+    descriptionEn: "High-caliber petitions for accomplished professionals, including National Interest Waivers (EB-2 NIW) and EB-1A / O-1 extraordinary ability classifications.",
+    highlights: ["EB-2 National Interest Waiver (NIW)", "EB-1A para logros extraordinarios comprobados", "Visa O-1A (Ciencia y Negocios) y O-1B (Artes y Cine)", "Estrategia probatoria sin patrocinador empleador"],
+    situations: [
+      { es: "Científicos, médicos, ingenieros o investigadores buscando Green Card por mérito propio (EB-2 NIW).", en: "Researchers, physicians, and engineers seeking self-petitioned Green Cards via EB-2 NIW." },
+      { es: "Artistas, músicos, directores de cine o actores destacados solicitando Visa O-1 o EB-1A.", en: "Artists, performers, and filmmakers filing O-1 or EB-1A extraordinary talent petitions." },
+      { es: "Emprendedores de tecnología con proyectos innovadores de impacto sustancial para los EE. UU.", en: "Tech founders and innovators leading endeavors of substantial national importance." },
+      { es: "Atletas y entrenadores de alto rendimiento con premios nacionales o internacionales.", en: "High-level athletes and coaches holding recognized national/international accolades." }
+    ],
+    guidingQuestions: [
+      { es: "¿Tiene publicaciones científicas, patentes, premios de industria o amplia prensa en su campo?", en: "Do you have scholarly publications, patents, major awards, or high-profile media coverage?" },
+      { es: "¿Su proyecto profesional aportará un beneficio sustancial a los Estados Unidos?", en: "Does your proposed endeavor have substantial merit and national importance for the U.S.?" },
+      { es: "¿Desea obtener la residencia permanente legal sin requerir el patrocinio de un empleador?", en: "Do you wish to secure a Green Card independently without needing employer sponsorship?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "professional_field",
+        labelEs: "¿En qué área destaca su trayectoria profesional?",
+        labelEn: "What is your primary professional field of distinction?",
+        options: [
+          { value: "stem_investigacion", labelEs: "Ciencia, Tecnología, Ingeniería, Salud o Matemáticas (STEM)", labelEn: "Science, Technology, Engineering, or Health (STEM)" },
+          { value: "artes_entretenimiento", labelEs: "Artes visuales, Música, Cine, Diseño o Entretenimiento", labelEn: "Arts, Music, Film, Design, or Entertainment" },
+          { value: "negocios_tech", labelEs: "Negocios, Emprendimiento Tecnológico o Finanzas", labelEn: "Business, FinTech, or Tech Entrepreneurship" },
+          { value: "deportes", labelEs: "Deportes o Atletismo de alto rendimiento", labelEn: "Athletics or professional coaching" }
+        ]
+      },
+      {
+        id: "achievements",
+        labelEs: "¿Con cuáles elementos probatorios cuenta en su historial?",
+        labelEn: "What documented evidentiary elements do you have?",
+        options: [
+          { value: "premios_publicaciones", labelEs: "Publicaciones especializadas, citas, premios o patentes registradas", labelEn: "Peer-reviewed articles, citations, patents, or prestigious awards" },
+          { value: "prensa_liderazgo", labelEs: "Artículos en medios de comunicación y roles clave de liderazgo", labelEn: "Prominent press coverage and key critical leadership roles" },
+          { value: "evaluacion_cv", labelEs: "Deseo que un abogado senior analice mi currículum completo", labelEn: "I wish to have a senior attorney evaluate my full CV/portfolio" }
+        ]
+      },
+      {
+        id: "talent_track",
+        labelEs: "¿Qué vía de talento desea evaluar?",
+        labelEn: "Which talent pathway are you targeting?",
+        options: [
+          { value: "eb2_niw", labelEs: "EB-2 NIW (Exención por Interés Nacional - Sin Patrocinador)", labelEn: "EB-2 National Interest Waiver (Self-Petition)" },
+          { value: "eb1a", labelEs: "EB-1A (Habilidad Extraordinaria para Green Card Inmediata)", labelEn: "EB-1A Extraordinary Ability Green Card" },
+          { value: "visa_o1", labelEs: "Visa O-1A / O-1B de Trabajo Temporal de Talento", labelEn: "O-1 Nonimmigrant Extraordinary Ability Visa" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo una evaluación de perfil para EB-2 NIW / Visa O-1."
+  },
+  {
+    id: "programa-vawa",
+    category: "humanitario",
+    titleEs: "Protección Humanitaria VAWA",
+    titleEn: "VAWA Humanitarian Protection",
+    taglineEs: "Residencia confidencial para víctimas de violencia o abuso",
+    taglineEn: "Confidential green card pathway for survivors of abuse",
+    descriptionEs: "Vía de residencia confidencial para cónyuges, hijos y padres maltratados por ciudadanos estadounidenses o residentes permanentes, sin que el agresor se entere del trámite.",
+    descriptionEn: "Strictly confidential green card petition for spouses, children, and parents subjected to abuse by U.S. citizens or lawful permanent residents.",
+    highlights: ["Proceso 100% confidencial protegido por ley federal", "No se requiere el consentimiento ni firma del cónyuge agresor", "Aprobación de permiso de trabajo y número de Seguro Social", "Acceso directo a la residencia permanente legal"],
+    situations: [
+      { es: "Cónyuge de ciudadano o residente que sufre abuso psicológico, humillaciones, amenazas o agresión física.", en: "Spouse of USC/LPR enduring emotional abuse, humiliation, threats, or physical domestic violence." },
+      { es: "Personas intimidadas con amenazas de deportación o con retención de pasaportes y documentos legales.", en: "Individuals controlled by threats of deportation or withheld identification documents." },
+      { es: "Padres de ciudadanos estadounidenses mayores de 21 años maltratados emocional o económicamente por sus hijos.", en: "Parents of U.S. citizens (21+) subjected to abuse or severe mistreatment by their child." },
+      { es: "Hijos menores de 21 años víctimas de maltrato intrafamiliar por parte de un progenitor con estatus.", en: "Children under 21 abused by a citizen or permanent resident parent." }
+    ],
+    guidingQuestions: [
+      { es: "¿Estuvo o está casado con un ciudadano estadounidense o residente permanente?", en: "Were you or are you married to a U.S. citizen or permanent resident?" },
+      { es: "¿Ha sufrido maltrato verbal, control económico, amenazas de llamar a ICE o violencia?", en: "Have you suffered verbal cruelty, financial deprivation, threats of ICE, or violence?" },
+      { es: "¿Sabía que la ley federal prohíbe terminantemente notificar a su cónyuge sobre este trámite?", en: "Did you know federal law strictly protects confidentiality and never notifies the abuser?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "abuser_status",
+        labelEs: "¿Cuál es el estatus legal del familiar agresor?",
+        labelEn: "What is the legal status of the abusive relative?",
+        options: [
+          { value: "conyuge_ciudadano", labelEs: "Cónyuge ciudadano estadounidense", labelEn: "U.S. Citizen Spouse" },
+          { value: "conyuge_residente", labelEs: "Cónyuge residente permanente legal", labelEn: "Lawful Permanent Resident Spouse" },
+          { value: "hijo_ciudadano", labelEs: "Hijo/a ciudadano estadounidense mayor de 21 años", labelEn: "U.S. Citizen adult child (21+)" },
+          { value: "padre_madre", labelEs: "Padre o Madre ciudadano o residente", labelEn: "Citizen or Resident parent" }
+        ]
+      },
+      {
+        id: "abuse_type",
+        labelEs: "¿Qué formas de agresión o control ha experimentado?",
+        labelEn: "What forms of abuse or control have occurred?",
+        options: [
+          { value: "psicologico_amenazas", labelEs: "Amenazas de deportación, humillaciones, control de dinero y aislamiento", labelEn: "Deportation threats, extreme control, insults, or financial abuse" },
+          { value: "fisico_domestico", labelEs: "Agresiones físicas, empujones o violencia doméstica", labelEn: "Physical assault, intimidation, or domestic violence" },
+          { value: "ambas_conductas", labelEs: "Ambas conductas combinadas de manera continuada", labelEn: "Combined physical and emotional/psychological cruelty" }
+        ]
+      },
+      {
+        id: "cohabitation",
+        labelEs: "¿Convivió bajo el mismo techo en algún momento con su agresor?",
+        labelEn: "Did you live together in the same residence at any point?",
+        options: [
+          { value: "si_eeuu", labelEs: "Sí, vivimos juntos en los Estados Unidos", labelEn: "Yes, lived together inside the U.S." },
+          { value: "si_fuera_y_dentro", labelEs: "Sí, vivimos juntos fuera y dentro de EE. UU.", labelEn: "Yes, lived together abroad and in the U.S." }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo una consulta estrictamente confidencial sobre el Programa VAWA."
+  },
+  {
+    id: "visa-u-visa-t",
+    category: "humanitario",
+    titleEs: "Visas Humanitarias U y T",
+    titleEn: "Humanitarian U & T Visas",
+    taglineEs: "Protección para víctimas de delitos y trata de personas",
+    taglineEn: "Relief for victims of qualifying crimes and human trafficking",
+    descriptionEs: "Estatus legal y camino a la residencia para personas que han sido víctimas de delitos calificados en EE. UU. (asalto, violencia, chantaje) y han cooperado con las autoridades policiales.",
+    descriptionEn: "Legal status and path to permanent residency for victims of qualifying crimes who assist law enforcement, as well as victims of labor or sex trafficking.",
+    highlights: ["Certificación policial Formulario I-918B", "Perdón migratorio amplio para entradas indocumentadas", "Inclusión de familiares derivados calificados", "Residencia permanente tras 3 años de estatus U o T"],
+    situations: [
+      { es: "Víctimas de asalto agravado, robo a mano armada, agresiones con armas o violencia doméstica en EE. UU.", en: "Victims of armed robbery, felony assault, weapon attacks, or domestic violence in the U.S." },
+      { es: "Colaboración con la policía mediante llamada al 911, informe policial o declaración ante detectives.", en: "Assistance to law enforcement via 911 calls, official police reports, or witness testimony." },
+      { es: "Víctimas de extorsión, chantaje o retención forzada de libertad personal.", en: "Victims of extortion, felony blackmail, or unlawful restraint." },
+      { es: "Trabajadores sometidos a trata laboral bajo amenazas de patrones inescrupulosos (Visa T).", en: "Laborers subjected to trafficking, coercion, or withheld pay under threats (T-Visa)." }
+    ],
+    guidingQuestions: [
+      { es: "¿Fue víctima de un asalto violento, agresión o delito calificado en EE. UU.?", en: "Were you a victim of a qualifying crime or felonious assault on U.S. soil?" },
+      { es: "¿Llamó a la policía o colaboró con la investigación de las autoridades?", en: "Did you call the police or assist detectives in investigating the incident?" },
+      { es: "¿Desea incluir a su cónyuge e hijos menores en este amparo humanitario?", en: "Do you wish to derive legal status for your spouse and unmarried minor children?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "crime_type",
+        labelEs: "¿Cuál fue el incidente delictivo ocurrido en EE. UU.?",
+        labelEn: "What was the qualifying crime committed in the U.S.?",
+        options: [
+          { value: "asalto_robo", labelEs: "Asalto a mano armada, robo agravado o ataque físico", labelEn: "Armed robbery, aggravated assault, or physical battery" },
+          { value: "violencia_intrafamiliar", labelEs: "Violencia doméstica o acoso grave", labelEn: "Domestic violence or felony stalking" },
+          { value: "chantaje_trata", labelEs: "Extorsión, secuestro o explotación laboral forzada (Visa T)", labelEn: "Extortion, kidnapping, or labor trafficking (T-Visa)" }
+        ]
+      },
+      {
+        id: "police_report",
+        labelEs: "¿Cuenta con número de reporte policial o denuncia formal?",
+        labelEn: "Do you have a police incident report or case number?",
+        options: [
+          { value: "si_reporte_mano", labelEs: "Sí, tengo copia del reporte policial con el número de caso", labelEn: "Yes, I hold a copy of the police report" },
+          { value: "reporto_sin_copia", labelEs: "La policía intervino pero necesito que soliciten la copia", labelEn: "Police intervened; need attorneys to request certified records" },
+          { value: "dudas_reporte", labelEs: "Deseo verificar si el incidente califica legalmente", labelEn: "Need review to confirm if the crime qualifies" }
+        ]
+      },
+      {
+        id: "police_cooperation",
+        labelEs: "¿Ha colaborado o está dispuesto a colaborar con la policía o fiscalía?",
+        labelEn: "Did you assist or are you willing to assist law enforcement?",
+        options: [
+          { value: "si_coopero", labelEs: "Sí, colaboré con las autoridades y respondí a sus preguntas", labelEn: "Yes, fully assisted officers/prosecutors" },
+          { value: "dispuesto", labelEs: "Estoy dispuesto a prestar la cooperación que requieran", labelEn: "Willing to provide any required assistance" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo consultar sobre la Visa Humanitaria U / T por delito calificado."
+  },
+  {
+    id: "tps-daca",
+    category: "humanitario",
+    titleEs: "TPS y Acción Diferida DACA",
+    titleEn: "TPS & Deferred Action (DACA)",
+    taglineEs: "Estatus de protección temporal y permisos de trabajo",
+    taglineEn: "Temporary Protected Status and work authorization",
+    descriptionEs: "Renovaciones e inscripciones iniciales de Estatus de Protección Temporal (TPS) para Venezuela, Haití, El Salvador, Honduras, Nicaragua, y protecciones para Dreamers bajo DACA.",
+    descriptionEn: "Renewals and initial registrations for TPS beneficiaries and continuous representation for Dreamers under DACA provisions.",
+    highlights: ["Renovación de permisos de trabajo vigentes", "Solicitud de Advance Parole para viaje y reingreso legal", "Transición de TPS/DACA hacia residencia permanente", "Defensa ante cancelaciones arbitrarias"],
+    situations: [
+      { es: "Beneficiarios de TPS de Venezuela, Haití, Nicaragua u otros países que necesitan renovar su estatus y permiso de trabajo.", en: "TPS holders from Venezuela, Haiti, Nicaragua, etc., renewing status and EAD." },
+      { es: "Jóvenes protegidos bajo DACA (Dreamers) que requieren renovar su amparo bianual antes del vencimiento.", en: "DACA Dreamers requiring timely biennial deferred action and work renewals." },
+      { es: "Titulares de TPS o DACA tramitando Advance Parole para reingresar legalmente con inspección a EE. UU.", en: "TPS/DACA recipients applying for Advance Parole to cure unlawful entry via lawful admission." },
+      { es: "Estrategias de transición desde TPS/DACA hacia la residencia permanente definitiva (Green Card).", en: "Strategic conversion from TPS/DACA to lawful permanent residency via family/employment." }
+    ],
+    guidingQuestions: [
+      { es: "¿Es ciudadano originario de un país designado para Estatus de Protección Temporal (TPS)?", en: "Are you a national of a country currently designated for TPS?" },
+      { es: "¿Su amparo de DACA o TPS vence en los próximos 6 a 9 meses?", en: "Is your current DACA or TPS work authorization expiring within 6-9 months?" },
+      { es: "¿Le gustaría solicitar un permiso de viaje Advance Parole para reingresar legalmente a EE. UU.?", en: "Would you like to obtain Advance Parole travel authorization for a lawful re-entry?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "program_type",
+        labelEs: "¿Qué protección humanitaria requiere gestionar?",
+        labelEn: "Which humanitarian program are you applying under?",
+        options: [
+          { value: "tps_renovacion", labelEs: "Renovación de TPS y Permiso de Trabajo (EAD)", labelEn: "TPS Renewal and Work Authorization (EAD)" },
+          { value: "tps_inicial", labelEs: "Inscripción inicial de TPS bajo designación vigente", labelEn: "Initial TPS Registration under designated country rules" },
+          { value: "daca_renovacion", labelEs: "Renovación de Acción Diferida DACA (Dreamers)", labelEn: "DACA Renewal for Dreamers" },
+          { value: "advance_parole", labelEs: "Solicitud de Permiso de Viaje y Reingreso (Advance Parole)", labelEn: "Advance Parole Travel Authorization" }
+        ]
+      },
+      {
+        id: "tps_country",
+        labelEs: "¿De qué país es ciudadano/nacional?",
+        labelEn: "What is your country of nationality?",
+        options: [
+          { value: "venezuela", labelEs: "Venezuela", labelEn: "Venezuela" },
+          { value: "haiti", labelEs: "Haití", labelEn: "Haiti" },
+          { value: "centroamerica", labelEs: "El Salvador, Honduras o Nicaragua", labelEn: "El Salvador, Honduras, or Nicaragua" },
+          { value: "otro_tps", labelEs: "Otro país designado (Ucrania, Sudán, etc.)", labelEn: "Other TPS-designated nation" }
+        ]
+      },
+      {
+        id: "greencard_pathway",
+        labelEs: "¿Tiene cónyuge o hijos ciudadanos para evaluar el salto a la Residencia?",
+        labelEn: "Do you have USC relatives to explore permanent residency conversion?",
+        options: [
+          { value: "si_posible_residencia", labelEs: "Sí, me interesa evaluar la residencia permanente definitiva", labelEn: "Yes, interested in transitioning to lawful permanent residency" },
+          { value: "solo_tps", labelEs: "Por ahora deseo asegurar mi permiso de trabajo y estatus", labelEn: "Just need to secure work authorization and protection" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo gestionar mi trámite de TPS / DACA."
+  },
+  {
+    id: "perdones-migratorios",
+    category: "defensa",
+    titleEs: "Perdones Migratorios (Waivers I-601 / I-601A)",
+    titleEn: "Immigration Waivers (I-601 & I-601A)",
+    taglineEs: "Superando causales de inadmisibilidad por presencia o fraude",
+    taglineEn: "Overcoming inadmissibility grounds through hardship waivers",
+    descriptionEs: "Elaboración de paquetes probatorios de 'Dificultad Extrema' (Extreme Hardship) para superar el castigo de los 3 y 10 años, entradas no autorizadas o acusaciones previas de tergiversación.",
+    descriptionEn: "Meticulous legal briefs documenting Extreme Hardship to qualifying relatives to waive 3/10-year unlawful presence bars and prior immigration misrepresentations.",
+    highlights: ["Perdón provisional I-601A dentro de EE. UU.", "Perdón I-601 por fraude o antecedentes", "Perdón I-212 para reingreso tras deportación", "Evaluaciones psicológicas y financieras periciales"],
+    situations: [
+      { es: "Personas con más de 180 días o 1 año de presencia indocumentada enfrentando el castigo de 3 o 10 años.", en: "Individuals facing 3/10-year unlawful presence bars seeking Form I-601A provisional waiver." },
+      { es: "Candidatos con cita consular próxima en Ciudad Juárez u otros consulados que deben asegurar su perdón.", en: "Applicants with pending consular processing requiring an approved waiver before interview." },
+      { es: "Acusaciones consulares de tergiversación (misrepresentation), fraude o antecedentes penales menores.", en: "Inadmissibility findings due to prior misrepresentation, false documents, or minor criminal records." },
+      { es: "Perdón de permiso para volver a solicitar admisión tras deportación previa (Formulario I-212).", en: "Permission to reapply for admission following prior deportation (Form I-212)." }
+    ],
+    guidingQuestions: [
+      { es: "¿Tiene cónyuge o padres que sean ciudadanos estadounidenses o residentes permanentes?", en: "Do you have a U.S. citizen or legal permanent resident spouse or parent?" },
+      { es: "¿Su familiar sufriría dificultad extrema médica, financiera o emocional si usted no está con ellos?", en: "Would your qualifying relative experience extreme hardship if you were unable to live in the U.S.?" },
+      { es: "¿Desea tramitar el perdón provisional I-601A dentro de EE. UU. antes de viajar a su entrevista?", en: "Do you want to secure the I-601A provisional waiver domestically before departing?" }
+    ],
+    dynamicQuestions: [
+      {
+        id: "waiver_reason",
+        labelEs: "¿Cuál es la causa principal de inadmisibilidad a perdonar?",
+        labelEn: "What is the primary inadmissibility bar requiring a waiver?",
+        options: [
+          { value: "presencia_indocumentada", labelEs: "Castigo de 3 o 10 años por presencia indocumentada (I-601A)", labelEn: "3 or 10-year unlawful presence bar (Form I-601A)" },
+          { value: "fraude_declaracion", labelEs: "Acusación de fraude, tergiversación o documento falso (I-601)", labelEn: "Misrepresentation or immigration fraud ground (I-601)" },
+          { value: "deportacion_previa", labelEs: "Deportación u orden de salida previa (I-212)", labelEn: "Prior deportation or removal order (I-212)" }
+        ]
+      },
+      {
+        id: "qualifying_relative",
+        labelEs: "¿Quién es su 'Familiar Calificado' para demostrar Dificultad Extrema?",
+        labelEn: "Who is your qualifying relative for Extreme Hardship?",
+        options: [
+          { value: "conyuge_ciudadano", labelEs: "Cónyuge ciudadano estadounidense", labelEn: "U.S. Citizen Spouse" },
+          { value: "conyuge_residente", labelEs: "Cónyuge residente permanente", labelEn: "Lawful Permanent Resident Spouse" },
+          { value: "padres_ciudadanos", labelEs: "Padre o madre ciudadano/a o residente", labelEn: "U.S. Citizen or LPR parent" }
+        ]
+      },
+      {
+        id: "case_stage",
+        labelEs: "¿En qué etapa se encuentra su trámite consular o de perdón?",
+        labelEn: "What stage is your waiver/consular case currently in?",
+        options: [
+          { value: "preparacion", labelEs: "Preparando el caso para someter el I-601A en EE. UU.", labelEn: "Preparing to file domestic I-601A package" },
+          { value: "en_nvc", labelEs: "Caso aprobado en USCIS, en trámite ante el NVC", labelEn: "Approved at USCIS, currently at NVC" },
+          { value: "entrevista_denegada", labelEs: "Ya tuve la entrevista consular y fui declarado inadmisible", labelEn: "Already attended consular interview and found inadmissible" }
+        ]
+      }
+    ],
+    whatsappPrefill: "Hola Valenzuela & Sterling, deseo asesoría para un Perdón Migratorio (Waiver I-601 / I-601A)."
+  }
+];
+
+// Casos y Testimonios [DEMO — NO PUBLICAR]
+// Casos ilustrativos de demostración; pendientes de autorización formal o anonimización por el cliente.
+export const SUCCESS_STORIES = [
+  {
+    titleEs: "Cancelación de Orden de Deportación en Corte de Miami",
+    titleEn: "Cancellation of Removal Granted in Miami Court",
+    category: "Defensa contra Deportación",
+    timeline: "Resolución: Octubre 2026",
+    summaryEs: "Cliente con orden de deportación previa y más de 12 años en EE. UU. Obtuvimos la reapertura de su caso y la concesión de Residencia Permanente bajo la Ley de 10 Años demostrando sufrimiento excepcional para sus dos hijos ciudadanos.",
+    summaryEn: "Client facing deportation order after 12 years in the U.S. We reopened proceedings and secured permanent residency under Cancellation of Removal based on hardship to U.S. citizen children.",
+    result: "Residencia Permanente Otorgada",
+    badge: "Caso Complejo Ganado",
+    isDemo: true,
+    demoTag: "[DEMO — NO PUBLICAR]"
+  },
+  {
+    titleEs: "Aprobación de Visa de Inversionista E-2 en 42 Días",
+    titleEn: "E-2 Treaty Investor Visa Approved in 42 Days",
+    category: "Visas de Inversión",
+    timeline: "Resolución: Septiembre 2026",
+    summaryEs: "Empresario internacional invirtió en una firma de logística y transporte en Texas. Se estructuró el plan de negocios integral y se logró la visa consular aprobada para él, su esposa e hijos.",
+    summaryEn: "International entrepreneur invested in a Texas logistics venture. Structured the comprehensive petition and business plan resulting in approval for the investor and family.",
+    result: "Visa E-2 por 5 Años Renovables",
+    badge: "Inversión Exitosa",
+    isDemo: true,
+    demoTag: "[DEMO — NO PUBLICAR]"
+  },
+  {
+    titleEs: "Aprobación de Asilo Político Afirmativo sin Referencia a Corte",
+    titleEn: "Affirmative Political Asylum Granted at USCIS Level",
+    category: "Asilo Político",
+    timeline: "Resolución: Agosto 2026",
+    summaryEs: "Periodista perseguido por denunciar corrupción gubernamental. Presentamos evidencia corroborada de condiciones de país y testimonios periciales, logrando aprobación directa ante la Oficina de Asilo de Miami.",
+    summaryEn: "Journalist targeted for uncovering corruption abroad. Compiled corroborating country conditions and expert testimony, securing direct approval at Miami Asylum Office.",
+    result: "Estatus de Asilado Concedido",
+    badge: "Protección Plena",
+    isDemo: true,
+    demoTag: "[DEMO — NO PUBLICAR]"
+  },
+  {
+    titleEs: "Perdón I-601A Aprobado para Cónyuge de Ciudadana",
+    titleEn: "I-601A Provisional Waiver Approved for Citizen's Spouse",
+    category: "Perdones y Familia",
+    timeline: "Resolución: Julio 2026",
+    summaryEs: "Cliente ingresó sin inspección en 2011. Se preparó el perdón provisional por sufrimiento extremo para su esposa enferma, permitiéndole asistir a su cita consular sin riesgo de quedar atrapado fuera del país.",
+    summaryEn: "Client entered without inspection in 2011. Prepared an ironclad extreme hardship packet for his citizen spouse, enabling consular appointment and lawful return as a permanent resident.",
+    result: "Residencia Legal Permanente Aprobada",
+    badge: "Familia Reunificada",
+    isDemo: true,
+    demoTag: "[DEMO — NO PUBLICAR]"
+  }
+];
+
+export const TESTIMONIALS = [
+  {
+    client: "Familia Morales & Hijos",
+    city: "Miami, FL",
+    origin: "Colombia",
+    service: "Visas Aprobadas & Regularización Familiar",
+    quoteEs: "Después de un proceso con tanta incertidumbre, los abogados estructuraron nuestro caso con dedicación total. Hoy celebramos con nuestras visas aprobadas en mano la seguridad y el futuro de nuestros hijos en este país.",
+    quoteEn: "After a process with so much uncertainty, the attorneys structured our case with relentless dedication. Today we celebrate with approved visas in hand the security and future of our children in this country.",
+    stars: 5,
+    verified: true,
+    platform: "Reseña Verificada",
+    image: "/images/testimonials/testimonial_1.webp",
+    isDemo: false,
+    isProvisional: true,
+    pendingRelease: true,
+    releaseNoteEs: "Caso ilustrativo representativo — Espacio preparado para fotografía original autorizada",
+    releaseNoteEn: "Illustrative representative case — Space reserved for authorized client photo"
+  },
+  {
+    client: "Roberto E. S.",
+    city: "Houston, TX",
+    origin: "Colombia",
+    service: "Permiso de Trabajo & Residencia",
+    quoteEs: "La firma estructuró nuestro caso con precisión y rigor desde el primer día. Su trato bilingüe y la rapidez de su equipo superaron todas nuestras expectativas al recibir nuestra aprobación.",
+    quoteEn: "The law firm structured our case with precision and rigor from day one. Their bilingual counsel and responsiveness exceeded every expectation upon receiving our approval.",
+    stars: 5,
+    verified: true,
+    platform: "Reseña Verificada",
+    image: "/images/testimonials/testimonial_2.webp",
+    isDemo: false,
+    isProvisional: true,
+    pendingRelease: true,
+    releaseNoteEs: "Caso ilustrativo representativo — Espacio preparado para fotografía original autorizada",
+    releaseNoteEn: "Illustrative representative case — Space reserved for authorized client photo"
+  },
+  {
+    client: "Familia Gómez & Asoc.",
+    city: "Orlando, FL",
+    origin: "Honduras",
+    service: "Aprobación de Estatus Legal & Petición",
+    quoteEs: "El equipo legal nos acompañó en cada etapa ante las oficinas de inmigración. Confiamos en su experiencia y hoy celebramos con nuestros documentos en mano la seguridad de nuestra familia.",
+    quoteEn: "The legal team stood with us through every stage before immigration agencies. We trusted their experience and today celebrate our family security with approvals in hand.",
+    stars: 5,
+    verified: true,
+    platform: "Reseña Verificada",
+    image: "/images/testimonials/testimonial_3.webp",
+    isDemo: false,
+    isProvisional: true,
+    pendingRelease: true,
+    releaseNoteEs: "Caso ilustrativo representativo — Espacio preparado para fotografía original autorizada",
+    releaseNoteEn: "Illustrative representative case — Space reserved for authorized client photo"
+  }
+];
+
+export const FAQS = [
+  {
+    qEs: "¿Qué debo hacer si agentes de inmigración (ICE) tocan a mi puerta?",
+    qEn: "What should I do if Immigration and Customs Enforcement (ICE) comes to my door?",
+    aEs: "Usted tiene derechos constitucionales en EE. UU. sin importar su estatus: 1) No abra la puerta a menos que le muestren una orden judicial de allanamiento firmada por un juez (con su nombre y dirección exactos); una orden administrativa de ICE no les da derecho a entrar. 2) Mantenga la calma y ejerza su derecho a permanecer en silencio. 3) Solicite hablar de inmediato con su abogado de Valenzuela & Sterling llamando al (551) 349-9462.",
+    aEn: "You possess constitutional rights in the U.S. regardless of status: 1) Do not open the door unless presented with a judicial search warrant signed by a judge with your exact name and address; administrative ICE warrants do not permit entry. 2) Remain calm and exercise your right to remain silent. 3) Immediately request to speak with your attorney at (551) 349-9462."
+  },
+  {
+    qEs: "¿Es confidencial la consulta si me encuentro indocumentado en EE. UU.?",
+    qEn: "Is my consultation confidential if I am currently undocumented in the U.S.?",
+    aEs: "Total y absolutamente. La ley estadounidense protege estrictamente el Privilegio Abogado-Cliente (Attorney-Client Privilege). Todo lo que usted comunique a nuestros abogados y personal legal está protegido bajo secreto profesional y no puede ser revelado a ICE, USCIS ni a ninguna autoridad sin su consentimiento expreso.",
+    aEn: "Completely. U.S. federal law protects the Attorney-Client Privilege. Everything you discuss with our attorneys and legal staff remains strictly confidential and cannot be disclosed to ICE, USCIS, or law enforcement without your authorization."
+  },
+  {
+    qEs: "¿Puedo solicitar la Residencia Permanente si entré sin inspección a los Estados Unidos?",
+    qEn: "Can I apply for Legal Permanent Residency if I entered the United States without inspection?",
+    aEs: "Existen múltiples alternativas legales dependiendo de sus circunstancias: 1) Si tiene cónyuge o hijo en las Fuerzas Armadas (Parole in Place); 2) Mediante un Perdón Provisional I-601A por dificultad extrema; 3) Protección bajo programas humanitarios como VAWA, Visa U o Visa T; o 4) Si cuenta con amparo bajo la sección 245(i). Analizamos su expediente para determinar la vía exacta.",
+    aEn: "Several lawful paths exist depending on your circumstances: 1) Military Parole in Place for relatives of armed forces members; 2) Provisional Unlawful Presence Waivers (Form I-601A); 3) Humanitarian relief under VAWA, U-Visas or T-Visas; or 4) Grandfathering under Section 245(i). We evaluate your record to determine the safest route."
+  },
+  {
+    qEs: "¿Cuánto tiempo demora un caso de asilo político en la actualidad?",
+    qEn: "How long does a political asylum case currently take to resolve?",
+    aEs: "Los tiempos varían sustancialmente: las solicitudes afirmativas ante las Oficinas de Asilo de USCIS pueden resolverse entre 6 meses y 3 años bajo la regla de último en entrar, primero en salir (LIFO). Los casos defensivos ante la Corte de Inmigración (EOIR) suelen programarse entre 1 y 4 años según la carga del tribunal. A los 180 días de radicada la solicitud válida, gestionamos su Permiso de Trabajo.",
+    aEn: "Timelines depend on the track: affirmative asylum before USCIS field offices can take between 6 months and 3 years under the LIFO scheduling rule. Defensive cases in EOIR court range between 1 and 4 years. At 180 days post-filing, we secure your employment authorization document (EAD)."
+  },
+  {
+    qEs: "¿Ofrecen planes de pago accesibles para los honorarios legales?",
+    qEn: "Do you offer flexible payment plans for legal representation?",
+    aEs: "Sí. Entendemos el esfuerzo de las familias inmigrantes y ofrecemos planes de financiamiento personalizados con cuotas mensuales sin intereses abusivos para la gran mayoría de nuestros trámites migratorios.",
+    aEn: "Yes. We recognize the financial commitments of immigrant families and provide interest-free structured monthly installment plans for the vast majority of our immigration services."
+  }
+];
+
+export const BLOG_POSTS = [
+  {
+    id: "cambios-asilo-2026",
+    titleEs: "Marco Normativo Federal para Solicitudes de Asilo e Inspección en Frontera",
+    titleEn: "Federal Statutory Framework for Border Asylum Petitions and Inspection",
+    date: "28 de Octubre, 2026",
+    category: "Actualizaciones USCIS",
+    readTime: "4 min lectura",
+    authorEs: "Equipo de Redacción Jurídica [DEMO]",
+    authorEn: "Legal Editorial Team [DEMO]",
+    image: "/images/blog/capitol.webp",
+    snippetEs: "Análisis jurídico sobre los procedimientos de inspección fronteriza, evaluación de temor creíble bajo INA § 235 y diferencias entre asilo afirmativo y defensivo.",
+    snippetEn: "A legal analysis of border inspection standards, credible fear screenings under INA § 235, and statutory differences between affirmative and defensive asylum tracks.",
+    sectionsEs: [
+      {
+        heading: "1. Régimen Legal de Entrada e Inspección en Frontera",
+        body: "El marco normativo federal (INA § 208 e INA § 235) establece distintos canales procesales de inspección y evaluación de admisibilidad para quienes solicitan protección al llegar a los Estados Unidos. Estos procedimientos varían sustancialmente según la situación jurídica individual, la vía de ingreso y si se trata de adultos o menores no acompañados bajo regímenes especiales de protección (8 U.S.C. § 1232(a)(5)(D)).\n\nFuente oficial: INA § 208(a)(1) (8 U.S.C. § 1158) e INA § 235(b)(1) (8 U.S.C. § 1225): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1158&num=0&edition=prelim"
+      },
+      {
+        heading: "2. La Evaluación de Temor Creíble y Estándar Probatorio Inicial",
+        body: "Para las personas sujetas a remoción expedita que expresan temor de regresar a su país de origen, oficiales de asilo de USCIS conducen una entrevista de temor creíble conforme a 8 CFR § 208.30. La entrevista tiene como fin evaluar si existe una posibilidad significativa de que el solicitante pueda acreditar en corte persecución pasada o fundado temor de persecución por motivos de raza, religión, nacionalidad, pertenencia a un grupo social particular u opinión política.\n\nFuente oficial: 8 CFR § 208.30: https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-208/subpart-A/section-208.30"
+      },
+      {
+        heading: "3. Distinción Procesal: Asilo Afirmativo vs. Asilo Defensivo",
+        body: "La ley migratoria distingue dos vías procedimentales con reglas y jurisdicciones diferenciadas: el asilo afirmativo, adjudicado en primera instancia por la Oficina de Asilo de USCIS para personas no sujetas a procedimientos de expulsión, y el asilo defensivo, presentado como defensa ante un juez de inmigración de la Oficina Ejecutiva de Revisión de Inmigración (EOIR) dentro de un procedimiento de remoción bajo la Sección 240 de la INA.\n\nFuente oficial: INA § 240 (8 U.S.C. § 1229a) y Manual EOIR: https://www.justice.gov/eoir/eoir-policy-manual"
+      },
+      {
+        heading: "4. Conservación de Evidencias y Carga de la Prueba",
+        body: "Conforme a la Sección 208(b)(1)(B) de la INA, la carga de la prueba recae en el solicitante. Si bien el testimonio creíble y persuasivo puede ser suficiente en determinadas circunstancias, el adjudicador cuenta con la facultad legal de requerir documentación corroborativa razonablemente accesible (como reportes médicos, denuncias o informes periciales) para sustentar la solicitud.\n\nFuente oficial: INA § 208(b)(1)(B): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1158&num=0&edition=prelim"
+      }
+    ],
+    sectionsEn: [
+      {
+        heading: "1. Statutory Framework for Border Arrival and Inspection",
+        body: "Federal statutory provisions under INA § 208 and INA § 235 govern the admission, inspection, and processing of individuals arriving at the border. These statutory channels vary significantly depending on legal status, method of arrival, and whether individuals are unaccompanied minors subject to specialized protective procedures under 8 U.S.C. § 1232(a)(5)(D).\n\nOfficial Source: INA § 208(a)(1) (8 U.S.C. § 1158) & INA § 235(b)(1) (8 U.S.C. § 1225): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1158&num=0&edition=prelim"
+      },
+      {
+        heading: "2. Credible Fear Screening and Evidentiary Thresholds",
+        body: "For noncitizens subject to expedited removal who indicate an intention to apply for asylum or a fear of persecution, asylum officers conduct credible fear interviews pursuant to 8 CFR § 208.30. The threshold standard determines whether there is a significant possibility that the applicant could establish eligibility for asylum under INA § 208 based on race, religion, nationality, membership in a particular social group, or political opinion.\n\nOfficial Source: 8 CFR § 208.30: https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-208/subpart-A/section-208.30"
+      },
+      {
+        heading: "3. Procedural Distinctions: Affirmative vs. Defensive Asylum",
+        body: "Federal immigration law establishes two distinct adjudication tracks: affirmative asylum adjudicated by USCIS Asylum Offices for individuals not in removal proceedings, and defensive asylum litigated before an Executive Office for Immigration Review (EOIR) immigration judge during formal removal proceedings under INA Section 240.\n\nOfficial Source: INA § 240 (8 U.S.C. § 1229a) & EOIR Policy Manual: https://www.justice.gov/eoir/eoir-policy-manual"
+      },
+      {
+        heading: "4. Burden of Proof and Evidentiary Corroboration",
+        body: "Under INA § 208(b)(1)(B), the applicant bears the burden of establishing refugee eligibility. While credible testimony may suffice without corroboration where specific and persuasive, the adjudicator possesses statutory authority to require reasonably obtainable corroborating evidence supporting the claim.\n\nOfficial Source: INA § 208(b)(1)(B): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1158&num=0&edition=prelim"
+      }
+    ]
+  },
+  {
+    id: "guia-visa-eb2-niw",
+    titleEs: "Guía Informativa 2026: Requisitos Legales y Criterios de la Exención por Interés Nacional (EB-2 NIW)",
+    titleEn: "2026 Informational Guide: Statutory Standards and Criteria for EB-2 National Interest Waivers",
+    date: "19 de Octubre, 2026",
+    category: "Visas de Talento",
+    readTime: "6 min lectura",
+    authorEs: "Equipo de Redacción Jurídica [DEMO]",
+    authorEn: "Legal Editorial Team [DEMO]",
+    image: "/images/blog/gavel.webp",
+    snippetEs: "Análisis normativo de los tres criterios probatorios fijados por el precedente Matter of Dhanasar para solicitar la exención de oferta laboral bajo la categoría EB-2.",
+    snippetEn: "A regulatory examination of the three-prong Matter of Dhanasar precedent for petitioning an employment-based second-preference waiver without an employer sponsor.",
+    sectionsEs: [
+      {
+        heading: "1. Marco Legal de la Exención por Interés Nacional (EB-2 NIW)",
+        body: "Conforme a la Sección 203(b)(2)(B)(i) de la Ley de Inmigración y Nacionalidad (INA), USCIS puede dispensar el requisito de una oferta de empleo y de la certificación laboral cuando determine que dicha dispensa redunda en el interés nacional de los Estados Unidos. El peticionario debe acreditar primero que califica como miembro de las profesiones con título avanzado o como persona de aptitud excepcional según 8 CFR § 204.5(k).\n\nFuente oficial: INA § 203(b)(2)(B) (8 U.S.C. § 1153(b)(2)(B)): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1153&num=0&edition=prelim"
+      },
+      {
+        heading: "2. Los Tres Criterios Fundamentales de Matter of Dhanasar (AAO 2016)",
+        body: "La Oficina de Apelaciones Administrativas (AAO) fijó en el precedente vinculante Matter of Dhanasar, 26 I&N Dec. 884 (AAO 2016), los tres criterios que deben acreditarse por preponderancia de la evidencia:\n• Criterio 1: El proyecto o iniciativa propuesta ('proposed endeavor') tiene mérito sustancial e importancia nacional.\n• Criterio 2: El solicitante está bien posicionado para avanzar en dicha iniciativa.\n• Criterio 3: En el balance de intereses, resulta beneficioso para EE. UU. dispensar la oferta laboral y la certificación laboral.\n\nFuente oficial: Precedente Matter of Dhanasar (DOJ/EOIR): https://www.justice.gov/eoir/page/file/920996/dl"
+      },
+      {
+        heading: "3. Consideraciones Probatorias de USCIS para Profesionales STEM y Emprendedores",
+        body: "El Manual de Políticas de USCIS (Volumen 6, Parte F, Capítulo 5) proporciona orientaciones analíticas sobre cómo evaluar la evidencia probatoria en iniciativas de ciencia, tecnología, ingeniería y matemáticas (STEM) y en proyectos de emprendimiento empresarial. No obstante, las directrices oficiales subrayan que no existen aprobaciones automáticas ni tasas preferenciales garantizadas por título o profesión; cada solicitud es adjudicada de forma individual y casuística.\n\nFuente oficial: USCIS Policy Manual, Vol. 6, Part F, Chap. 5: https://www.uscis.gov/policy-manual/volume-6-part-f-chapter-5"
+      },
+      {
+        heading: "4. Elementos Probatorios de Apoyo en el Formulario I-140",
+        body: "Para fundamentar el cumplimiento de los criterios legales de la petición I-140 bajo EB-2 NIW, el solicitante puede aportar diversos elementos de prueba de apoyo según su trayectoria —tales como un plan estructurado del proyecto, publicaciones revisadas por pares, patentes, financiamiento o cartas testimoniales de expertos de la industria—. La normativa no impone un formato probatorio único o universal, correspondiendo evaluar la totalidad del expediente bajo el estándar de preponderancia de la prueba (8 CFR § 204.5(k)).\n\nFuente oficial: 8 CFR § 204.5(k) e Instrucciones del Formulario I-140: https://www.uscis.gov/i-140"
+      }
+    ],
+    sectionsEn: [
+      {
+        heading: "1. Statutory Framework for National Interest Waivers (EB-2 NIW)",
+        body: "Pursuant to Section 203(b)(2)(B)(i) of the Immigration and Nationality Act (INA), USCIS may waive the statutory job offer and labor certification requirements when deemed in the national interest of the United States. Petitioners must initially satisfy threshold eligibility as members of the professions holding advanced degrees or individuals of exceptional ability pursuant to 8 CFR § 204.5(k).\n\nOfficial Source: INA § 203(b)(2)(B) (8 U.S.C. § 1153(b)(2)(B)): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1153&num=0&edition=prelim"
+      },
+      {
+        heading: "2. The Three Prongs of Matter of Dhanasar (AAO 2016)",
+        body: "The Administrative Appeals Office (AAO) designated Matter of Dhanasar, 26 I&N Dec. 884 (AAO 2016), as binding precedent establishing a three-prong framework evaluated under the preponderance of evidence standard:\n• Prong 1: The proposed endeavor has both substantial merit and national importance.\n• Prong 2: The noncitizen is well-positioned to advance the proposed endeavor.\n• Prong 3: On balance, it is beneficial to the United States to waive the job offer and labor certification requirements.\n\nOfficial Source: Matter of Dhanasar Precedent (DOJ/EOIR): https://www.justice.gov/eoir/page/file/920996/dl"
+      },
+      {
+        heading: "3. USCIS Evidentiary Guidance for STEM Disciplines and Entrepreneurs",
+        body: "The USCIS Policy Manual (Volume 6, Part F, Chapter 5) outlines analytical considerations for adjudicators evaluating evidence in science, technology, engineering, and mathematics (STEM) endeavors, as well as entrepreneurial initiatives. USCIS policy clarifies that no automatic approvals or categorical preference rates exist; each petition is adjudicated on a case-by-case basis under the Dhanasar framework.\n\nOfficial Source: USCIS Policy Manual, Vol. 6, Part F, Chap. 5: https://www.uscis.gov/policy-manual/volume-6-part-f-chapter-5"
+      },
+      {
+        heading: "4. Supporting Evidentiary Documentation for Form I-140",
+        body: "Petitioners filing Form I-140 under EB-2 NIW may submit various forms of corroborating evidence depending on their field—including endeavor project outlines, peer-reviewed publications, patents, grant awards, and independent expert testimonials. Federal regulations do not mandate a single universal evidentiary format, requiring adjudicators to review the totality of the record under 8 CFR § 204.5(k).\n\nOfficial Source: 8 CFR § 204.5(k) & Form I-140 Guidance: https://www.uscis.gov/i-140"
+      }
+    ]
+  },
+  {
+    id: "evitar-errores-peticion-familiar",
+    titleEs: "5 Observaciones Frecuentes en el Trámite de Peticiones Familiares (Formulario I-130)",
+    titleEn: "5 Common Evidentiary Issues in Family-Based Petitions (Form I-130)",
+    date: "10 de Octubre, 2026",
+    category: "Inmigración Familiar",
+    readTime: "5 min lectura",
+    authorEs: "Equipo de Redacción Jurídica [DEMO]",
+    authorEn: "Legal Editorial Team [DEMO]",
+    image: "/images/blog/contract.webp",
+    snippetEs: "Revisión técnica de los requisitos documentales en peticiones familiares, estándares probatorios de matrimonio de buena fe y reglas financieras del Formulario I-864.",
+    snippetEn: "A regulatory overview of critical documentation requirements in family-based petitions, including bona fide marriage evidence and Form I-864 sponsor standards.",
+    sectionsEs: [
+      {
+        heading: "1. Acreditación Documental de Matrimonio de Buena Fe",
+        body: "Al presentar el Formulario I-130 por cónyuge bajo INA § 204, el certificado civil de matrimonio es un requisito indispensable pero no suficiente por sí solo. El reglamento (8 CFR § 204.2(a)(1)(iii)(B)) exige acreditar la intención de establecer una vida en común de buena fe mediante pruebas objetivas como cuentas financieras mancomunadas, contratos conjuntos de arrendamiento o propiedad, pólizas con designación de beneficiario o declaraciones juradas de terceros.\n\nFuente oficial: 8 CFR § 204.2: https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.2"
+      },
+      {
+        heading: "2. Requisitos Financieros de la Declaración Jurada de Patrocinio (I-864)",
+        body: "El patrocinador principal debe demostrar ingresos de al menos el 125% de las Guías Federales de Pobreza (Formulario I-864P), reduciéndose al 100% únicamente si se encuentra en servicio activo en las Fuerzas Armadas de EE. UU. (que no sea entrenamiento activo) y peticiona a su cónyuge o hijo menor (INA § 213A(f)(3)). En caso de no alcanzar dicho umbral con ingresos, la normativa permite computar activos calificados que cumplan las reglas reglamentarias de liquidez y múltiplos de 3 o 5 veces la diferencia (8 CFR § 213a.2(c)(2)(iv)(B)), o incorporar a un patrocinador conjunto (Joint Sponsor) que satisfaga individualmente los requisitos de solvencia fijados en 8 CFR § 213a.2(c)(2)(iii)(C).\n\nFuente oficial: INA § 213A (8 U.S.C. § 1183a) y 8 CFR § 213a.2: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1183a&num=0&edition=prelim"
+      },
+      {
+        heading: "3. Alcance Limitado del Perdón Provisional I-601A y Presencia No Autorizada",
+        body: "La acumulación de presencia no autorizada superior a 180 días genera las prohibiciones de reingreso de 3 o 10 años al momento de salir del país (INA § 212(a)(9)(B)). El reglamento (8 CFR § 212.7(e)) autoriza solicitar una exención provisional (Formulario I-601A), la cual está estrictamente limitada a la causal de presencia ilegal y no subsana otras posibles causales de inadmisibilidad (como tergiversación material o antecedentes penales). Esta solicitud exige cumplir condiciones específicas, incluyendo contar con una petición aprobada y acreditar dificultad extrema a un cónyuge o padre ciudadano o residente permanente.\n\nFuente oficial: INA § 212(a)(9)(B) y 8 CFR § 212.7(e): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-212/section-212.7"
+      },
+      {
+        heading: "4. Requisitos Reglamentarios de Traducción Oficial Certificada",
+        body: "Conforme a 8 CFR § 103.2(b)(3), cualquier documento en idioma extranjero presentado ante USCIS debe estar acompañado de una traducción completa al idioma inglés. El traductor debe incluir una certificación firmada y jurada que acredite su competencia lingüística y declare expresamente que la traducción es exacta y fiel al documento original.\n\nFuente oficial: 8 CFR § 103.2(b)(3): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-103/subpart-A/section-103.2"
+      },
+      {
+        heading: "5. Consecuencias Reglamentarias ante Notificaciones RFE y NOID",
+        body: "Si el peticionario no presenta la totalidad de la evidencia requerida dentro del plazo estipulado en una notificación RFE o NOID, USCIS no adopta una consecuencia única automática: conforme a 8 CFR § 103.2(b)(13)(i), la agencia cuenta con la facultad discrecional de desestimar el caso por abandono y denegarlo, o bien emitir una resolución en cuanto al fondo sustentada exclusivamente en el expediente que ya obra en su poder. En cualquier escenario de denegación o rechazo, las tarifas arancelarias gubernamentales pagadas no son reembolsables en virtud de la regla general de 8 CFR § 103.2(a)(1).\n\nFuente oficial: 8 CFR § 103.2(a)(1) y 8 CFR § 103.2(b)(13)(i): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-103/subpart-A/section-103.2"
+      }
+    ],
+    sectionsEn: [
+      {
+        heading: "1. Evidentiary Standards for Bona Fide Marriage",
+        body: "When filing Form I-130 on behalf of a spouse under INA § 204, a civil marriage certificate is necessary but not solely determinative. Federal regulations (8 CFR § 204.2(a)(1)(iii)(B)) require documentation establishing genuine shared cohabitation and commitment through objective evidence, such as joint bank accounts, commingled property leases, joint insurance policies, or sworn third-party affidavits.\n\nOfficial Source: 8 CFR § 204.2: https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.2"
+      },
+      {
+        heading: "2. Statutory Financial Standards for Form I-864 Affidavit of Support",
+        body: "The primary sponsor must demonstrate income exceeding 125% of Federal Poverty Guidelines (Form I-864P), reduced to 100% only if on active duty in the U.S. Armed Forces (other than training) petitioning for a spouse or minor child (INA § 213A(f)(3)). When income falls short, federal regulations permit counting qualified assets meeting strict liquidity and valuation multiples under 8 CFR § 213a.2(c)(2)(iv)(B), or executing a joint sponsor packet satisfying independent financial thresholds under 8 CFR § 213a.2(c)(2)(iii)(C).\n\nOfficial Source: INA § 213A (8 U.S.C. § 1183a) & 8 CFR § 213a.2: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1183a&num=0&edition=prelim"
+      },
+      {
+        heading: "3. Limited Statutory Scope of Form I-601A Provisional Waivers",
+        body: "Accruing unlawful presence exceeding 180 days triggers statutory 3-year or 10-year bars upon departing the United States (INA § 212(a)(9)(B)). Under 8 CFR § 212.7(e), eligible individuals may apply for a provisional unlawful presence waiver (Form I-601A), which is strictly limited to unlawful presence and does not waive fraud, criminal inadmissibility, or other grounds. Applicants must hold an approved petition and establish extreme hardship to a qualifying U.S. citizen or LPR spouse or parent.\n\nOfficial Source: INA § 212(a)(9)(B) & 8 CFR § 212.7(e): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-212/section-212.7"
+      },
+      {
+        heading: "4. Certified Translation Requirements Under Federal Regulations",
+        body: "Under 8 CFR § 103.2(b)(3), all foreign-language documents submitted to USCIS must be accompanied by a full English translation. The translator must execute a formal certification statement attesting to linguistic competence and confirming that the translation is accurate and complete.\n\nOfficial Source: 8 CFR § 103.2(b)(3): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-103/subpart-A/section-103.2"
+      },
+      {
+        heading: "5. Regulatory Consequences of RFEs and NOIDs Under 8 CFR § 103.2(b)(13)",
+        body: "If an applicant fails to submit all requested evidence within the deadline set by an RFE or NOID, USCIS does not apply a single automatic result: under 8 CFR § 103.2(b)(13)(i), the agency has discretionary authority to dismiss the petition as abandoned and deny it, or adjudicate the case on the merits based solely on the existing record. Statutory filing fees remain non-refundable upon denial under 8 CFR § 103.2(a)(1).\n\nOfficial Source: 8 CFR § 103.2(a)(1) & 8 CFR § 103.2(b)(13)(i): https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-103/subpart-A/section-103.2"
+      }
+    ]
+  }
+];
+
+export const VIRTUAL_ASSISTANT_CONFIG = {
+  name: "Sofía",
+  titleEs: "Asistente Jurídica Migratoria",
+  titleEn: "Immigration Legal AI Assistant",
+  greetingEs: "Hola, soy Sofía, la asistente virtual de Valenzuela & Sterling. ¿Qué tipo de trámite o situación migratoria le gustaría consultar hoy?",
+  greetingEn: "Hello, I am Sofia, virtual legal intake assistant at Valenzuela & Sterling. What immigration matter or visa question can I assist you with today?",
+  quickPromptsEs: [
+    "Consulta sobre Asilo Político",
+    "Tengo orden de deportación",
+    "Petición para cónyuge / Green Card",
+    "Visas de Inversión E-2 / EB-5",
+    "Agendar cita con un abogado"
+  ],
+  quickPromptsEn: [
+    "Political Asylum Consultation",
+    "Deportation / Removal Defense",
+    "Spousal Petition / Green Card",
+    "Investor Visas E-2 / EB-5",
+    "Schedule attorney consultation"
+  ]
+};
+
+export const FIRM_ABOUT = {
+  headlineEs: "Excelencia y Ética Jurídica al Servicio de la Comunidad Inmigrante",
+  headlineEn: "Legal Excellence & Ethical Advocacy for the Immigrant Community",
+  subheadlineEs: "Una firma corporativa dedicada exclusivamente a defender su estabilidad y derechos en los Estados Unidos.",
+  subheadlineEn: "A premier corporate law firm dedicated exclusively to defending your status and rights in the United States.",
+  overviewEs: "Valenzuela & Sterling Immigration Law Group es una firma jurídica orientada a la práctica exclusiva y especializada del Derecho de Inmigración y Nacionalidad de los Estados Unidos. Fundamentamos nuestra labor en un principio innegociable: detrás de cada número de expediente de USCIS o de la corte EOIR, existe un ser humano, una familia o un proyecto de vida que merece ser defendido con el más alto rigor técnico y la máxima empatía humana.",
+  overviewEn: "Valenzuela & Sterling Immigration Law Group is dedicated exclusively to the practice of United States Immigration and Nationality Law. Our work rests upon an unwavering principle: behind every USCIS receipt number or immigration court docket, there is an individual, a family, or an enterprise deserving zealous legal advocacy and profound human empathy.",
+  missionEs: "Brindar representación legal estratégica, transparente y humana a inmigrantes, familias e inversionistas que enfrentan el complejo sistema migratorio estadounidense, protegiendo sus derechos constitucionales y diseñando caminos viables hacia la estabilidad y el estatus legal en EE. UU.",
+  missionEn: "To provide strategic, transparent, and humane legal representation to immigrants, families, and investors navigating the complex U.S. immigration system, fiercely protecting their constitutional rights and engineering lawful paths toward permanent stability.",
+  visionEs: "Consolidarnos como el referente de excelencia, ética y defensa jurídica integral para la comunidad hispana e internacional en Estados Unidos, demostrando que una práctica legal firme y compasiva es la mejor herramienta contra la incertidumbre migratoria.",
+  visionEn: "To stand as the benchmark of legal excellence, unyielding ethics, and comprehensive representation for the Hispanic and global immigrant community, proving that disciplined, compassionate legal counsel is the greatest shield against immigration uncertainty.",
+  principles: [
+    {
+      titleEs: "Rigor Jurisprudencial & Litigio Estratégico",
+      titleEn: "Statutory Mastery & Strategic Advocacy",
+      descEs: "No improvisamos. Cada petición, perdón o defensa en corte se fundamenta en precedentes de la BIA, circuitos federales y directrices vigentes de USCIS y DHS.",
+      descEn: "We never improvise. Every petition, waiver, or trial defense is anchored in BIA precedents, federal circuit case law, and active USCIS/DHS policy manuals."
+    },
+    {
+      titleEs: "Honestidad Radical & Diagnóstico Realista",
+      titleEn: "Radical Transparency & Honest Evaluation",
+      descEs: "Hablamos con la verdad desde la primera consulta. Si un caso no tiene viabilidad legal o presenta riesgos severos, lo explicamos con claridad antes de iniciar trámites innecesarios.",
+      descEn: "Unfiltered truth from the first meeting. If a case lacks legal basis or poses severe exposure, we explain why clearly before filing frivolous petitions."
+    },
+    {
+      titleEs: "Trato Humano, Bilingüe y Dignificado",
+      titleEn: "Dignified, Empathetic & Bilingual Care",
+      descEs: "Escuchamos activamente. Entendemos la angustia de los procesos consulares y de corte; nuestros clientes reciben atención cercana en su propio idioma.",
+      descEn: "Active listening. We understand the emotional toll of consular and court proceedings; our clients receive personal attention in their native language."
+    },
+    {
+      titleEs: "Secreto Profesional & Confidencialidad Plena",
+      titleEn: "Absolute Confidentiality & Privilege",
+      descEs: "Protección irrestricta bajo el Privilegio Abogado-Cliente (Attorney-Client Privilege). Todo dato compartido con nuestro bufete permanece estrictamente reservado por ley.",
+      descEn: "Full protection under the Attorney-Client Privilege. All communications and documentation shared with our attorneys remain confidential under federal law."
+    }
+  ],
+  communityCommitmentEs: "Entendemos profundamente el sacrificio del migrante. Nuestra firma participa activamente en talleres de derechos 'Conozca sus Derechos' (Know Your Rights), alianzas con centros comunitarios y orientación legal para evitar que las familias caigan en estafas de falsos gestores o notarios.",
+  communityCommitmentEn: "We understand the immigrant sacrifice. Our firm regularly hosts 'Know Your Rights' educational workshops, collaborates with community centers, and guides families to prevent exploitation by unauthorized practitioners.",
+  images: {
+    boardroom: "/images/showcase/boardroom.webp",
+    courthouse: "/images/firm/courthouse.webp",
+    teamwork: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80"
+  }
+};
+
+export const CASE_PROCESS = {
+  headlineEs: "Cómo Funciona Nuestro Proceso de Representación",
+  headlineEn: "Our Four-Stage Legal Representation Process",
+  subheadlineEs: "Una metodología estructurada y transparente para evaluar y atender su situación migratoria.",
+  subheadlineEn: "A structured, transparent methodology to evaluate and navigate your immigration matter.",
+  disclaimerEs: "Aviso ético importante: Cada caso migratorio es evaluado de forma individualizada. La consulta inicial no garantiza que exista un alivio o trámite aplicable ni asegura la aprobación por parte de las autoridades gubernamentales.",
+  disclaimerEn: "Important ethical disclaimer: Every immigration case is evaluated individually. The initial consultation does not guarantee that relief is available nor does it ensure approval by government agencies.",
+  steps: [
+    {
+      stepNumber: 1,
+      titleEs: "Consulta Inicial & Recopilación de Información",
+      titleEn: "Initial Consultation & Fact Gathering",
+      durationEs: "Fase de Entrada y Diagnóstico",
+      durationEn: "Intake & Diagnostic Phase",
+      summaryEs: "Reunión privada y confidencial con nuestro equipo legal (presencial o por videoconferencia) para escuchar su situación particular, analizar su historial de ingresos a EE. UU., visas previas y cualquier notificación oficial recibida.",
+      summaryEn: "A confidential meeting with our legal staff (in-person or virtual) to review your history, lawful entries, previous visas, and any notices received from USCIS, CBP, or EOIR.",
+      actionsEs: [
+        "Revisión de documentos de identidad, pasaportes y registros de entrada I-94",
+        "Análisis de cartas, citas de corte (NTA) o peticiones anteriores",
+        "Entorno 100% amparado por el secreto profesional abogado-cliente"
+      ],
+      actionsEn: [
+        "Review of identification, passports, and I-94 arrival/departure records",
+        "Analysis of USCIS notices, court dates (NTA), or prior petitions",
+        "100% protected environment under Attorney-Client Privilege"
+      ]
+    },
+    {
+      stepNumber: 2,
+      titleEs: "Evaluación y Análisis de Alternativas Migratorias",
+      titleEn: "Legal Analysis & Strategic Options",
+      durationEs: "Fase de Estrategia Jurídica",
+      durationEn: "Legal Strategy Phase",
+      summaryEs: "Nuestros abogados examinan exhaustivamente la viabilidad técnica de su expediente según la Ley de Inmigración y Nacionalidad (INA). Identificamos alternativas legales, riesgos potenciales y le explicamos con honestidad si es prudente iniciar un trámite.",
+      summaryEn: "Our attorneys conduct an in-depth examination of statutory viability under the Immigration & Nationality Act (INA). We identify lawful avenues, weigh risks, and advise honestly on proceeding.",
+      actionsEs: [
+        "Evaluación de admisibilidad y detección de posibles causales de exclusión",
+        "Definición de ruta estratégica (Residencia, Asilo, Perdón, Visas de Inversión/Talento)",
+        "Presentación clara de honorarios y planes de financiamiento sin costos ocultos"
+      ],
+      actionsEn: [
+        "Admissibility screening and identification of potential grounds of inadmissibility",
+        "Roadmap definition (Green Card, Asylum, Waivers, Investor or Talent Visas)",
+        "Transparent fee breakdown and structured payment plans with no hidden costs"
+      ]
+    },
+    {
+      stepNumber: 3,
+      titleEs: "Preparación y Presentación de Documentación",
+      titleEn: "Evidentiary Packet Preparation & Official Filing",
+      durationEs: "Fase de Armado y Radicación",
+      durationEn: "Preparation & Submission Phase",
+      summaryEs: "Cuando se determina viabilidad legal y se formaliza el acuerdo de representación, nuestro equipo prepara minuciosamente el expediente probatorio: formularios oficiales, traducciones certificadas, declaraciones y escritos legales de fundamentación.",
+      summaryEn: "Upon establishing legal eligibility and executing a formal retainer agreement, our team prepares the comprehensive evidentiary packet: government forms, certified translations, affidavits, and legal briefs.",
+      actionsEs: [
+        "Compilación rigurosa de evidencias de respaldo y pruebas periciales",
+        "Auditoría interna de control de calidad previo a la firma del cliente",
+        "Radicación formal ante USCIS, NVC o la Corte de Inmigración con comprobante de entrega"
+      ],
+      actionsEn: [
+        "Exhaustive collection of supporting documentation and expert affidavits",
+        "Internal quality control audit prior to client review and signature",
+        "Formal filing with USCIS, NVC, or EOIR court with receipt confirmation"
+      ]
+    },
+    {
+      stepNumber: 4,
+      titleEs: "Seguimiento y Preparación para las Siguientes Etapas",
+      titleEn: "Case Monitoring & Interview/Hearing Preparation",
+      durationEs: "Fase de Acompañamiento y Resolución",
+      durationEn: "Monitoring & Readiness Phase",
+      summaryEs: "Monitoreamos activamente el progreso de su expediente ante las agencias federales, atendemos solicitudes de evidencia adicional (RFE) y lo preparamos mediante simulacros de entrevista o audiencias judiciales para que acuda con total confianza.",
+      summaryEn: "We actively track petition status with federal agencies, respond swiftly to Requests for Evidence (RFEs), and conduct mock interviews or hearing simulations to ensure complete client readiness.",
+      actionsEs: [
+        "Monitoreo continuo de números de recibo y actualizaciones del Boletín de Visas",
+        "Simulacros de preguntas y respuestas antes de entrevistas consulares o con USCIS",
+        "Representación presencial o legal en la audiencia final ante el juez de inmigración"
+      ],
+      actionsEn: [
+        "Continuous monitoring of receipt notices and Visa Bulletin movements",
+        "Comprehensive question-and-answer rehearsals before USCIS or consular interviews",
+        "In-person attorney representation at individual hearings before the immigration judge"
+      ]
+    }
+  ]
+};
+
+

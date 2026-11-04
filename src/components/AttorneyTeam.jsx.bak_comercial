@@ -1,0 +1,193 @@
+import React, { useState } from 'react';
+import { ATTORNEYS } from '../data/demoData';
+import { Award, Scale, BookOpen, Globe2, X, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
+
+export default function AttorneyTeam({ lang, onOpenEvaluator }) {
+  const [selectedAttorney, setSelectedAttorney] = useState(null);
+
+  return (
+    <section id="abogados" className="py-20 bg-ivory relative scroll-mt-28 border-b border-linen-dark/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+        
+        {/* Cabecera */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-linen border border-linen-dark text-teal text-xs font-semibold uppercase tracking-wider">
+            <Scale className="w-3.5 h-3.5 text-bronze" />
+            <span>{lang === 'es' ? 'Cuerpo Jurídico de Litigio' : 'Legal Advocacy Team'}</span>
+          </div>
+
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight">
+            {lang === 'es' ? (
+              <>
+                Nuestros <span className="text-teal italic">Abogados de Inmigración</span>
+              </>
+            ) : (
+              <>
+                Our Senior <span className="text-teal italic">Immigration Attorneys</span>
+              </>
+            )}
+          </h2>
+
+          <p className="text-charcoal-soft text-sm sm:text-base leading-relaxed font-light">
+            {lang === 'es' 
+              ? 'Abogados licenciados con presencia en cortes federales de apelación, miembros de AILA y comprometidos con una defensa fiera, estratégica y ética de cada cliente.'
+              : 'Licensed attorneys admitted to federal appellate courts, proud AILA members dedicated to zealous, strategic, and ethical advocacy for every immigrant.'
+            }
+          </p>
+        </div>
+
+        {/* Grid de Abogados del Bufete */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {ATTORNEYS.map((attorney) => (
+            <div
+              key={attorney.id}
+              className="bg-white border border-linen-dark hover:border-bronze/50 rounded-2xl overflow-hidden shadow-subtle hover:shadow-premium transition-all duration-300 flex flex-col justify-between group"
+            >
+              {/* Retrato Profesional Oficial */}
+              <div className="relative pt-8 pb-5 px-6 bg-gradient-to-b from-linen/60 via-ivory to-white flex flex-col items-center justify-center border-b border-linen">
+                {/* Badge de idioma */}
+                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md border border-linen-dark text-teal text-[10px] font-semibold px-2.5 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
+                  <Globe2 className="w-3 h-3 text-bronze" />
+                  <span>{attorney.languages}</span>
+                </div>
+
+                {/* Retrato Circular Proporcional y Pulcro */}
+                <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-bronze/60 shadow-subtle bg-white relative flex items-center justify-center group-hover:scale-105 group-hover:border-bronze transition-all duration-500">
+                  <img
+                    src={attorney.image}
+                    alt={attorney.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              {/* Contenido / Biografía */}
+              <div className="p-5 sm:p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-charcoal group-hover:text-teal transition-colors">
+                    {attorney.name}
+                  </h3>
+                  <div className="text-xs text-bronze font-medium mt-0.5">
+                    {lang === 'es' ? attorney.roleEs : attorney.roleEn}
+                  </div>
+                  
+                  <div className="text-[11px] text-charcoal-light mt-2 flex items-center space-x-1">
+                    <Award className="w-3.5 h-3.5 text-bronze flex-shrink-0" />
+                    <span className="truncate">{attorney.admissions}</span>
+                  </div>
+
+                  <p className="text-xs text-charcoal-soft mt-3 line-clamp-3 leading-relaxed font-light">
+                    {lang === 'es' ? attorney.bioEs : attorney.bioEn}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-linen mt-4">
+                  <button
+                    onClick={() => setSelectedAttorney(attorney)}
+                    className="w-full py-2.5 bg-ivory-warm hover:bg-teal hover:text-white text-charcoal text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center justify-center space-x-1.5 border border-linen-dark"
+                  >
+                    <span>{lang === 'es' ? 'Ver Perfil y Credenciales' : 'View Full Profile'}</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+        {/* Garantía Institucional y Representación Colegiada */}
+        <div className="text-center text-xs text-charcoal-soft max-w-2xl mx-auto border border-linen-dark/80 p-3.5 rounded-xl bg-white shadow-subtle flex items-center justify-center space-x-2">
+          <ShieldCheck className="w-4 h-4 text-teal flex-shrink-0" />
+          <span>
+            {lang === 'es' 
+              ? 'Equipo legal multidisciplinario con representación en procesos migratorios federales y defensa laboral en Estados Unidos.' 
+              : 'Multidisciplinary legal team with representation in U.S. federal immigration and labor rights advocacy.'}
+          </span>
+        </div>
+
+      </div>
+
+      {/* MODAL DETALLADO DE ABOGADO EN ESTILO LUMINOSO */}
+      {selectedAttorney && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white border border-linen-dark rounded-2xl max-w-3xl w-full p-6 sm:p-8 relative shadow-elevated space-y-6 max-h-[90vh] overflow-y-auto">
+            
+            <button
+              onClick={() => setSelectedAttorney(null)}
+              className="absolute top-5 right-5 text-charcoal-light hover:text-charcoal p-1 rounded-lg transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+              <div className="sm:col-span-1 rounded-xl p-4 bg-linen flex items-center justify-center border border-linen-dark">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-bronze/60 shadow-subtle bg-white">
+                  <img
+                    src={selectedAttorney.image}
+                    alt={selectedAttorney.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2 space-y-2">
+                <div className="inline-flex items-center space-x-1.5 text-[11px] text-bronze font-bold uppercase tracking-widest">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>{lang === 'es' ? 'Abogado Litigante Licenciado' : 'Admitted Attorney at Law'}</span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-charcoal">
+                  {selectedAttorney.name}
+                </h3>
+                <div className="text-sm text-teal font-semibold">
+                  {lang === 'es' ? selectedAttorney.roleEs : selectedAttorney.roleEn}
+                </div>
+                <div className="text-xs text-charcoal-soft pt-1">
+                  <strong>{lang === 'es' ? 'Admisiones a la Barra:' : 'Bar Admissions:'}</strong> {selectedAttorney.admissions}
+                </div>
+                <div className="text-xs text-charcoal-soft">
+                  <strong>{lang === 'es' ? 'Idiomas:' : 'Languages:'}</strong> {selectedAttorney.languages}
+                </div>
+                <div className="text-xs text-charcoal-soft">
+                  <strong>{lang === 'es' ? 'Experiencia:' : 'Experience:'}</strong> {lang === 'es' ? selectedAttorney.experience : selectedAttorney.experienceEn}
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-2.5 pt-4 border-t border-linen text-xs sm:text-sm text-charcoal-soft leading-relaxed font-light">
+              <h4 className="font-serif text-base font-bold text-charcoal">
+                {lang === 'es' ? 'Trayectoria y Filosofía Legal' : 'Career Background & Legal Philosophy'}
+              </h4>
+              <p>{lang === 'es' ? selectedAttorney.bioEs : selectedAttorney.bioEn}</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-linen">
+              <button
+                onClick={() => setSelectedAttorney(null)}
+                className="w-full sm:w-auto px-4 py-2 bg-linen text-charcoal text-xs font-semibold rounded-lg hover:bg-linen-dark cursor-pointer"
+              >
+                {lang === 'es' ? 'Cerrar' : 'Close'}
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedAttorney(null);
+                  onOpenEvaluator();
+                }}
+                className="w-full sm:w-auto px-6 py-2.5 bg-teal hover:bg-teal-light text-white font-medium text-xs uppercase tracking-wider rounded-lg shadow-sm cursor-pointer"
+              >
+                {lang === 'es' ? 'Agendar Consulta con este Abogado' : 'Schedule Consultation'}
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+}
