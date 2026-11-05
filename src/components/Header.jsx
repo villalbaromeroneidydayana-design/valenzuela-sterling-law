@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Phone, Shield, MapPin, ChevronDown, 
-  Menu, X, FileCheck, ArrowRight 
+  Menu, X, FileCheck, ArrowRight, Lock 
 } from 'lucide-react';
 import { FIRM_CONFIG, OFFICES } from '../data/demoData';
 import { analytics } from '../services/analytics';
 
-export default function Header({ lang, setLang, onOpenEvaluator, onOpenCallRequest, onSelectPractice, onOpenPortal }) {
+export default function Header({ lang, setLang, onOpenEvaluator, onOpenCallRequest, onSelectPractice, onOpenPortal, onOpenAdmin }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [officesDropdownOpen, setOfficesDropdownOpen] = useState(false);
@@ -99,6 +99,19 @@ export default function Header({ lang, setLang, onOpenEvaluator, onOpenCallReque
             >
               <FileCheck className="w-3.5 h-3.5 text-amber-400" />
               <span>{lang === 'es' ? 'Portal del Cliente' : 'Client Portal'}</span>
+            </button>
+
+            {/* Acceso Personal de la Firma (Discreto) */}
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenAdmin) onOpenAdmin();
+              }}
+              className="text-slate-400 hover:text-amber-400 flex items-center space-x-1 transition-colors text-[11px] font-medium cursor-pointer"
+              title={lang === 'es' ? 'Acceso administrativo del personal' : 'Staff backoffice access'}
+            >
+              <Lock className="w-3 h-3 text-slate-400 hover:text-amber-400" />
+              <span className="hidden xl:inline">{lang === 'es' ? 'Personal' : 'Staff'}</span>
             </button>
 
             {/* Selector Bilingüe ES / EN */}

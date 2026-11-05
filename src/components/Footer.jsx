@@ -1,9 +1,9 @@
 import React from 'react';
 import { FIRM_CONFIG, OFFICES } from '../data/demoData';
-import { Shield, Phone, Mail, MapPin, Scale, Activity } from 'lucide-react';
+import { Shield, Phone, Mail, MapPin, Scale, Activity, Lock } from 'lucide-react';
 import { analytics } from '../services/analytics';
 
-export default function Footer({ lang, onOpenEvaluator, onOpenCallRequest, onOpenTelemetry, onOpenPortal }) {
+export default function Footer({ lang, onOpenEvaluator, onOpenCallRequest, onOpenTelemetry, onOpenPortal, onOpenAdmin }) {
   return (
     <footer id="contacto" className="bg-[#030A14] text-white border-t border-blue-900/60 pt-16 pb-12 relative scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
@@ -136,6 +136,15 @@ export default function Footer({ lang, onOpenEvaluator, onOpenCallRequest, onOpe
                 >
                   <Activity className="w-3 h-3 text-emerald-400" />
                   <span>{lang === 'es' ? 'Métricas de Conversión (Live)' : 'Conversion Telemetry (Live)'}</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onOpenAdmin}
+                  className="hover:text-amber-400 transition-colors flex items-center space-x-1 text-slate-400 hover:text-amber-300 text-[11px] cursor-pointer pt-1"
+                >
+                  <Lock className="w-2.5 h-2.5 text-amber-400" />
+                  <span>{lang === 'es' ? 'Acceso Personal de la Firma (Backoffice)' : 'Staff Login (Backoffice)'}</span>
                 </button>
               </li>
             </ul>

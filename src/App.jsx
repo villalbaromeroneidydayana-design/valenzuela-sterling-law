@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import TrustBadges from './components/TrustBadges';
@@ -23,6 +23,7 @@ import BlogArticleModal from './components/BlogArticleModal';
 import LaborLaw, { ServiceAreaSwitch } from './components/LaborLaw';
 import ImmigrationBonds from './components/ImmigrationBonds';
 import ClientPortalModal from './components/ClientPortalModal';
+import AdminDashboardModal from './components/AdminDashboardModal';
 import VisualRedesignPreview from './components/VisualRedesignPreview';
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
   const [callCaseType, setCallCaseType] = useState('general');
   const [isTelemetryModalOpen, setIsTelemetryModalOpen] = useState(false);
   const [isPortalModalOpen, setIsPortalModalOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
   const [selectedBlogArticle, setSelectedBlogArticle] = useState(null);
 
   const handleOpenEvaluator = (practiceId = 'residencia-green-card') => {
@@ -57,6 +59,19 @@ export default function App() {
     setIsCallModalOpen(true);
   };
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const hash = window.location.hash.toLowerCase();
+      if (params.get('portal') === 'true' || params.get('expediente') === 'true' || hash === '#portal' || hash === '#expediente') {
+        setIsPortalModalOpen(true);
+      }
+      if (params.get('admin') === 'true' || params.get('backoffice') === 'true' || hash === '#admin' || hash === '#backoffice') {
+        setIsAdminModalOpen(true);
+      }
+    }
+  }, []);
+
   const isPreviewMode = typeof window !== 'undefined' && window.location.search.includes('preview=redesign');
   if (isPreviewMode) {
     return <VisualRedesignPreview lang={lang} />;
@@ -73,6 +88,7 @@ export default function App() {
         onOpenCallRequest={() => handleOpenCallRequest('general')}
         onSelectPractice={handleSelectPractice}
         onOpenPortal={() => setIsPortalModalOpen(true)}
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
       />
 
       {/* CONTENIDO PRINCIPAL: 6 BLOQUES MAESTROS INTEGRADOS */}
@@ -166,6 +182,7 @@ export default function App() {
         onOpenCallRequest={() => handleOpenCallRequest('general')}
         onOpenTelemetry={() => setIsTelemetryModalOpen(true)}
         onOpenPortal={() => setIsPortalModalOpen(true)}
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
       />
 
       {/* 16. Asistente Virtual Inteligente ("Sofía") */}
@@ -228,6 +245,13 @@ export default function App() {
       <ClientPortalModal
         isOpen={isPortalModalOpen}
         onClose={() => setIsPortalModalOpen(false)}
+        lang={lang}
+      />
+
+      {/* 24. Modal de Administración Interna y Control de Expedientes (Backoffice de la Firma) */}
+      <AdminDashboardModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
         lang={lang}
       />
 

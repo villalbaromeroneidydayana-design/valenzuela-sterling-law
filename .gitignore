@@ -30,3 +30,9 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+.env.production
+.env*.production
+
+# Runtime local server data and audit logs
+server_data/
+
