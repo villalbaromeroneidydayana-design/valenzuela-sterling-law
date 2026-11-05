@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import crypto from 'crypto';
 import {
   isSupabaseConfigured,
@@ -119,32 +120,41 @@ function verifyStaffCredentials(inputUser, inputPassword) {
 }
 
 // Directorio para persistencia segura de auditoría y respaldo local
-const SERVER_DATA_DIR = path.resolve(process.cwd(), 'server_data');
+const SERVER_DATA_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'vs_server_data')
+  : path.resolve(process.cwd(), 'server_data');
 const AUDIT_LOGS_DIR = path.join(SERVER_DATA_DIR, 'audit_logs');
 const CASES_VAULT_FILE = path.join(SERVER_DATA_DIR, 'cases_vault.jsonl');
 
 function ensureDataDirectories() {
-  if (!fs.existsSync(SERVER_DATA_DIR)) {
-    fs.mkdirSync(SERVER_DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(AUDIT_LOGS_DIR)) {
-    fs.mkdirSync(AUDIT_LOGS_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(SERVER_DATA_DIR)) {
+      fs.mkdirSync(SERVER_DATA_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(AUDIT_LOGS_DIR)) {
+      fs.mkdirSync(AUDIT_LOGS_DIR, { recursive: true });
+    }
+  } catch (e) {
+    // Entorno serverless de solo lectura
   }
 }
 
 function appendToAuditLog(filename, data) {
-  ensureDataDirectories();
-  const filePath = path.join(AUDIT_LOGS_DIR, filename);
-  const logEntry = JSON.stringify({
-    ...data,
-    timestamp: new Date().toISOString()
-  }) + '\n';
-  fs.appendFileSync(filePath, logEntry, 'utf8');
+  try {
+    ensureDataDirectories();
+    const filePath = path.join(AUDIT_LOGS_DIR, filename);
+    const logEntry = JSON.stringify({
+      ...data,
+      timestamp: new Date().toISOString()
+    }) + '\n';
+    fs.appendFileSync(filePath, logEntry, 'utf8');
+  } catch (e) {}
 }
 
 // Inicialización de la Bóveda Local de Expedientes (Fallback y Desarrollo)
 function ensureCasesVault() {
-  ensureDataDirectories();
+  try {
+    ensureDataDirectories();
 
   const testCaseA = {
     caseNumber: 'VS-TEST-2026-9001',
@@ -287,11 +297,12 @@ function ensureCasesVault() {
     environment: 'PRODUCTION'
   };
 
-  if (!fs.existsSync(CASES_VAULT_FILE)) {
-    const initialCases = [initialCaseReal, testCaseA, testCaseB];
-    const lines = initialCases.map(c => JSON.stringify(c)).join('\n') + '\n';
-    fs.writeFileSync(CASES_VAULT_FILE, lines, 'utf8');
-  }
+    if (!fs.existsSync(CASES_VAULT_FILE)) {
+      const initialCases = [initialCaseReal, testCaseA, testCaseB];
+      const lines = initialCases.map(c => JSON.stringify(c)).join('\n') + '\n';
+      fs.writeFileSync(CASES_VAULT_FILE, lines, 'utf8');
+    }
+  } catch (e) {}
 }
 
 // Obtiene expedientes locales
@@ -342,8 +353,10 @@ function saveCaseUpdateLocal(updatedCase) {
     cases.push({ ...updatedCase, updatedAt: new Date().toISOString() });
   }
 
-  const lines = cases.map(c => JSON.stringify(c)).join('\n') + '\n';
-  fs.writeFileSync(CASES_VAULT_FILE, lines, 'utf8');
+  try {
+    const lines = cases.map(c => JSON.stringify(c)).join('\n') + '\n';
+    fs.writeFileSync(CASES_VAULT_FILE, lines, 'utf8');
+  } catch (e) {}
 }
 
 // Métodos Asíncronos Duales: Supabase Cloud + Local Vault Fallback
