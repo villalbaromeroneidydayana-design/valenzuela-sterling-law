@@ -97,7 +97,10 @@ export default function App() {
         {/* BLOQUE 1: Bienvenida & Acción Inmediata (Hero con Formulario + Sellos de Prestigio) */}
         <Hero
           lang={lang}
-          onOpenVideo={() => setIsVideoModalOpen(true)}
+          onOpenVideo={() => {
+            const el = document.getElementById('video-showcase');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
           onOpenEvaluator={() => handleOpenEvaluator('asilo-politico')}
         />
         <TrustBadges lang={lang} />
