@@ -844,7 +844,7 @@ export default function AdminDashboardModal({ isOpen, onClose, lang = 'es' }) {
                         <label className="block text-slate-300 mb-1">Teléfono Móvil (Confirmación Factor 3)</label>
                         <input
                           type="tel"
-                          placeholder="Ej. (551) 349-7941"
+                          placeholder="Ej. +1 (314) 618-5666"
                           value={newCaseData.clientPhone}
                           onChange={(e) => setNewCaseData({ ...newCaseData, clientPhone: e.target.value })}
                           className="w-full px-3 py-2 bg-[#081426] border border-blue-900 rounded-lg text-white"

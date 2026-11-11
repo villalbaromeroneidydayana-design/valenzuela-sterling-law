@@ -418,7 +418,7 @@ export default function EligibilityEvaluator({ lang = 'es', isOpen = false, onCl
                     <input
                       type="tel"
                       required
-                      placeholder="(551) 000-0000"
+                      placeholder="(314) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-3.5 py-2 bg-[#081426] border border-blue-900/60 rounded-md text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"

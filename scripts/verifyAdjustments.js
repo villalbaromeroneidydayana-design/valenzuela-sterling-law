@@ -13,8 +13,8 @@ import fs from 'fs';
 
   // 1. Verify Phone number in DOM
   const pageContent = await page.content();
-  const phonePresent = pageContent.includes('(551) 349-9462') || pageContent.includes('+15513499462');
-  console.log('Central Phone (551) 349-9462 present:', phonePresent);
+  const phonePresent = pageContent.includes('+1 (314) 618-5666') || pageContent.includes('+13146185666');
+  console.log('Central Phone +1 (314) 618-5666 present:', phonePresent);
 
   // 2. Verify Attorneys section
   const teamSection = page.locator('#abogados');

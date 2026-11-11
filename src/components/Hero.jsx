@@ -255,7 +255,7 @@ export default function Hero({ lang = 'es', onOpenVideo, onOpenEvaluator }) {
                       type="tel"
                       name="phone"
                       required
-                      placeholder="(551) 000-0000"
+                      placeholder="(314) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-3 py-2 bg-[#081426] border border-blue-800/80 rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, BarChart3, Users, Phone, MessageSquare, CheckCircle2, X, RefreshCw, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { FIRM_CONFIG } from '../data/demoData';
 
 export default function ConversionTelemetryModal({ isOpen, onClose, lang = 'es' }) {
   const [stats, setStats] = useState(null);
@@ -172,8 +173,8 @@ export default function ConversionTelemetryModal({ isOpen, onClose, lang = 'es' 
             </h5>
             <p className="text-xs text-charcoal-soft font-light">
               {lang === 'es'
-                ? `Clics hacia el número telefónico principal (551) 349-9462: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`
-                : `Direct click-to-call taps on law firm hotline (551) 349-9462: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`}
+                ? `Clics hacia el número telefónico principal ${FIRM_CONFIG.primaryPhone}: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`
+                : `Direct click-to-call taps on law firm hotline ${FIRM_CONFIG.primaryPhone}: ${stats?.conversionFunnel?.phoneConversions ?? stats?.metrics?.phoneClicks ?? 0}`}
             </p>
           </div>
         </div>

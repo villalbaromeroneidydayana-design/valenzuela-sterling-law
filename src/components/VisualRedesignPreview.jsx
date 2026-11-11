@@ -13,9 +13,9 @@ export default function VisualRedesignPreview({ lang = 'es' }) {
       <div className="bg-[#050D1A] border-b border-blue-900/40 text-xs py-2 px-4 sm:px-8 text-slate-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-6">
-            <a href="tel:+15513499462" className="flex items-center space-x-2 text-white hover:text-amber-400 transition-colors">
+            <a href="tel:+13146185666" className="flex items-center space-x-2 text-white hover:text-amber-400 transition-colors">
               <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>Urgencias 24/7: <strong className="text-white font-bold tracking-wider">(551) 349-9462</strong></span>
+              <span>Urgencias 24/7: <strong className="text-white font-bold tracking-wider">+1 (314) 618-5666</strong></span>
             </a>
             <span className="hidden md:inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-[11px] font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -89,9 +89,9 @@ export default function VisualRedesignPreview({ lang = 'es' }) {
                   <span>Evaluación de Caso Confidencial</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <a href="tel:+15513499462" className="px-5 py-3.5 bg-[#0F274E] hover:bg-[#16386E] text-white font-semibold text-xs sm:text-sm rounded-lg border border-blue-700/60 transition-all flex items-center space-x-2">
+                <a href="tel:+13146185666" className="px-5 py-3.5 bg-[#0F274E] hover:bg-[#16386E] text-white font-semibold text-xs sm:text-sm rounded-lg border border-blue-700/60 transition-all flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-emerald-400" />
-                  <span>Llamar: (551) 349-9462</span>
+                  <span>Llamar: +1 (314) 618-5666</span>
                 </a>
               </div>
 
@@ -136,7 +136,7 @@ export default function VisualRedesignPreview({ lang = 'es' }) {
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-200 mb-1">Teléfono Móvil</label>
-                    <input type="text" placeholder="(551) 000-0000" className="w-full px-3 py-2 bg-[#081426] border border-blue-800/80 rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400" readOnly />
+                    <input type="text" placeholder="(314) 000-0000" className="w-full px-3 py-2 bg-[#081426] border border-blue-800/80 rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400" readOnly />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-200 mb-1">Materia Jurídica</label>
@@ -309,7 +309,7 @@ export default function VisualRedesignPreview({ lang = 'es' }) {
             <span className="text-white font-serif font-bold text-base">Valenzuela & Sterling Immigration Law Group</span>
           </div>
           <div>
-            1200 Brickell Avenue, Suite 1800, Miami, FL 33131 • Tel: <strong className="text-amber-400">(551) 349-9462</strong>
+            1200 Brickell Avenue, Suite 1800, Miami, FL 33131 • Tel: <strong className="text-amber-400">+1 (314) 618-5666</strong>
           </div>
         </div>
       </footer>

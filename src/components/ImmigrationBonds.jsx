@@ -133,7 +133,7 @@ export default function ImmigrationBonds({ lang = 'es', onOpenCallRequest, onOpe
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <a
-                    href="tel:+15513499462"
+                    href={`tel:${FIRM_CONFIG.primaryPhoneRaw}`}
                     className="w-full sm:w-auto px-4 py-3 sm:px-5 sm:py-3.5 bg-[#081426] hover:bg-[#16386E] text-white font-semibold text-xs sm:text-sm rounded-lg border border-blue-700/60 flex items-center justify-center space-x-2"
                   >
                     <Phone className="w-4 h-4 text-emerald-400" />

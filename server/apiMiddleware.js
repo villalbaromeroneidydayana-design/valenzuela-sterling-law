@@ -668,7 +668,7 @@ export function createApiMiddleware() {
           res.statusCode = 403;
           res.setHeader('Content-Type', 'application/json');
           return res.end(JSON.stringify({
-            error: 'El acceso a este expediente ha sido revocado o suspendido preventivamente por la administración de la firma. Por favor comuníquese al (551) 349-9462.'
+            error: 'El acceso a este expediente ha sido revocado o suspendido preventivamente por la administración de la firma. Por favor comuníquese al +1 (314) 618-5666.'
           }));
         }
 
@@ -891,7 +891,7 @@ ESTADO PROCESAL REGISTRADO:
 ${caseRecord.status} (${caseRecord.nextDeadline})
 
 Valenzuela & Sterling Immigration Law Group, P.A.
-Teléfono Central 24/7: (551) 349-9462
+Teléfono Central 24/7: +1 (314) 618-5666
 Miami • Orlando • Houston • New York
 ================================================================================`;
 

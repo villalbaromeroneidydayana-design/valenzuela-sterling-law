@@ -20,10 +20,10 @@ export const FIRM_CONFIG = {
     en: "Protecting your future and your family in the United States with excellence, prestige, and empathy."
   },
   // Teléfono principal único de la firma (registro "Jefe"). No usar teléfonos personales de abogados.
-  primaryPhone: "(551) 349-9462",
-  primaryPhoneRaw: "+15513499462",
-  whatsappNumber: "+15513499462",
-  whatsappLink: "https://wa.me/15513499462?text=Hola,%20deseo%20una%20consulta%20con%20Valenzuela%20%26%20Sterling",
+  primaryPhone: "+1 (314) 618-5666",
+  primaryPhoneRaw: "+13146185666",
+  whatsappNumber: "+13146185666",
+  whatsappLink: "https://wa.me/13146185666?text=Hola,%20deseo%20una%20consulta%20con%20Valenzuela%20%26%20Sterling",
   contactEmail: "contacto@valenzuelasterlinglaw.com",
   portalUrl: "#portal-cliente",
   
@@ -50,7 +50,7 @@ export const OFFICES = [
     cityEn: "Miami (Headquarters)",
     state: "Florida",
     address: "1200 Brickell Avenue, Suite 1800, Miami, FL 33131",
-    phone: "(551) 349-9462",
+    phone: "+1 (314) 618-5666",
     hours: "Lun - Vie: 8:30 AM - 6:30 PM | Sáb: Previa Cita",
     hoursEn: "Mon - Fri: 8:30 AM - 6:30 PM | Sat: By Appointment",
     image: "/images/offices/miami.webp",
@@ -65,7 +65,7 @@ export const OFFICES = [
     cityEn: "Orlando",
     state: "Florida",
     address: "390 N Orange Ave, Suite 1400, Orlando, FL 32801",
-    phone: "(551) 349-9462",
+    phone: "+1 (314) 618-5666",
     hours: "Lun - Vie: 9:00 AM - 5:30 PM (Previa Cita)",
     hoursEn: "Mon - Fri: 9:00 AM - 5:30 PM (By Appointment)",
     image: "/images/offices/orlando.webp",
@@ -80,7 +80,7 @@ export const OFFICES = [
     cityEn: "Houston",
     state: "Texas",
     address: "1000 Louisiana Street, Suite 4200, Houston, TX 77002",
-    phone: "(551) 349-9462",
+    phone: "+1 (314) 618-5666",
     hours: "Lun - Vie: 8:30 AM - 6:00 PM (Previa Cita)",
     hoursEn: "Mon - Fri: 8:30 AM - 6:00 PM (By Appointment)",
     image: "/images/offices/tampa.webp",
@@ -95,7 +95,7 @@ export const OFFICES = [
     cityEn: "New York",
     state: "New York",
     address: "Rockefeller Plaza, 20th Floor, New York, NY 10111",
-    phone: "(551) 349-9462",
+    phone: "+1 (314) 618-5666",
     hours: "Lun - Vie: 9:00 AM - 6:00 PM (Previa Cita)",
     hoursEn: "Mon - Fri: 9:00 AM - 6:00 PM (By Appointment)",
     image: "/images/offices/houston.webp",
@@ -994,8 +994,8 @@ export const FAQS = [
   {
     qEs: "¿Qué debo hacer si agentes de inmigración (ICE) tocan a mi puerta?",
     qEn: "What should I do if Immigration and Customs Enforcement (ICE) comes to my door?",
-    aEs: "Usted tiene derechos constitucionales en EE. UU. sin importar su estatus: 1) No abra la puerta a menos que le muestren una orden judicial de allanamiento firmada por un juez (con su nombre y dirección exactos); una orden administrativa de ICE no les da derecho a entrar. 2) Mantenga la calma y ejerza su derecho a permanecer en silencio. 3) Solicite hablar de inmediato con su abogado de Valenzuela & Sterling llamando al (551) 349-9462.",
-    aEn: "You possess constitutional rights in the U.S. regardless of status: 1) Do not open the door unless presented with a judicial search warrant signed by a judge with your exact name and address; administrative ICE warrants do not permit entry. 2) Remain calm and exercise your right to remain silent. 3) Immediately request to speak with your attorney at (551) 349-9462."
+    aEs: "Usted tiene derechos constitucionales en EE. UU. sin importar su estatus: 1) No abra la puerta a menos que le muestren una orden judicial de allanamiento firmada por un juez (con su nombre y dirección exactos); una orden administrativa de ICE no les da derecho a entrar. 2) Mantenga la calma y ejerza su derecho a permanecer en silencio. 3) Solicite hablar de inmediato con su abogado de Valenzuela & Sterling llamando al +1 (314) 618-5666.",
+    aEn: "You possess constitutional rights in the U.S. regardless of status: 1) Do not open the door unless presented with a judicial search warrant signed by a judge with your exact name and address; administrative ICE warrants do not permit entry. 2) Remain calm and exercise your right to remain silent. 3) Immediately request to speak with your attorney at +1 (314) 618-5666."
   },
   {
     qEs: "¿Es confidencial la consulta si me encuentro indocumentado en EE. UU.?",
