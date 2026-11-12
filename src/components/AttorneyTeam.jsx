@@ -63,14 +63,22 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
 
                 {/* Retrato Circular Proporcional y Uniforme */}
                 {attorney.image ? (
-                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-amber-400/70 ring-4 ring-amber-400/10 shadow-2xl bg-[#081426] relative flex items-center justify-center group-hover:border-amber-300 transition-all duration-500">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-amber-400/70 ring-4 ring-amber-400/10 shadow-2xl bg-[#081426] relative flex items-center justify-center group-hover:border-amber-300 transition-colors duration-300">
                     <img
                       src={attorney.image}
                       alt={attorney.name}
+                      width={160}
+                      height={160}
                       loading="eager"
-                      decoding="async"
-                      style={attorney.imageStyle || undefined}
-                      className={`w-full h-full transition-transform duration-500 ${attorney.imageClass || 'object-cover object-center'}`}
+                      decoding="sync"
+                      fetchPriority="high"
+                      onError={(e) => {
+                        if (attorney.originalFile && !e.currentTarget.dataset.fallback) {
+                          e.currentTarget.dataset.fallback = '1';
+                          e.currentTarget.src = attorney.originalFile;
+                        }
+                      }}
+                      className="w-full h-full object-cover object-center block"
                     />
                   </div>
                 ) : (
@@ -165,10 +173,17 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
                     <img
                       src={selectedAttorney.image}
                       alt={selectedAttorney.name}
+                      width={176}
+                      height={176}
                       loading="eager"
-                      decoding="async"
-                      style={selectedAttorney.imageStyle || undefined}
-                      className={`w-full h-full ${selectedAttorney.imageClass || 'object-cover object-center'}`}
+                      decoding="sync"
+                      onError={(e) => {
+                        if (selectedAttorney.originalFile && !e.currentTarget.dataset.fallback) {
+                          e.currentTarget.dataset.fallback = '1';
+                          e.currentTarget.src = selectedAttorney.originalFile;
+                        }
+                      }}
+                      className="w-full h-full object-cover object-center block"
                     />
                   </div>
                 ) : (

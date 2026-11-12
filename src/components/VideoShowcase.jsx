@@ -21,18 +21,7 @@ export default function VideoShowcase({ lang = 'es' }) {
     const video = videoRef.current;
     if (!video) return;
 
-    // Asegurar reproducción automática silenciada en bucle requerida por navegadores
     video.muted = true;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(() => {
-          setIsPlaying(false);
-        });
-    }
 
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
@@ -44,7 +33,32 @@ export default function VideoShowcase({ lang = 'es' }) {
     video.addEventListener('pause', handlePause);
     video.addEventListener('volumechange', handleVolumeChange);
 
+    // Iniciar reproducción cuando el usuario se acerque a la sección para no saturar la red móvil inicial
+    let observer;
+    if ('IntersectionObserver' in window && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const p = video.play();
+              if (p !== undefined) {
+                p.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+              }
+            }
+          });
+        },
+        { rootMargin: '400px 0px' }
+      );
+      observer.observe(containerRef.current);
+    } else {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+      }
+    }
+
     return () => {
+      if (observer) observer.disconnect();
       video.removeEventListener('play', handlePlay);
       video.removeEventListener('pause', handlePause);
       video.removeEventListener('volumechange', handleVolumeChange);
@@ -132,11 +146,10 @@ export default function VideoShowcase({ lang = 'es' }) {
           <div className="relative aspect-video w-full overflow-hidden bg-black flex items-center justify-center">
             <video
               ref={videoRef}
-              autoPlay
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
               poster="/images/showcase/boardroom.webp"
               onClick={togglePlay}
               className="w-full h-full object-cover cursor-pointer"
