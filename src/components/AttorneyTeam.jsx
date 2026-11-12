@@ -30,17 +30,17 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
             {lang === 'es' 
-              ? 'Espacios preparados para el cuerpo legal titular. Abogados licenciados con presencia en cortes federales de apelación, miembros de AILA y riguroso apego ético.'
-              : 'Reserved profiles for the principal legal team. Admitted attorneys before federal appellate courts, proud AILA members with strict ethical standards.'
+              ? 'Cuerpo legal titular y especialistas de nuestra firma. Abogados licenciados con presencia en cortes federales, defensa laboral y riguroso apego ético.'
+              : 'Principal legal counsel and specialists of our firm. Licensed attorneys practicing before federal immigration courts, labor defense, and strict ethical standards.'
             }
           </p>
 
-          <div className="inline-flex items-center space-x-1.5 text-xs text-amber-300 bg-[#0B1E3D] border border-amber-400/30 px-3 py-1 rounded-full">
-            <AlertCircle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+          <div className="inline-flex items-center space-x-1.5 text-xs text-emerald-300 bg-[#0B1E3D] border border-emerald-500/30 px-3.5 py-1 rounded-full">
+            <UserCheck className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
             <span>
               {lang === 'es'
-                ? 'Espacios reservados para fotografías de estudio y credenciales definitivas en proceso de ratificación.'
-                : 'Reserved spaces for studio portraits and final bar credentials currently under confirmation.'
+                ? 'Perfiles profesionales verificados — Atención confidencial en Español e Inglés'
+                : 'Verified attorney profiles — Confidential counsel in English and Spanish'
               }
             </span>
           </div>
@@ -51,9 +51,9 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
           {ATTORNEYS.map((attorney) => (
             <div
               key={attorney.id}
-              className="bg-[#0B1E3D] border border-blue-800/60 hover:border-amber-400/50 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+              className="bg-[#0B1E3D] border border-blue-800/60 hover:border-amber-400/60 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
             >
-              {/* Retrato Profesional Oficial / Espacio Reservado */}
+              {/* Retrato Profesional Oficial */}
               <div className="relative pt-8 pb-5 px-6 bg-gradient-to-b from-[#050D1A] via-[#081426] to-[#0B1E3D] flex flex-col items-center justify-center border-b border-blue-900/60">
                 {/* Badge de idioma */}
                 <div className="absolute top-3 right-3 bg-[#081426]/95 backdrop-blur-md border border-blue-800 text-amber-300 text-[10px] font-semibold px-2.5 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -61,19 +61,20 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
                   <span>{attorney.languages}</span>
                 </div>
 
-                {/* Retrato Circular Proporcional y Pulcro / Monograma Institucional */}
+                {/* Retrato Circular Proporcional y Uniforme */}
                 {attorney.image ? (
-                  <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-amber-400/60 shadow-xl bg-[#081426] relative flex items-center justify-center group-hover:scale-105 group-hover:border-amber-400 transition-all duration-500">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-amber-400/70 ring-4 ring-amber-400/10 shadow-2xl bg-[#081426] relative flex items-center justify-center group-hover:border-amber-300 transition-all duration-500">
                     <img
                       src={attorney.image}
                       alt={attorney.name}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
-                      className="w-full h-full object-cover object-center"
+                      style={attorney.imageStyle || undefined}
+                      className={`w-full h-full transition-transform duration-500 ${attorney.imageClass || 'object-cover object-center'}`}
                     />
                   </div>
                 ) : (
-                  <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-amber-400/60 shadow-xl bg-gradient-to-br from-[#081426] via-[#0B1E3D] to-[#0F274E] relative flex flex-col items-center justify-center group-hover:scale-105 group-hover:border-amber-400 transition-all duration-500">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-amber-400/60 shadow-xl bg-gradient-to-br from-[#081426] via-[#0B1E3D] to-[#0F274E] relative flex flex-col items-center justify-center group-hover:scale-105 group-hover:border-amber-400 transition-all duration-500">
                     <Scale className="w-6 h-6 text-amber-400 mb-1 opacity-90" />
                     <span className="font-serif text-2xl font-bold tracking-wider text-amber-300">
                       {attorney.initials || 'VS'}
@@ -84,9 +85,10 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
                   </div>
                 )}
 
-                {/* Etiqueta de Espacio Reservado */}
-                <div className="mt-3 text-[10px] text-amber-300 font-semibold uppercase tracking-wider bg-[#081426] px-2.5 py-0.5 rounded-full border border-blue-800">
-                  {lang === 'es' ? 'Espacio para Fotografía Oficial' : 'Reserved for Official Portrait'}
+                {/* Etiqueta de Perfil Verificado */}
+                <div className="mt-3.5 inline-flex items-center space-x-1 text-[10px] text-amber-300 font-semibold uppercase tracking-wider bg-[#081426] px-3 py-0.5 rounded-full border border-amber-400/30 shadow-sm">
+                  <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                  <span>{lang === 'es' ? 'Miembro del Equipo Legal' : 'Verified Legal Counsel'}</span>
                 </div>
               </div>
 
@@ -159,13 +161,14 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
               <div className="sm:col-span-1 rounded-xl p-4 bg-[#081426] flex flex-col items-center justify-center border border-blue-800/80">
                 {selectedAttorney.image ? (
-                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-amber-400/60 shadow-xl bg-[#081426]">
+                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-amber-400/70 ring-4 ring-amber-400/10 shadow-xl bg-[#081426]">
                     <img
                       src={selectedAttorney.image}
                       alt={selectedAttorney.name}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
-                      className="w-full h-full object-cover object-center"
+                      style={selectedAttorney.imageStyle || undefined}
+                      className={`w-full h-full ${selectedAttorney.imageClass || 'object-cover object-center'}`}
                     />
                   </div>
                 ) : (
@@ -179,8 +182,9 @@ export default function AttorneyTeam({ lang, onOpenEvaluator }) {
                     </span>
                   </div>
                 )}
-                <div className="mt-2 text-[10px] text-amber-300 font-semibold text-center">
-                  {lang === 'es' ? 'Espacio para foto oficial' : 'Official photo space'}
+                <div className="mt-2.5 inline-flex items-center space-x-1 text-[10px] text-amber-300 font-semibold text-center">
+                  <ShieldCheck className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                  <span>{lang === 'es' ? 'Perfil Oficial Verificado' : 'Verified Official Profile'}</span>
                 </div>
               </div>
 
